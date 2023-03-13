@@ -2,7 +2,7 @@ from flask import Flask, render_template, flash, redirect, url_for, session, log
 from flask_mysqldb import MySQL, MySQLdb
 
 from wtforms import Form, StringField, TextAreaField,PasswordField, validators, HiddenField
-#passlib.hash is used for encrypting our password we want to use. 
+
 from passlib.hash import sha256_crypt
 
 import mysql.connector
@@ -10,7 +10,7 @@ import mysql.connector
 from functools import wraps
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='frontend/build')
 app.secret_key = os.urandom(24)
 #Secret key is used for the security purposes
 
@@ -23,13 +23,9 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql.init_app(app)
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
-
-@app.route('/team')
-def team():
-    return render_template('team.html')
+@app.route("/", defaults={'path':''})
+def serve(path):
+    return send_from_directory(app.static_folder,'index.html')
 
 @app.route('/art/<string:id>/')
 def post(id):
