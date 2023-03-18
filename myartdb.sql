@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `personalblog`
---
+--CREATE DATABASE IF NOT EXISTS baseDeDonnees;
+USE baseDeDonnees;
+
 
 -- --------------------------------------------------------
 
