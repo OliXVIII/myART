@@ -1,5 +1,6 @@
 from flask import Flask, render_template, send_from_directory
 from flask_mysqldb import MySQL
+from faker import Faker
 
 # from passlib.hash import sha256_crypt
 
@@ -19,7 +20,7 @@ app.config['MYSQL_DB'] = 'myartdb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
-
+fake = Faker('fr_FR')
 
 @app.route("/", defaults={'path': ''})
 def serve(path):
