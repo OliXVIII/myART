@@ -30,15 +30,7 @@ USE baseDeDonnees;
 -- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `arts`;
-CREATE TABLE IF NOT EXISTS `arts` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) DEFAULT NULL,
-  `author` varchar(100) DEFAULT NULL,
-  `body` text,
-  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE IF NOT EXISTS clients (
   id INT PRIMARY KEY AUTO_INCREMENT,
@@ -81,6 +73,43 @@ CREATE TABLE IF NOT EXISTS commandes (
     statut ENUM('En attente', 'En cours', 'Expédié', 'Livré', 'Annulé') NOT NULL,
     FOREIGN KEY (client_id) REFERENCES clients(id)
 );
+
+CREATE TABLE IF NOT EXISTS artistes(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(255) NOT NULL,
+    nationalite VARCHAR(255) NOT NULL,
+    anneeDeNaissance DATE,
+    bibliographie text
+);
+
+CREATE TABLE IF NOT EXISTS paiements(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    type ENUM('argent','crédit','débit','autre'),
+    montant DECIMAL(10, 2) NOT NULL,
+    statut ENUM('En cours','Complété','Échec')
+);
+
+CREATE TABLE IF NOT EXISTS adresses(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    pays VARCHAR(255) NOT NULL,
+    code_postale VARCHAR(10) NOT NULL,
+    ville VARCHAR(255) NOT NULL,
+    rue VARCHAR(255) NOT NULL,
+    numero_porte INT
+);
+
+CREATE TABLE IF NOT EXISTS lignePanier(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    quantite INT,
+    id_panier INT NOT NULL,
+    id_produit INT NOT NULL,
+    FOREIGN KEY(id_panier) REFERENCES paniers(id),
+    FOREIGN KEY(id_produit) REFERENCES produits(id)
+);
+
+
+
 --
 -- Dumping data for table `posts`
 --
@@ -94,6 +123,7 @@ INSERT INTO categories (nom, description) VALUES("tableau","petite description")
 SELECT * FROM categories;
 
 SHOW TABLES;
+
 
 SELECT * FROM clients;
 
