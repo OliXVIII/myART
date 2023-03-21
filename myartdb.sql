@@ -124,7 +124,6 @@ SELECT * FROM categories;
 
 SHOW TABLES;
 
-
 SELECT * FROM clients;
 
 
