@@ -1,0 +1,10 @@
+Art environnemental;L'art environnemental est une catégorie d'art contemporain qui explore la relation entre l'art et l'environnement naturel ou construit.
+Art conceptuel;L'art conceptuel est une catégorie d'art contemporain qui place l'accent sur la conception et l'idée plutôt que sur l'esthétique.
+Art vidéo;L'art vidéo est une catégorie d'art contemporain qui utilise la vidéo pour explorer les thèmes artistiques et sociaux.
+Art urbain;L'art urbain est une catégorie d'art contemporain qui comprend les formes d'art créées dans les espaces publics, tels que les graffitis, les installations de rue et les affichages.
+Art abstrait;L'art abstrait est une catégorie d'art qui ne représente pas la réalité de manière figurative, mais plutôt à travers des formes, des couleurs et des lignes abstraites.
+Art figuratif;L'art figuratif est une catégorie d'art qui représente des objets ou des personnes de manière reconnaissable et réaliste.
+Art moderne;L'art moderne est une catégorie d'art qui comprend les mouvements artistiques qui ont eu lieu entre la fin du XIXe siècle et le début du XXe siècle.
+Art contemporain;L'art contemporain est une catégorie d'art qui se réfère à l'art créé depuis les années 1960 jusqu'à aujourd'hui.
+Art de performance;L'art de performance est une catégorie d'art contemporain qui utilise le corps humain comme moyen d'expression artistique, souvent en combinaison avec d'autres médias tels que la vidéo et la musique.
+Art politique;L'art politique est une catégorie d'art qui utilise l'expression artistique pour commenter ou critiquer les problèmes sociaux, politiques et culturels.

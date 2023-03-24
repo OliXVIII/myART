@@ -1,199 +1,70 @@
-Pablo Picasso, Espagne, un artiste espagnol du XXe siècle qui a cofondé le mouvement cubiste. , 1452-05-02
-
-Vincent Van Gogh, Pays-Bas, un peintre néerlandais du XIXe siècle connu pour ses peintures post-impressionnistes. , 1475-03-06
-
-Leonardo da Vinci, Italie, un artiste italien de la Renaissance connu pour ses peintures, sculptures et inventions. , 1853-03-30
-
-Claude Monet, France, un peintre impressionniste français connu pour ses paysages lumineux et colorés. , 1881-10-25
-
-Jackson Pollock, États-Unis, un peintre américain du XXe siècle qui a popularisé l'expressionnisme abstrait. , 1840-11-14
-
-Salvador Dalí, Espagne, un artiste espagnol surréaliste connu pour ses peintures étranges et hallucinatoires. , 1606-07-15
-
-Frida Kahlo, Mexique, une artiste mexicaine du XXe siècle connue pour ses autoportraits expressifs. , 1904-05-11
-
-Andy Warhol, États-Unis, un artiste américain du XXe siècle connu pour ses sérigraphies pop art. , 1632-10-31
-
-Rembrandt, Pays-Bas, un artiste néerlandais du XVIIe siècle connu pour ses portraits à la peinture à l'huile. , 1862-07-14
-
-Michel-Ange, Italie, un artiste italien de la Renaissance connu pour sa sculpture et son travail dans la chapelle Sixtine. , 1445-03-01
-
-Henri Matisse, France, un peintre français du XXe siècle connu pour ses peintures fauvistes. , 1869-12-31
-
-Wassily Kandinsky, Russie, un artiste russe du XXe siècle connu pour ses peintures abstraites. , 1839-01-19
-
-Edgar Degas, France, un peintre français impressionniste connu pour ses peintures de danseurs. , 1746-03-30
-
-Pierre-Auguste Renoir, France, un peintre impressionniste français connu pour ses portraits et paysages. , 1866-12-16
-
-Gustav Klimt, Autriche, un artiste autrichien du XIXe siècle connu pour ses peintures Art nouveau. , 1488-08-27
-
-Georgia O'Keeffe, États-Unis, une artiste américaine du XXe siècle connue pour ses peintures de fleurs. , 1832-01-23
-
-Edvard Munch, Norvège, un artiste norvégien du XIXe siècle connu pour son tableau Le Cri. , 1390-02-09
-
-Paul Cézanne, France, un peintre français du XIXe siècle connu pour ses natures mortes et ses paysages. , 1841-02-25
-
-Roy Lichtenstein, États-Unis, un artiste américain du XXe siècle connu pour ses bandes dessinées pop art. , 1632-10-31
-
-Jean-Michel Basquiat, États-Unis, un artiste américain du XXe siècle connu pour ses graffitis et ses peintures. , 1912-01-28
-
-Marc Chagall, Russie, un artiste russe du XXe siècle connu pour ses peintures oniriques. , 1928-08-06
-
-Francisco de Goya, Espagne, un artiste espagnol du XVIIIe siècle connu pour ses peintures noires. , 1864-11-24
-
-Caravaggio, Italie, un artiste italien du XVIIe siècle connu pour son utilisation dramatique de la lumière et de l'ombre. , 1571-09-29
-
-Auguste Rodin, France, un sculpteur français du XIXe siècle connu pour ses sculptures figuratives. , 1840-11-12
-
-Diego Rivera, Mexique, un artiste mexicain du XXe siècle connu pour ses peintures murales. , 1886-12-08
-
-Kazimir Malevich, Russie, un artiste russe du XXe siècle connu pour ses peintures abstraites. , 1878-02-23
-
-Paul Gauguin, France, un peintre français du XIXe siècle connu pour ses peintures de Tahiti. , 1848-06-07
-
-Johannes Vermeer, Pays-Bas, un peintre néerlandais du XVIIe siècle connu pour ses scènes de genre. , 1632-10-31
-
-Henri Cartier-Bresson, France, un photographe français du XXe siècle connu pour son utilisation du "moment décisif". , 1908-08-22
-
-Sandro Botticelli, Italie, un artiste italien de la Renaissance connu pour ses peintures mythologiques. , 1445-03-01
-
-Wassily Kandinsky, Allemagne, un artiste russe du XXe siècle connu pour ses peintures abstraites. , 1866-12-16
-
-William Turner, Royaume-Uni, un peintre britannique du XIXe siècle connu pour ses paysages romantiques. , 1775-04-23
-
-Jean-Auguste-Dominique Ingres, France, un peintre français du XIXe siècle connu pour ses portraits et ses peintures historiques. , 1780-08-29
-
-Henri Rousseau, France, un peintre français du XIXe siècle connu pour ses peintures naïves. , 1844-05-21
-
-Salvador Dalí, États-Unis, un artiste espagnol surréaliste connu pour ses peintures étranges et hallucinatoires. , 1904-05-11
-
-Ansel Adams, États-Unis, un photographe américain du XXe siècle connu pour ses paysages en noir et blanc. , 1902-02-20
-
-Camille Pissarro, France, un peintre impressionniste français connu pour ses paysages. , 1830-07-10
-
-Jan Vermeer, Pays-Bas, un peintre néerlandais du XVIIe siècle connu pour ses scènes de genre. , 1632-10-31
-
-El Greco, Espagne, un artiste espagnol du XVIe siècle connu pour ses peintures religieuses. , 1541-10-01
-
-Joan Miró, Espagne, un artiste espagnol du XXe siècle connu pour ses peintures surréalistes et abstraites. , 1893-04-20
-
-Albrecht Dürer, Allemagne, un artiste allemand de la Renaissance connu pour ses gravures sur bois et ses peintures à l'huile. , 1471-05-21
-
-Paul Klee, Suisse, un artiste suisse du XXe siècle connu pour ses peintures abstraites et pour son utilisation de la couleur. , 1868-11-11
-
-Édouard Manet, France, un peintre impressionniste français connu pour ses portraits et ses peintures de scènes de la vie quotidienne. , 1960-12-22
-
-Wassily Kandinsky, France, un artiste russe du XXe siècle connu pour ses peintures abstraites. , 1904-04-24
-
-James Ensor, Belgique, un artiste belge du XIXe siècle connu pour ses peintures surréalistes et grotesques. , 1860-04-13
-
-Robert Rauschenberg, États-Unis, un artiste américain du XXe siècle connu pour ses combinaisons d'objets et de matériaux dans ses œuvres d'art. , 1925-10-22
-
-Édouard Vuillard, France, un peintre postimpressionniste français connu pour ses scènes domestiques intimistes. , 1868-11-11
-
-Lucian Freud, Royaume-Uni, un peintre figuratif britannique du XXe siècle connu pour ses portraits. , 1922-12-08
-
-Berthe Morisot, France, une peintre impressionniste française connue pour ses portraits et ses paysages. , 1841-01-14
-
-Joan Mitchell, États-Unis, une artiste abstraite américaine du XXe siècle connue pour ses peintures gestuelles. , 1925-02-12
-
-Kazuo Shiraga, Japon, un artiste abstrait japonais du XXe siècle connu pour sa technique de peinture à l'aide de ses pieds. , 1924-08-15
-
-Takashi Murakami, Japon, un artiste japonais du XXe siècle connu pour ses peintures pop art et ses sculptures. , 1962-02-01
-
-Alberto Giacometti, Suisse, un sculpteur et peintre suisse du XXe siècle connu pour ses sculptures figuratives filiformes. , 1901-10-10
-
-Ai Weiwei, Chine, un artiste chinois contemporain connu pour ses installations et son activisme politique. , 1957-08-28
-
-Jeff Koons, États-Unis, un artiste contemporain américain connu pour ses sculptures en série et ses objets banals transformés en œuvres d'art. , 1955-01-21
-
-Damien Hirst, Royaume-Uni, un artiste britannique contemporain connu pour ses installations, sculptures et peintures. , 1965-06-07
-
-Yayoi Kusama, Japon, une artiste japonaise contemporaine connue pour ses installations et sculptures pop art. , 1929-03-22
-
-Paul Signac, France, un peintre postimpressionniste français connu pour ses peintures pointillistes. , 1863-11-11
-
-Mark Rothko, États-Unis, un peintre abstrait américain du XXe siècle connu pour ses peintures de champs de couleur. , 1903-09-25
-
-Alexander Calder, États-Unis, un sculpteur et artiste du XXe siècle connu pour ses mobiles et ses stabiles. , 1898-07-22
-
-Cindy Sherman, États-Unis, une photographe contemporaine américaine connue pour ses autoportraits qui explorent les identités et les genres. , 1954-01-19
-
-Robert Mapplethorpe, États-Unis, un photographe américain du XXe siècle connu pour ses photographies provocantes et érotiques. , 1946-11-04
-
-Pierre Bonnard, France, un peintre postimpressionniste français connu pour ses paysages et ses natures mortes. , 1867-10-03
-
-Gerhard Richter, Allemagne, un peintre contemporain allemand connu pour ses peintures abstraites et figuratives. , 1932-02-09
-
-Frank Stella, États-Unis, un artiste contemporain américain connu pour ses peintures abstraites géométriques. , 1936-05-12
-
-Jean Dubuffet, France, un artiste contemporain français connu pour ses peintures et sculptures abstraites et brutales. , 1901-07-31 
-
-Cy Twombly, États-Unis, un artiste contemporain américain connu pour ses peintures abstraites et calligraphiques. , 1928-04-25
-
-David Hockney, Royaume-Uni, un artiste contemporain britannique connu pour ses peintures et ses photographies. , 1937-07-09
-
-Élisabeth Louise Vigée Le Brun, France, une peintre française du XVIIIe siècle connue pour ses portraits de la noblesse française. , 1755-04-16
-
-Robert Delaunay, France, un peintre abstrait français du XXe siècle connu pour ses peintures de cercles colorés. , 1885-04-12
-
-Edgar Arceneaux, États-Unis, un artiste contemporain américain connu pour ses installations, peintures et sculptures. , 1972-01-01
-
-Hans Holbein le Jeune, Allemagne, un artiste allemand de la Renaissance connu pour ses portraits et ses fresques murales. , 1497-10-15
-
-Edward Hopper, États-Unis, un peintre américain du XXe siècle connu pour ses peintures de la vie américaine urbaine. , 1882-07-22
-
-Cindy Sherman, États-Unis, une photographe contemporaine américaine connue pour ses autoportraits qui explorent les identités et les genres. , 1954-01-19
-
-Bernd et Hilla Becher, Allemagne, un duo d'artistes contemporains allemands connus pour leurs photographies industrielles en série. 1931-08-20 / 1934-09-02
-
-Louise Bourgeois, France, une artiste contemporaine française connue pour ses sculptures abstraites et figuratives. , 1911-12-25
-
-Jacob Lawrence, États-Unis, un peintre afro-américain du XXe siècle connu pour ses peintures narratives. , 1917-09-07
-
-Christo et Jeanne-Claude, Bulgarie/France, un duo d'artistes contemporains connus pour leurs installations monumentales emballées dans du tissu. , 1935-06-13
-
-Marina Abramović, Serbie, une artiste contemporaine serbe connue pour ses performances radicales. , 1946-11-30
-
-Keith Haring, États-Unis, un artiste contemporain américain connu pour ses dessins de personnages stylisés. , 1958-05-04
-
-Alexander McQueen, Royaume-Uni, un designer de mode britannique connu pour ses créations avant-gardistes. , 1969-03-17
-
-Georges Braque, France, un artiste français du XXe siècle connu pour son travail dans le mouvement cubiste. , 1882-05-13
-
-Lucio Fontana, Argentine/Italie, un artiste contemporain argentin connu pour ses œuvres qui intègrent la sculpture et la peinture. , 1899-02-19
-
-Jean Arp, France, un artiste contemporain français connu pour ses sculptures biomorphiques. , 1886-09-16
-
-Robert Rauschenberg, États-Unis, un artiste contemporain américain connu pour ses combinaisons d'objets et de matériaux dans ses œuvres d'art. , 1925-10-22
-
-Sophie Calle, France, une artiste contemporaine française connue pour ses installations, photographies et performances qui explorent la vie privée et les relations humaines. , 1953-10-09
-
-Agnes Martin, Canada, une artiste contemporaine américaine connue pour ses peintures abstraites minimalistes. , 1912-03-22
-
-Gerhard Richter, Allemagne, un peintre contemporain allemand connu pour ses peintures abstraites et figuratives. , 1932-02-09
-
-Sigmar Polke, Allemagne, un artiste contemporain allemand connu pour ses peintures expérimentales et son utilisation de matériaux non conventionnels. , 1941-02-13
-
-Jenny Holzer, États-Unis, une artiste contemporaine américaine connue pour ses installations qui utilisent des lumières LED et des textes. , 1950-07-29
-
-Francis Bacon, Royaume-Uni, un peintre figuratif britannique du XXe siècle connu pour ses portraits expressionnistes. , 1909-10-28
-
-Max Ernst, Allemagne, un artiste surréaliste allemand du XXe siècle connu pour ses collages et ses peintures. , 1891-04-02
-
-Keith Haring, États-Unis, un artiste contemporain américain connu pour ses dessins de personnages stylisés. , 1958-05-04
-
-Dan Flavin, États-Unis, un artiste contemporain américain connu pour ses sculptures de lumières fluorescentes. , 1933-04-01
-
-Barbara Kruger, États-Unis, une artiste contemporaine américaine connue pour ses collages et ses installations qui explorent la politique et la culture de masse. , 1945-01-26
-
-Lee Krasner, États-Unis, une artiste abstraite américaine du XXe siècle connue pour ses peintures expressionnistes abstraites., 1908-10-27
-
-Yves Klein, France, un artiste contemporain français connu pour ses peintures monochromes et sa performance "Le Vide". , 1928-04-28
-
-Cy Twombly, États-Unis, un artiste contemporain américain connu pour ses peintures abstraites et calligraphiques. , 1928-04-25
-
-Paul Klee, Allemagne, un artiste suisse du XXe siècle connu pour ses peintures abstraites et pour son utilisation de la couleur. , 1879-12-18
-
-Joseph Beuys, Allemagne, un artiste contemporain allemand connu pour ses performances radicales et son engagement politique. , 1921-05-12
+Pablo Picasso;Espagne;un artiste espagnol du XXe siècle qui a cofondé le mouvement cubiste.;1881-10-25
+Vincent Van Gogh;Pays-Bas;un peintre néerlandais du XIXe siècle connu pour ses peintures post-impressionnistes.;1853-03-30
+Leonardo da Vinci;Italie;un artiste italien de la Renaissance connu pour ses peintures, sculptures et inventions.;1452-04-15
+Claude Monet;France;un peintre impressionniste français connu pour ses paysages lumineux et colorés.;1840-11-14
+Jackson Pollock;États-Unis;un peintre américain du XXe siècle qui a popularisé l'expressionnisme abstrait.;1912-01-28
+Salvador Dalí;Espagne;un artiste espagnol surréaliste connu pour ses peintures étranges et hallucinatoires.;1904-05-11
+Frida Kahlo;Mexique;une artiste mexicaine du XXe siècle connue pour ses autoportraits expressifs.;1907-07-06
+Andy Warhol;États-Unis;un artiste américain du XXe siècle connu pour ses sérigraphies pop art.;1928-08-06
+Rembrandt;Pays-Bas;un artiste néerlandais du XVIIe siècle connu pour ses portraits à la peinture à l'huile.;1606-07-15
+Michel-Ange;Italie;un artiste italien de la Renaissance connu pour sa sculpture et son travail dans la chapelle Sixtine.;1475-03-06
+Henri Matisse;France;un peintre français du XXe siècle connu pour ses peintures fauvistes.;1869-12-31
+Wassily Kandinsky;Russie;un artiste russe du XXe siècle connu pour ses peintures abstraites.;1866-12-16
+Edgar Degas;France;un peintre français impressionniste connu pour ses peintures de danseurs.;1834-07-19
+Pierre-Auguste Renoir;France;un peintre impressionniste français connu pour ses portraits et paysages.;1841-02-25
+Gustav Klimt;Autriche;un artiste autrichien du XIXe siècle connu pour ses peintures Art nouveau.;1862-07-14
+Georgia O'Keeffe;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures de fleurs.;1887-11-15
+Edvard Munch;Norvège;un artiste norvégien du XIXe siècle connu pour son tableau Le Cri.;1863-12-12
+Paul Cézanne;France;un peintre français du XIXe siècle connu pour ses natures mortes et ses paysages.;1839-01-19
+Roy Lichtenstein;États-Unis;un artiste américain du XXe siècle connu pour ses bandes dessinées pop art.;1923-10-27
+Vincent Willem van Gogh;Pays-Bas;un peintre néerlandais post-impressionniste connu pour ses paysages et portraits expressifs.;1853-03-30
+Johannes Vermeer;Pays-Bas;un peintre néerlandais du XVIIe siècle connu pour ses scènes de la vie quotidienne.;1632-10-31
+Diego Rivera;Mexique;un artiste muraliste mexicain du XXe siècle connu pour ses fresques politiques et sociales.;1886-12-08
+Marc Chagall;Russie;un artiste russe-français du XXe siècle connu pour ses peintures surréalistes et colorées.;1887-07-07
+Henri Rousseau;France;un peintre naïf français du XIXe siècle connu pour ses scènes de jungle et de nature.;1844-05-21
+Pablo Neruda;Chili;un poète chilien du XXe siècle connu pour ses poèmes d'amour et d'engagement politique.;1904-07-12
+Goya;Espagne;un artiste espagnol du XVIIIe et XIXe siècle connu pour ses peintures noires et satiriques.;1746-03-30
+Joan Miró;Espagne;un artiste espagnol du XXe siècle connu pour ses peintures et sculptures abstraites.;1893-04-20
+William Turner;Angleterre;un peintre britannique du XIXe siècle connu pour ses paysages romantiques et impressionnistes.;1775-04-23
+Kazimir Malevich;Russie;un artiste russe du XXe siècle connu pour ses peintures abstraites et géométriques.;1878-02-23
+Yayoi Kusama;Japon;une artiste japonaise contemporaine connue pour ses installations artistiques psychédéliques et colorées.;1929-03-22
+Jean-Michel Basquiat;États-Unis;un artiste américain des années 80 connu pour ses peintures urbaines et ses messages politiques.;1960-12-22
+Frida Baranek;Brésil;une artiste brésilienne contemporaine connue pour ses sculptures métalliques abstraites.;1961-08-03
+Banksy;Royaume-Uni;un artiste de rue britannique connu pour ses œuvres politiques et satiriques.;1974-07-28
+Yves Klein;France;un artiste français du XXe siècle connu pour ses peintures monochromes et son utilisation du bleu.;1928-04-28
+Alberto Giacometti;Suisse;un artiste suisse du XXe siècle connu pour ses sculptures figuratives et allongées.;1901-10-10
+Jasper Johns;États-Unis;un artiste américain du XXe siècle connu pour ses peintures pop art et ses drapeaux américains.;1930-05-15
+Cindy Sherman;États-Unis;une artiste contemporaine américaine connue pour ses autoportraits photographiques et ses déconstructions des rôles de genre.;1954-01-19
+Anselm Kiefer;Allemagne;un artiste allemand contemporain connu pour ses peintures et sculptures expressives qui explorent l'histoire allemande et la mythologie.;1945-03-08
+Rosa Bonheur;France;une artiste française du XIXe siècle connue pour ses peintures animalières et son statut de femme artiste pionnière.;1822-03-16
+Kara Walker;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la race, le genre et l'identité.;1969-11-26
+Gerhard Richter;Allemagne;un artiste allemand contemporain connu pour ses peintures abstraites et figuratives expérimentales.;1932-02-09
+Camille Claudel;France;une sculptrice française du XIXe siècle connue pour ses sculptures en argile et en bronze.;1864-12-08
+René Magritte;Belgique;un artiste belge du XXe siècle connu pour ses peintures surréalistes intrigantes et ironiques.;1898-11-21
+Louise Bourgeois;France;une artiste franco-américaine contemporaine connue pour ses sculptures monumentales et ses installations explorant la psyché féminine.;1911-12-25
+Gustave Courbet;France;un artiste français du XIXe siècle connu pour son réalisme social et sa peinture de paysages.;1819-06-10
+Egon Schiele;Autriche;un artiste autrichien du début du XXe siècle connu pour ses dessins et peintures érotiques et morbides.;1890-06-12
+Piet Mondrian;Pays-Bas;un artiste néerlandais du XXe siècle connu pour ses peintures abstraites géométriques.;1872-03-07
+Jean Dubuffet;France;un artiste français du XXe siècle connu pour ses peintures et sculptures brutales et expressives.;1901-07-31
+Caravaggio;Italie;un artiste italien du XVIIe siècle connu pour ses peintures dramatiques et naturalistes.;1571-09-29
+Barbara Hepworth;Royaume-Uni;une sculptrice britannique du XXe siècle connue pour ses sculptures abstraites en bronze et en pierre.;1903-01-10
+Ai Weiwei;Chine;un artiste contemporain chinois connu pour ses installations et ses œuvres d'art engagées politiquement.;1957-08-28
+Jenny Holzer;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la langue, le pouvoir et la politique.;1950-07-29
+William Kentridge;Afrique du Sud;un artiste sud-africain contemporain connu pour ses dessins animés, ses films d'animation et ses installations explorant la politique et la mémoire.;1955-04-28
+Agnes Martin;Canada;une artiste américaine du XXe siècle connue pour ses peintures abstraites minimalistes et méditatives.;1912-03-22
+Edward Hopper;États-Unis;un peintre américain du XXe siècle connu pour ses peintures de la vie urbaine solitaire.;1882-07-22
+Mary Cassatt;États-Unis;une artiste américaine du XIXe siècle connue pour ses peintures impressionnistes de la vie quotidienne et de la maternité.;1844-05-22
+Michelangelo Pistoletto;Italie;un artiste italien contemporain connu pour ses miroirs et ses installations interactives explorant la société, la politique et la culture.;1933-06-23
+Lee Krasner;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures abstraites expressionnistes.;1908-10-27
+Gordon Parks;États-Unis;un photographe et réalisateur américain du XXe siècle connu pour ses photographies documentaires et ses films engagés politiquement.;1912-11-30
+Vanessa Beecroft;Italie;une artiste contemporaine italienne connue pour ses performances et installations explorant les thèmes du corps, de la féminité et de l'identité.;1969-04-25
+Agnes Denes;Hongrie;une artiste contemporaine américaine d'origine hongroise connue pour ses œuvres environnementales et conceptuelles explorant l'écologie, la science et la philosophie.;1931-05-22
+Gertrude Abercrombie;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures surréalistes et expressionnistes explorant la psyché humaine.;1909-02-17
+Juan Gris;Espagne;un artiste espagnol du XXe siècle et l'un des principaux représentants du mouvement cubiste.;1887-03-23
+Kara Walker;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la race, le genre et l'identité.;1969-11-26
+Betye Saar;États-Unis;une artiste contemporaine américaine connue pour ses sculptures, assemblages et installations explorant la race, la féminité et l'histoire américaine.;1926-07-30
+Michel Gondry;France;un réalisateur et artiste visuel français connu pour ses films et ses vidéos musicales créatives et expérimentales.;1963-05-08
+Takashi Murakami;Japon;un artiste contemporain japonais connu pour ses peintures et sculptures kawaii et pop art.;1962-02-01
+Nam June Paik;Corée du Sud;un artiste contemporain coréen-américain considéré comme le père de l'art vidéo.;1932-07-20
+Lorna Simpson;États-Unis;une artiste contemporaine américaine connue pour ses photographies, vidéos et collages explorant la race, le genre et l'identité.;1960-08-13
+Mickalene Thomas;États-Unis;une artiste contemporaine américaine connue pour ses peintures, collages et photographies explorant la représentation de la femme noire dans la culture populaire.;1971-01-28

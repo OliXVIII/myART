@@ -98,15 +98,18 @@ CREATE TABLE IF NOT EXISTS comptes(
     FOREIGN KEY(id_client) REFERENCES clients(id)
 );
 
+
 INSERT INTO clients (nom, email, mot_de_passe) VALUES("Jean-Christophe Parent","jcpar27@ulaval.ca","salut11");
 SELECT * FROM clients;
 
 INSERT INTO categories (nom, description) VALUES("tableau","petite description");
 SELECT * FROM categories;
-
+DROP table artistes;
 SHOW TABLES;
-
+DELETE FROM artistes;
 SELECT * FROM clients;
 SELECT * FROM artistes;
+SELECT * FROM produits;
+SELECT * FROM categories;
 
 
