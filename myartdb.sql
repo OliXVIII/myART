@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS clients (
 );
 
 CREATE TABLE IF NOT EXISTS categories (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id varchar(36) PRIMARY KEY,
   nom VARCHAR(255) NOT NULL UNIQUE,
   description TEXT
 );
@@ -36,13 +36,15 @@ CREATE TABLE IF NOT EXISTS administrateurs (
 );
 
 CREATE TABLE IF NOT EXISTS produits (
-    id int PRIMARY KEY AUTO_INCREMENT,
+    id varchar(36) PRIMARY KEY ,
     nom varchar(255) NOT NULL,
     description TEXT,
     prix DECIMAL(10,2) NOT NULL,
     quantite INT NOT NULL,
-    categorie_id INT,
+    categorie_id varchar(36),
     image_url VARCHAR(255),
+    UNIQUE(id),
+    UNIQUE (nom),
     FOREIGN KEY (categorie_id) REFERENCES categories(id)
 );
 
@@ -63,12 +65,14 @@ CREATE TABLE IF NOT EXISTS commandes (
 );
 
 CREATE TABLE IF NOT EXISTS artistes(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(36) PRIMARY KEY ,
     nom VARCHAR(255) NOT NULL,
     nationalite VARCHAR(255) NOT NULL,
     anneeDeNaissance DATE,
     bibliographie text,
-    produit_id INT,
+    produit_id VARCHAR(32),
+    UNIQUE (id),
+    UNIQUE (nom),
     FOREIGN KEY (produit_id) REFERENCES produits(id)
 );
 
@@ -86,7 +90,7 @@ CREATE TABLE IF NOT EXISTS lignePanier(
     id INT PRIMARY KEY AUTO_INCREMENT,
     quantite INT,
     id_panier INT NOT NULL,
-    id_produit INT NOT NULL,
+    id_produit VARCHAR(36) NOT NULL,
     FOREIGN KEY(id_panier) REFERENCES paniers(id),
     FOREIGN KEY(id_produit) REFERENCES produits(id)
 );
@@ -99,14 +103,47 @@ CREATE TABLE IF NOT EXISTS comptes(
 );
 
 
+DELIMITER //
+CREATE TRIGGER chechUniqueId
+BEFORE INSERT ON artistes
+FOR EACH ROW
+BEGIN
+    IF EXISTS(SELECT * FROM artistes WHERE id = NEW.id) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cet id est déjà utilisé pour un autre artiste';
+    end IF;
+end; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER check_unique_nom
+BEFORE INSERT ON artistes
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT * FROM artistes WHERE nom = NEW.nom) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Nom déjà présent pour un autre artiste.';
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+
 INSERT INTO clients (nom, email, mot_de_passe) VALUES("Jean-Christophe Parent","jcpar27@ulaval.ca","salut11");
 SELECT * FROM clients;
 
 INSERT INTO categories (nom, description) VALUES("tableau","petite description");
 SELECT * FROM categories;
 DROP table artistes;
+DROP table lignePanier;
+DROP table produits;
+DROP table categories;
+
+
+
 SHOW TABLES;
+
 DELETE FROM artistes;
+DELETE FROM produits;
 SELECT * FROM clients;
 SELECT * FROM artistes;
 SELECT * FROM produits;

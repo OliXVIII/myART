@@ -1,0 +1,19 @@
+La Nuit étoilée;Une peinture de Vincent Van Gogh représentant un ciel étoilé au-dessus d'un village provençal.;10000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-nuit-etoilee.jpg
+La Joconde;Un portrait de femme peint par Léonardo da Vinci, également connu sous le nom de Mona Lisa.;15000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-joconde.jpg
+Les Demoiselles d'Avignon;Une peinture de Pablo Picasso représentant cinq femmes nues dans un style cubiste.;20000;1;065f971f-6df4-43e0-8083-2951bfbeea9f;https://example.com/les-demoiselles-d-avignon.jpg
+Le Cri;Une peinture expressionniste d'Edvard Munch représentant une figure humaine en détresse.;12000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/le-cri.jpg
+La Persistance de la mémoire;Une peinture surréaliste de Salvador Dalí représentant des montres molles dans un paysage désertique.;8000;1;065f971f-6df4-43e0-8083-2951bfbeea9f;https://example.com/la-persistance-de-la-memoire.jpg
+Nymphéas;Une série de peintures de Claude Monet représentant des jardins aquatiques.;9000;1;21774226-9aa6-4ab8-ab5f-00c8ad8e488a;https://example.com/nympheas.jpg
+La Danse;Une peinture d'Henri Matisse représentant cinq danseurs dans un cercle.;7000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-danse.jpg
+Autoportrait à l'oreille bandée;Un autoportrait de Vincent Van Gogh réalisé après qu'il se soit coupé l'oreille.;6000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/autoportrait-a-l-oreille-bandee.jpg
+La Grande Vague de Kanagawa;Une estampe japonaise d'Hokusai représentant une vague géante menaçant des bateaux.;4000;1;065f971f-6df4-43e0-8083-2951bfbeea9f;https://example.com/la-grande-vague-de-kanagawa.jpg
+Campbell's Soup Cans;Une série de sérigraphies d'Andy Warhol représentant des boîtes de soupe Campbell.;5000;1;52b2dca8-5925-4467-90b6-cc76d42d9c29;https://example.com/campb
+Le Baiser;Une peinture de Gustav Klimt représentant un couple enlacé sur un fond orné de motifs dorés.;8000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/le-baiser.jpg
+Guernica;Une peinture de Pablo Picasso dépeignant les horreurs de la guerre, en particulier le bombardement de la ville de Guernica pendant la guerre civile espagnole.;18000;1;065f971f-6df4-43e0-8083-2951bfbeea9f;https://example.com/guernica.jpg
+L'École d'Athènes;Une fresque de Raphaël représentant les philosophes de la Grèce antique dans une architecture grandiose.;11000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/l-ecole-d-athenes.jpg
+La Jeune Fille à la perle;Un portrait de Johannes Vermeer représentant une jeune femme portant une boucle d'oreille en forme de perle.;9000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-jeune-fille-a-la-perle.jpg
+La Naissance de Vénus;Une peinture de Sandro Botticelli représentant la déesse Vénus émergeant de l'eau sur une coquille.;10000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-naissance-de-venus.jpg
+Le Déjeuner sur l'herbe;Une peinture d'Édouard Manet représentant un pique-nique où une femme nue est assise à côté de deux hommes habillés.;9500;1;21774226-9aa6-4ab8-ab5f-00c8ad8e488a;https://example.com/le-dejeuner-sur-l-herbe.jpg
+La Liberté guidant le peuple;Une peinture d'Eugène Delacroix représentant une allégorie de la liberté lors de la Révolution française de 1830.;13000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-liberte-guidant-le-peuple.jpg
+L'Homme au doigt;Une sculpture d'Alberto Giacometti représentant une figure humaine allongée avec un doigt pointé.;15000;1;52b2dca8-5925-4467-90b6-cc76d42d9c29;https://example.com/l-homme-au-doigt.jpg
+La Chambre à Arles;Une peinture de Vincent Van Gogh représentant sa chambre à la maison jaune d'Arles.;7000;1;9decc4fe-c6ed-4382-9da0-1b3f84ec210e;https://example.com/la-chambre-a-arles.jpg
