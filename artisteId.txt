@@ -1,0 +1,70 @@
+430d52ea-d5d9-4423-9408-3679c18ae8a3;Pablo Picasso;Espagne;un artiste espagnol du XXe siècle qui a cofondé le mouvement cubiste.;1881-10-25
+2052910b-20da-46c3-91f4-3ea77f186adb;Vincent Van Gogh;Pays-Bas;un peintre néerlandais du XIXe siècle connu pour ses peintures post-impressionnistes.;1853-03-30
+0eb0cb12-644a-4cc0-a067-85943ed87ac4;Leonardo da Vinci;Italie;un artiste italien de la Renaissance connu pour ses peintures, sculptures et inventions.;1452-04-15
+daba99dd-31e0-4a20-9737-3ec00b5c0636;Claude Monet;France;un peintre impressionniste français connu pour ses paysages lumineux et colorés.;1840-11-14
+fc2a0bcf-9d37-4737-987f-367812acdc48;Jackson Pollock;États-Unis;un peintre américain du XXe siècle qui a popularisé l'expressionnisme abstrait.;1912-01-28
+ca658983-f3a1-4dc5-8906-9d051da8895c;Salvador Dalí;Espagne;un artiste espagnol surréaliste connu pour ses peintures étranges et hallucinatoires.;1904-05-11
+b54f9cd7-9a0a-4c27-881f-1acb1a1f1884;Frida Kahlo;Mexique;une artiste mexicaine du XXe siècle connue pour ses autoportraits expressifs.;1907-07-06
+08cb60ca-c600-4ebb-94cb-d0a4b7237256;Andy Warhol;États-Unis;un artiste américain du XXe siècle connu pour ses sérigraphies pop art.;1928-08-06
+9d29e911-785a-4b44-ace1-151ea613817a;Rembrandt;Pays-Bas;un artiste néerlandais du XVIIe siècle connu pour ses portraits à la peinture à l'huile.;1606-07-15
+6998c61d-f67e-4898-83ca-0d6063bef2e7;Michel-Ange;Italie;un artiste italien de la Renaissance connu pour sa sculpture et son travail dans la chapelle Sixtine.;1475-03-06
+1eba1b91-995a-45dd-95b8-bd0ef996f1f3;Henri Matisse;France;un peintre français du XXe siècle connu pour ses peintures fauvistes.;1869-12-31
+d1ca193b-61ae-44c7-8e19-0e116518934b;Wassily Kandinsky;Russie;un artiste russe du XXe siècle connu pour ses peintures abstraites.;1866-12-16
+b0d30506-cf50-4cc7-b68e-748b569393cf;Edgar Degas;France;un peintre français impressionniste connu pour ses peintures de danseurs.;1834-07-19
+e3384882-8022-4509-bf71-1069521175a9;Pierre-Auguste Renoir;France;un peintre impressionniste français connu pour ses portraits et paysages.;1841-02-25
+3de95419-44c9-47bf-9fcd-61ea86fc064d;Gustav Klimt;Autriche;un artiste autrichien du XIXe siècle connu pour ses peintures Art nouveau.;1862-07-14
+9fa2eacc-78bb-470f-8865-5c6359e5af23;Georgia O'Keeffe;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures de fleurs.;1887-11-15
+13c8ec29-dbe1-4324-89fd-571a48b3d1b0;Edvard Munch;Norvège;un artiste norvégien du XIXe siècle connu pour son tableau Le Cri.;1863-12-12
+619b4e71-edeb-4912-9a58-a17086a01509;Paul Cézanne;France;un peintre français du XIXe siècle connu pour ses natures mortes et ses paysages.;1839-01-19
+24337437-0714-454a-9b1b-c9623dba5b06;Roy Lichtenstein;États-Unis;un artiste américain du XXe siècle connu pour ses bandes dessinées pop art.;1923-10-27
+abe6f7a2-c573-4701-83cd-6249817e9a95;Vincent Willem van Gogh;Pays-Bas;un peintre néerlandais post-impressionniste connu pour ses paysages et portraits expressifs.;1853-03-30
+17d28bf3-42e9-46a4-bcc3-36dbad48f828;Johannes Vermeer;Pays-Bas;un peintre néerlandais du XVIIe siècle connu pour ses scènes de la vie quotidienne.;1632-10-31
+61bc8f68-f7c0-4c3a-a8cc-4fadff10dbc2;Diego Rivera;Mexique;un artiste muraliste mexicain du XXe siècle connu pour ses fresques politiques et sociales.;1886-12-08
+cb43f810-8024-4762-bd14-4a98b7e3b97e;Marc Chagall;Russie;un artiste russe-français du XXe siècle connu pour ses peintures surréalistes et colorées.;1887-07-07
+c009db6e-0e2e-4dc3-9a70-8f4ce113003b;Henri Rousseau;France;un peintre naïf français du XIXe siècle connu pour ses scènes de jungle et de nature.;1844-05-21
+22a770e8-dfca-4db5-b6f7-f891300356d3;Pablo Neruda;Chili;un poète chilien du XXe siècle connu pour ses poèmes d'amour et d'engagement politique.;1904-07-12
+862d4da7-979b-4d1b-ada2-e2b99a42f5d8;Goya;Espagne;un artiste espagnol du XVIIIe et XIXe siècle connu pour ses peintures noires et satiriques.;1746-03-30
+6bee58a7-914f-45c1-b492-2f2e7c36d490;Joan Miró;Espagne;un artiste espagnol du XXe siècle connu pour ses peintures et sculptures abstraites.;1893-04-20
+c86e3a38-9c50-4ada-9d1b-1e802336b3d5;William Turner;Angleterre;un peintre britannique du XIXe siècle connu pour ses paysages romantiques et impressionnistes.;1775-04-23
+7021826e-6616-4929-94a9-182699baab1e;Kazimir Malevich;Russie;un artiste russe du XXe siècle connu pour ses peintures abstraites et géométriques.;1878-02-23
+99661f2f-6e65-4138-a265-b2116a312004;Yayoi Kusama;Japon;une artiste japonaise contemporaine connue pour ses installations artistiques psychédéliques et colorées.;1929-03-22
+dcb1dd1d-732c-49a3-a061-838f92e92ca3;Jean-Michel Basquiat;États-Unis;un artiste américain des années 80 connu pour ses peintures urbaines et ses messages politiques.;1960-12-22
+0b13c235-2b25-452f-8e20-94bc15206ec4;Frida Baranek;Brésil;une artiste brésilienne contemporaine connue pour ses sculptures métalliques abstraites.;1961-08-03
+e3100e0c-6290-47b8-973c-0148e89f00e4;Banksy;Royaume-Uni;un artiste de rue britannique connu pour ses œuvres politiques et satiriques.;1974-07-28
+2dad38c7-bc0f-4c4c-afef-1aa45a0f30fb;Yves Klein;France;un artiste français du XXe siècle connu pour ses peintures monochromes et son utilisation du bleu.;1928-04-28
+4cdfab6d-1eff-49c0-959a-6455541ad2bd;Alberto Giacometti;Suisse;un artiste suisse du XXe siècle connu pour ses sculptures figuratives et allongées.;1901-10-10
+6d4bb1a1-9373-4b3c-bac9-93acff98b06d;Jasper Johns;États-Unis;un artiste américain du XXe siècle connu pour ses peintures pop art et ses drapeaux américains.;1930-05-15
+40737409-4ac9-40f3-b87c-ed701d7a48c2;Cindy Sherman;États-Unis;une artiste contemporaine américaine connue pour ses autoportraits photographiques et ses déconstructions des rôles de genre.;1954-01-19
+fb10fcd0-34be-4934-a333-96eb0a32b784;Anselm Kiefer;Allemagne;un artiste allemand contemporain connu pour ses peintures et sculptures expressives qui explorent l'histoire allemande et la mythologie.;1945-03-08
+ccea4728-e968-45d0-b762-d56ac7f898f3;Rosa Bonheur;France;une artiste française du XIXe siècle connue pour ses peintures animalières et son statut de femme artiste pionnière.;1822-03-16
+77539c2d-a44c-460d-a92e-0a2106e66eb4;Kara Walker;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la race, le genre et l'identité.;1969-11-26
+142bb3f3-ba08-4eaa-9046-7fa56a168dac;Gerhard Richter;Allemagne;un artiste allemand contemporain connu pour ses peintures abstraites et figuratives expérimentales.;1932-02-09
+c6c64ca2-d998-4246-b736-887a38356602;Camille Claudel;France;une sculptrice française du XIXe siècle connue pour ses sculptures en argile et en bronze.;1864-12-08
+c9b1e037-540d-484c-a51f-e1d42608332f;René Magritte;Belgique;un artiste belge du XXe siècle connu pour ses peintures surréalistes intrigantes et ironiques.;1898-11-21
+839a3e3e-98b1-4bb7-a74d-25f5eca2c9cf;Louise Bourgeois;France;une artiste franco-américaine contemporaine connue pour ses sculptures monumentales et ses installations explorant la psyché féminine.;1911-12-25
+0f06b385-b753-4c65-ac66-27fc55aebdf4;Gustave Courbet;France;un artiste français du XIXe siècle connu pour son réalisme social et sa peinture de paysages.;1819-06-10
+24e159dd-a061-4908-89d1-05bf85db5bca;Egon Schiele;Autriche;un artiste autrichien du début du XXe siècle connu pour ses dessins et peintures érotiques et morbides.;1890-06-12
+d7b7c67e-8d58-43a3-9f75-f2f952641228;Piet Mondrian;Pays-Bas;un artiste néerlandais du XXe siècle connu pour ses peintures abstraites géométriques.;1872-03-07
+44d5f9fd-ebba-4629-8d53-aaaba0de8f8a;Jean Dubuffet;France;un artiste français du XXe siècle connu pour ses peintures et sculptures brutales et expressives.;1901-07-31
+d006d33e-0f52-480e-a9e0-eb5ed599bd9f;Caravaggio;Italie;un artiste italien du XVIIe siècle connu pour ses peintures dramatiques et naturalistes.;1571-09-29
+1274301e-f9b2-45ad-92d2-2fd2c28e1c54;Barbara Hepworth;Royaume-Uni;une sculptrice britannique du XXe siècle connue pour ses sculptures abstraites en bronze et en pierre.;1903-01-10
+f920dcd3-5a65-4009-89be-2ac5d8217a5c;Ai Weiwei;Chine;un artiste contemporain chinois connu pour ses installations et ses œuvres d'art engagées politiquement.;1957-08-28
+4d803414-b2f0-46ca-94a2-4e3f99b1400b;Jenny Holzer;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la langue, le pouvoir et la politique.;1950-07-29
+411157e4-73b7-4c71-84ad-0f12214c748e;William Kentridge;Afrique du Sud;un artiste sud-africain contemporain connu pour ses dessins animés, ses films d'animation et ses installations explorant la politique et la mémoire.;1955-04-28
+696ee839-243b-4c47-b839-3f4451f1cb08;Agnes Martin;Canada;une artiste américaine du XXe siècle connue pour ses peintures abstraites minimalistes et méditatives.;1912-03-22
+01d2fffd-25e1-4be0-a358-46a21b8aa26b;Edward Hopper;États-Unis;un peintre américain du XXe siècle connu pour ses peintures de la vie urbaine solitaire.;1882-07-22
+75c9d17c-cbc6-45fb-9572-c97c2151686f;Mary Cassatt;États-Unis;une artiste américaine du XIXe siècle connue pour ses peintures impressionnistes de la vie quotidienne et de la maternité.;1844-05-22
+9283bc4a-035a-4a8b-87f8-ef5f20d4e6a9;Michelangelo Pistoletto;Italie;un artiste italien contemporain connu pour ses miroirs et ses installations interactives explorant la société, la politique et la culture.;1933-06-23
+f24a7d5e-f837-4aa5-9199-3eeb2aee709c;Lee Krasner;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures abstraites expressionnistes.;1908-10-27
+723b025f-f7e9-4524-a72e-d2138e68790f;Gordon Parks;États-Unis;un photographe et réalisateur américain du XXe siècle connu pour ses photographies documentaires et ses films engagés politiquement.;1912-11-30
+79ad1fdc-8200-40d9-974a-605b58fc9bf7;Vanessa Beecroft;Italie;une artiste contemporaine italienne connue pour ses performances et installations explorant les thèmes du corps, de la féminité et de l'identité.;1969-04-25
+81975150-a22f-4a26-a418-eb642a93632d;Agnes Denes;Hongrie;une artiste contemporaine américaine d'origine hongroise connue pour ses œuvres environnementales et conceptuelles explorant l'écologie, la science et la philosophie.;1931-05-22
+9b24623e-b93b-4f1e-b3eb-04b70231b816;Gertrude Abercrombie;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures surréalistes et expressionnistes explorant la psyché humaine.;1909-02-17
+561cfed9-8a5b-44b3-8d2a-0b903e4e379a;Juan Gris;Espagne;un artiste espagnol du XXe siècle et l'un des principaux représentants du mouvement cubiste.;1887-03-23
+1125f2a5-ab88-41e4-90bc-f483c8d18591;Kara Walker;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la race, le genre et l'identité.;1969-11-26
+a81d6402-6bea-4c8e-a5f4-ad9ee688e929;Betye Saar;États-Unis;une artiste contemporaine américaine connue pour ses sculptures, assemblages et installations explorant la race, la féminité et l'histoire américaine.;1926-07-30
+28333cda-a903-4303-abe1-8466520e5bc4;Michel Gondry;France;un réalisateur et artiste visuel français connu pour ses films et ses vidéos musicales créatives et expérimentales.;1963-05-08
+b093a496-8d68-49f6-a37f-7d7fc4773683;Takashi Murakami;Japon;un artiste contemporain japonais connu pour ses peintures et sculptures kawaii et pop art.;1962-02-01
+5b613f15-e3ba-435b-af9e-a84c9f305593;Nam June Paik;Corée du Sud;un artiste contemporain coréen-américain considéré comme le père de l'art vidéo.;1932-07-20
+ec0981ae-b326-4a8b-a6d1-560e06119219;Lorna Simpson;États-Unis;une artiste contemporaine américaine connue pour ses photographies, vidéos et collages explorant la race, le genre et l'identité.;1960-08-13
+d209e296-1963-4c94-b9d0-1d7728a791c7;Mickalene Thomas;États-Unis;une artiste contemporaine américaine connue pour ses peintures, collages et photographies explorant la représentation de la femme noire dans la culture populaire.;1971-01-28

@@ -1,0 +1,10 @@
+bc5e4fca-b4bf-41aa-8ef4-a989f81c9155;Art environnemental;L'art environnemental est une catégorie d'art contemporain qui explore la relation entre l'art et l'environnement naturel ou construit.
+d7fe8f87-e67e-4820-957a-a21049aabc8b;Art conceptuel;L'art conceptuel est une catégorie d'art contemporain qui place l'accent sur la conception et l'idée plutôt que sur l'esthétique.
+d184a65a-e41b-40df-a8ed-39454a951dc4;Art vidéo;L'art vidéo est une catégorie d'art contemporain qui utilise la vidéo pour explorer les thèmes artistiques et sociaux.
+dbd5dcf4-19a5-4803-869b-aa3e66954d23;Art urbain;L'art urbain est une catégorie d'art contemporain qui comprend les formes d'art créées dans les espaces publics, tels que les graffitis, les installations de rue et les affichages.
+3e5cae1f-5c5e-4ae4-aaec-23ee93f28ec9;Art abstrait;L'art abstrait est une catégorie d'art qui ne représente pas la réalité de manière figurative, mais plutôt à travers des formes, des couleurs et des lignes abstraites.
+a3c6c045-3108-4031-a6b0-d75b8efc4f5e;Art figuratif;L'art figuratif est une catégorie d'art qui représente des objets ou des personnes de manière reconnaissable et réaliste.
+ff62bccb-30d1-4a5f-bf85-0fd86ab90275;Art moderne;L'art moderne est une catégorie d'art qui comprend les mouvements artistiques qui ont eu lieu entre la fin du XIXe siècle et le début du XXe siècle.
+16726262-fe4d-4718-8a88-455ae33231ea;Art contemporain;L'art contemporain est une catégorie d'art qui se réfère à l'art créé depuis les années 1960 jusqu'à aujourd'hui.
+7e693970-ab19-4d47-8370-3514bc31fd12;Art de performance;L'art de performance est une catégorie d'art contemporain qui utilise le corps humain comme moyen d'expression artistique, souvent en combinaison avec d'autres médias tels que la vidéo et la musique.
+a429a92c-e91e-4b0a-8fff-c028479099ae;Art politique;L'art politique est une catégorie d'art qui utilise l'expression artistique pour commenter ou critiquer les problèmes sociaux, politiques et culturels.
