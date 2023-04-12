@@ -78,7 +78,7 @@ def insertArtistes(artistes):
         for artiste in artistes:
             id, nom, nationalite, anneeDeNaissance, bibliographie = artiste
             try:
-                cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie, produit_id) VALUES (%s, %s, %s, %s, %s, DEFAULT)", (id, nom, nationalite, anneeDeNaissance, bibliographie))
+                cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie) VALUES (%s, %s, %s, %s, %s)", (id, nom, nationalite, anneeDeNaissance, bibliographie))
                 connection.commit()
             except pymysql.err.IntegrityError as e:
                 if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
@@ -103,9 +103,9 @@ def insertProduits(produits):
 cursor = connection.cursor()
 
 if __name__ == '__main__':
-    artistes = createArtistsFromTxt("artisteId.txt")
+    artistes = createArtistsFromTxt("backend/artisteId.txt")
     insertArtistes(artistes)
-    categories = createCategoriesFromTxt("categorieId.txt")
+    categories = createCategoriesFromTxt("backend/categorieId.txt")
     insertCategories(categories)
-    produits = createProduitsFromTxt("produitId.txt")
+    produits = createProduitsFromTxt("backend/produitId.txt")
     insertProduits(produits)
