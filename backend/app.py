@@ -1,20 +1,19 @@
 from flask import Flask, render_template, send_from_directory
 from flask_mysqldb import MySQL
-# from passlib.hash import sha256_crypt
 
 
 from functools import wraps
 import os
 
-app = Flask(__name__, static_url_path='', static_folder='frontend/build')
+app = Flask(__name__, static_url_path='', static_folder='frontend/build', template_folder='backend/templates')
 # app.secret_key = os.urandom(24)
 # Secret key is used for the security purposes
 
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'new-password'
-app.config['MYSQL_DB'] = 'myartdb'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = 'baseDeDonnees'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
@@ -35,15 +34,15 @@ def serve(path):
 @app.route('/arts', methods=['GET', 'POST'])
 def posts():
     cur = mysql.connection.cursor()
-    result = cur.execute("SELECT * FROM posts")
-    posts = cur.fetchall()
+    result = cur.execute("SELECT * FROM artistes")  # Modifiez cette ligne pour récupérer les artistes
+    artists = cur.fetchall()
     if result > 0:
         cur.close()
-        return render_template('posts.html', posts=posts)
+        return render_template('artists.html', artists=artists)
     else:
-        msg = 'No posts found'
+        msg = 'No artists found'
         cur.close()
-        return render_template('multiple_arts.html', msg=msg)
+        return render_template('artists.html', msg=msg)
 
 
 if __name__ == '__main__':
