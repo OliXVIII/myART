@@ -46,7 +46,15 @@ CREATE TABLE IF NOT EXISTS administrateurs (
     mot_de_passe VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE
 );
-
+CREATE TABLE IF NOT EXISTS artistes(
+    id VARCHAR(36) PRIMARY KEY ,
+    nom VARCHAR(255) NOT NULL,
+    nationalite VARCHAR(255) NOT NULL,
+    anneeDeNaissance DATE,
+    bibliographie text,
+    UNIQUE (id),
+    UNIQUE (nom)
+);
 CREATE TABLE IF NOT EXISTS produits (
     id varchar(36) PRIMARY KEY ,
     nom varchar(255) NOT NULL,
@@ -55,38 +63,30 @@ CREATE TABLE IF NOT EXISTS produits (
     quantite INT NOT NULL,
     categorie_id varchar(36),
     image_url VARCHAR(255),
+    artiste_id VARCHAR(36),
     UNIQUE(id),
     UNIQUE (nom),
-    FOREIGN KEY (categorie_id) REFERENCES categories(id)
+    FOREIGN KEY (categorie_id) REFERENCES categories(id) ON DELETE SET NULL,
+    FOREIGN KEY (artiste_id) REFERENCES artistes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS paniers (
   id INT PRIMARY KEY AUTO_INCREMENT,
   client_id INT,
-  FOREIGN KEY (client_id) REFERENCES clients(id)
+  FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
 );
-
+/*Si on supprime un clients on supprime tous les commandes qu'il a fait*/
 CREATE TABLE IF NOT EXISTS commandes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     client_id INT,
     adresse_id INT,
     date_commande TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('En attente', 'En cours', 'Expédié', 'Livré', 'Annulé') NOT NULL,
-    FOREIGN KEY (client_id) REFERENCES clients(id),
-    FOREIGN KEY (adresse_id) REFERENCES adresses(id)
+    FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
+    FOREIGN KEY (adresse_id) REFERENCES adresses(id) ON DELETE SET NULL
 );
 
-CREATE TABLE IF NOT EXISTS artistes(
-    id VARCHAR(36) PRIMARY KEY ,
-    nom VARCHAR(255) NOT NULL,
-    nationalite VARCHAR(255) NOT NULL,
-    anneeDeNaissance DATE,
-    bibliographie text,
-    produit_id VARCHAR(32),
-    UNIQUE (id),
-    UNIQUE (nom),
-    FOREIGN KEY (produit_id) REFERENCES produits(id)
-);
+
 
 CREATE TABLE IF NOT EXISTS paiements(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS paiements(
     montant DECIMAL(10, 2) NOT NULL,
     statut ENUM('En cours','Complété','Échec'),
     commande_id INT,
-    FOREIGN KEY (commande_id) REFERENCES commandes(id)
+    FOREIGN KEY (commande_id) REFERENCES commandes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS lignePanier(
@@ -103,15 +103,15 @@ CREATE TABLE IF NOT EXISTS lignePanier(
     quantite INT,
     id_panier INT NOT NULL,
     id_produit VARCHAR(36) NOT NULL,
-    FOREIGN KEY(id_panier) REFERENCES paniers(id),
-    FOREIGN KEY(id_produit) REFERENCES produits(id)
+    FOREIGN KEY(id_panier) REFERENCES paniers(id) ON DELETE CASCADE,
+    FOREIGN KEY(id_produit) REFERENCES produits(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS comptes(
     id INT PRIMARY KEY AUTO_INCREMENT,
     date_creation TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_client INT NOT NULL,
-    FOREIGN KEY(id_client) REFERENCES clients(id)
+    FOREIGN KEY(id_client) REFERENCES clients(id) ON DELETE CASCADE
 );
 
 
