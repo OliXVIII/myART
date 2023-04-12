@@ -46,7 +46,15 @@ CREATE TABLE IF NOT EXISTS administrateurs (
     mot_de_passe VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE
 );
-
+CREATE TABLE IF NOT EXISTS artistes(
+    id VARCHAR(36) PRIMARY KEY ,
+    nom VARCHAR(255) NOT NULL,
+    nationalite VARCHAR(255) NOT NULL,
+    anneeDeNaissance DATE,
+    bibliographie text,
+    UNIQUE (id),
+    UNIQUE (nom)
+);
 CREATE TABLE IF NOT EXISTS produits (
     id varchar(36) PRIMARY KEY ,
     nom varchar(255) NOT NULL,
@@ -55,9 +63,11 @@ CREATE TABLE IF NOT EXISTS produits (
     quantite INT NOT NULL,
     categorie_id varchar(36),
     image_url VARCHAR(255),
+    artiste_id VARCHAR(36),
     UNIQUE(id),
     UNIQUE (nom),
-    FOREIGN KEY (categorie_id) REFERENCES categories(id) ON DELETE SET NULL
+    FOREIGN KEY (categorie_id) REFERENCES categories(id) ON DELETE SET NULL,
+    FOREIGN KEY (artiste_id) REFERENCES artistes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS paniers (
@@ -76,15 +86,7 @@ CREATE TABLE IF NOT EXISTS commandes (
     FOREIGN KEY (adresse_id) REFERENCES adresses(id) ON DELETE SET NULL
 );
 
-CREATE TABLE IF NOT EXISTS artistes(
-    id VARCHAR(36) PRIMARY KEY ,
-    nom VARCHAR(255) NOT NULL,
-    nationalite VARCHAR(255) NOT NULL,
-    anneeDeNaissance DATE,
-    bibliographie text,
-    UNIQUE (id),
-    UNIQUE (nom)
-);
+
 
 CREATE TABLE IF NOT EXISTS paiements(
     id INT PRIMARY KEY AUTO_INCREMENT,

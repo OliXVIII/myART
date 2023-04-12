@@ -49,10 +49,10 @@ def createProduitsFromTxt(filePath):
             if not line.strip():  # Ignore les lignes vides
                 continue
             try:
-                id, nom, description, prix, quantite, categorie_id, image_url = line.strip().split(';')  # Utilise le séparateur ';'
+                id, nom, description, prix, quantite, categorie_id, image_url, artiste_id = line.strip().split(';')  # Utilise le séparateur ';'
                 prix = float(prix)
                 quantite = int(quantite)
-                produits.append((id, nom, description, prix, quantite, categorie_id, image_url))
+                produits.append((id, nom, description, prix, quantite, categorie_id, image_url,artiste_id))
             except ValueError as e:
                 print(f"Erreur lors du traitement de la ligne : {line.strip()}")
                 print(f"Valeurs extraites : {line.strip().split(';')}")
@@ -90,9 +90,9 @@ def insertArtistes(artistes):
 def insertProduits(produits):
     with connection.cursor() as cursor:
         for produit in produits:
-            id, nom, description, prix, quantite, categorie_id, image_url = produit
+            id, nom, description, prix, quantite, categorie_id, image_url,artiste_id = produit
             try:
-                cursor.execute("INSERT INTO produits(id, nom, description, prix, quantite, categorie_id, image_url) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id, nom, description, prix, quantite, categorie_id, image_url))
+                cursor.execute("INSERT INTO produits(id, nom, description, prix, quantite, categorie_id, image_url,artiste_id) VALUES (%s, %s, %s, %s, %s, %s, %s,%s)", (id, nom, description, prix, quantite, categorie_id, image_url,artiste_id))
                 connection.commit()
             except pymysql.err.IntegrityError as e:
                 if e.args[0] == 1062:  # Code d'erreur pour les entrées en double

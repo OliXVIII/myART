@@ -1550,40 +1550,54 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <foreign-key id="409" parent="313" name="produits_ibfk_1">
+    <column id="409" parent="313" name="artiste_id">
+      <DasType>varchar(36)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <foreign-key id="410" parent="313" name="produits_ibfk_1">
       <ColNames>categorie_id</ColNames>
       <OnDelete>set-null</OnDelete>
       <RefColNames>id</RefColNames>
       <RefTableName>categories</RefTableName>
     </foreign-key>
-    <index id="410" parent="313" name="PRIMARY">
+    <foreign-key id="411" parent="313" name="produits_ibfk_2">
+      <ColNames>artiste_id</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>id</RefColNames>
+      <RefTableName>artistes</RefTableName>
+    </foreign-key>
+    <index id="412" parent="313" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="411" parent="313" name="id">
+    <index id="413" parent="313" name="id">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="412" parent="313" name="nom">
+    <index id="414" parent="313" name="nom">
       <ColNames>nom</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="413" parent="313" name="categorie_id">
+    <index id="415" parent="313" name="categorie_id">
       <ColNames>categorie_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="414" parent="313" name="PRIMARY">
+    <index id="416" parent="313" name="artiste_id">
+      <ColNames>artiste_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="417" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="415" parent="313" name="id">
+    <key id="418" parent="313" name="id">
       <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
-    <key id="416" parent="313" name="nom">
+    <key id="419" parent="313" name="nom">
       <UnderlyingIndexName>nom</UnderlyingIndexName>
     </key>
   </database-model>
