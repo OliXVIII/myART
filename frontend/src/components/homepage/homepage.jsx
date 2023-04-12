@@ -1,14 +1,18 @@
 import './homepage.scss';
 
-export const Homepage = () => {
+const getAPI = async () => {
   const arts = await fetch('http://localhost:5000/arts');
   if (arts.ok) {
     const data = await arts.json();
   }
+};
+
+export const Homepage = () => {
+  const arts = getAPI();
 
   return (
     <div className="homepage">
-      {data.map((art) => (
+      {arts.map((art) => (
         <div className="art" key={art.id}>
           <img src={art.image} alt={art.title} />
           <div className="art-info">

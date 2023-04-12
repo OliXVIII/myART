@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Header } from "./components/header/header";
+import { Homepage } from "./components/homepage/homepage";
 
 function App() {
   const [data, setData] = useState({
@@ -21,7 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header></Header>
+      <Header />
+      <Homepage />
     </div>
   );
 }
