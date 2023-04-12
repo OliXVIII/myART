@@ -126,8 +126,6 @@ END;
 //
 DELIMITER ;
 
-
-
 INSERT INTO clients (nom, email, mot_de_passe) VALUES("Jean-Christophe Parent","jcpar27@ulaval.ca","salut11");
 SELECT * FROM clients;
 
