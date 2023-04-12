@@ -8,7 +8,6 @@ specifiers:
   react-dom: ^18.2.0
   react-scripts: 5.0.1
   sass: ^1.59.2
-  web-vitals: ^2.1.4
 
 dependencies:
   '@testing-library/jest-dom': 5.16.5
@@ -18,7 +17,6 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_react@18.2.0+sass@1.59.3
   sass: 1.59.3
-  web-vitals: 2.1.4
 
 packages:
 
@@ -9682,10 +9680,6 @@ packages:
     resolution: {integrity: sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==}
     dependencies:
       minimalistic-assert: 1.0.1
-    dev: false
-
-  /web-vitals/2.1.4:
-    resolution: {integrity: sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==}
     dev: false
 
   /webidl-conversions/4.0.2:
