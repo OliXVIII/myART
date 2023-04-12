@@ -15,6 +15,7 @@
     margin: 0 auto;
     max-width: 1440px;
     padding: 0 1rem;
+    font-family: time;
     .header-logo {
       display: flex;
       align-items: center;
@@ -23,10 +24,10 @@
         width: 60px;
       }
       .header-logo-text {
+        font-family: apple chancery, cursive;
         color: #000;
         font-size: 1.5rem;
         font-weight: 700;
-        margin-left: 0.5rem;
       }
     }
     .header-nav {
@@ -36,7 +37,7 @@
         color: #000;
         font-size: 1rem;
         font-weight: 500;
-        margin-left: 1rem;
+        margin-left: 3rem;
         text-decoration: none;
         &:hover {
           color: #000;
@@ -50,13 +51,13 @@
         padding: 0;
         margin: 0;
         li {
-          padding: 0.5rem 0;
+          padding: 0.2rem 0;
         }
       }
       .header-user-item {
         color: #000;
         font-size: 1rem;
-        font-weight: 500;
+        font-weight: 300;
         margin-left: 1rem;
         text-decoration: none;
 
@@ -64,6 +65,15 @@
           color: #000;
           text-decoration: underline;
         }
+      }
+    }
+    .panier-logo {
+      width: 3rem;
+      height: 2.3rem;
+      padding-left: 4rem;
+      align-self: right;
+      img {
+        width: 100%;
       }
     }
   }
