@@ -8,12 +8,12 @@ const getAPI = async () => {
 };
 
 export const Homepage = () => {
-  const arts = getAPI();
+  const arts = [];//getAPI();
 
   return (
     <div className="homepage">
-      {arts.map((art) => (
-        <div className="art" key={art.id}>
+      {arts.map((art, i) => (
+        <div className={'art ' + i % 2 ? '' : 'art-impair'} key={art.id}>
           <img src={art.image} alt={art.title} />
           <div className="art-info">
             <h3>{art.title}</h3>
