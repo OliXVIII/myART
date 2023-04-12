@@ -60,31 +60,52 @@ def createProduitsFromTxt(filePath):
 
     return produits
 
-
 def insertCategories(categories):
-    for category in categories:
-        id, nom, description = category
-        cursor.execute("INSERT INTO categories(id, nom, description) VALUES (%s, %s, %s)", (id, nom, description))
+    with connection.cursor() as cursor:
+        for category in categories:
+            id, nom, description = category
+            try:
+                cursor.execute("INSERT INTO categories(id, nom, description) VALUES (%s, %s, %s)", (id, nom, description))
+                connection.commit()
+            except pymysql.err.IntegrityError as e:
+                if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
+                    print(f"Erreur: L'ID de la catégorie {nom} existe déjà. Veuillez utiliser un ID unique.")
+                else:
+                    print("Erreur lors de l'insertion des catégories:", e)
 
 def insertArtistes(artistes):
-    for artiste in artistes:
-        id, nom, nationalite, anneeDeNaissance, bibliographie = artiste
-        print(f"Inserting: {id}, {nom}, {nationalite}, {anneeDeNaissance}, {bibliographie}")
-        cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie, produit_id) VALUES (%s, %s, %s, %s, %s, DEFAULT)", (id, nom, nationalite, anneeDeNaissance, bibliographie))
+    with connection.cursor() as cursor:
+        for artiste in artistes:
+            id, nom, nationalite, anneeDeNaissance, bibliographie = artiste
+            try:
+                cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie, produit_id) VALUES (%s, %s, %s, %s, %s, DEFAULT)", (id, nom, nationalite, anneeDeNaissance, bibliographie))
+                connection.commit()
+            except pymysql.err.IntegrityError as e:
+                if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
+                    print(f"Erreur: L'ID de l'artiste {nom} existe déjà. Veuillez utiliser un ID unique.")
+                else:
+                    print("Erreur lors de l'insertion des artistes:", e)
+
 
 def insertProduits(produits):
-    for produit in produits:
-        id, nom, description, prix, quantite, categorie_id, image_url = produit
-        print(f"Inserting: {id}, {nom}, {description}, {prix}, {quantite}, {categorie_id}, {image_url}")
-        cursor.execute("INSERT INTO produits(id, nom, description, prix, quantite, categorie_id, image_url) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id, nom, description, prix, quantite, categorie_id, image_url))
-
+    with connection.cursor() as cursor:
+        for produit in produits:
+            id, nom, description, prix, quantite, categorie_id, image_url = produit
+            try:
+                cursor.execute("INSERT INTO produits(id, nom, description, prix, quantite, categorie_id, image_url) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id, nom, description, prix, quantite, categorie_id, image_url))
+                connection.commit()
+            except pymysql.err.IntegrityError as e:
+                if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
+                    print(f"Erreur: L'ID du produit {nom} existe déjà. Veuillez utiliser un ID unique.")
+                else:
+                    print("Erreur lors de l'insertion des produits:", e)
 
 cursor = connection.cursor()
 
 if __name__ == '__main__':
-    #artistes = createArtistsFromTxt("artisteId.txt")
-    #insertArtistes(artistes)
-    #categories = createCategoriesFromTxt("categorieId.txt")
-    #insertCategories(categories)
+    artistes = createArtistsFromTxt("artisteId.txt")
+    insertArtistes(artistes)
+    categories = createCategoriesFromTxt("categorieId.txt")
+    insertCategories(categories)
     produits = createProduitsFromTxt("produitId.txt")
     insertProduits(produits)

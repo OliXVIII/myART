@@ -5,6 +5,18 @@ SET time_zone = "-05:00";
 
 CREATE DATABASE IF NOT EXISTS baseDeDonnees;
 USE baseDeDonnees;
+DROP TABLE IF EXISTS lignePanier;
+DROP TABLE IF EXISTS paiements;
+DROP TABLE IF EXISTS artistes;
+DROP TABLE IF EXISTS commandes;
+DROP TABLE IF EXISTS paniers;
+DROP TABLE IF EXISTS produits;
+DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS administrateurs;
+DROP TABLE IF EXISTS comptes;
+DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS adresses;
+
 
 CREATE TABLE IF NOT EXISTS adresses(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -126,25 +138,18 @@ END;
 //
 DELIMITER ;
 
-INSERT INTO clients (nom, email, mot_de_passe) VALUES("Jean-Christophe Parent","jcpar27@ulaval.ca","salut11");
-SELECT * FROM clients;
-
-INSERT INTO categories (nom, description) VALUES("tableau","petite description");
-SELECT * FROM categories;
-DROP table artistes;
-DROP table lignePanier;
-DROP table produits;
-DROP table categories;
 
 
 
 SHOW TABLES;
-
-DELETE FROM artistes;
-DELETE FROM produits;
 SELECT * FROM clients;
 SELECT * FROM artistes;
 SELECT * FROM produits;
 SELECT * FROM categories;
+
+
+/*Index sur les objets d'art fait par les artistes*/
+CREATE INDEX idx_artistes_nom ON artistes(nom);
+
 
 
