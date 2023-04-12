@@ -139,14 +139,11 @@ END;
 DELIMITER ;
 
 
-
-
 SHOW TABLES;
 SELECT * FROM clients;
 SELECT * FROM artistes;
 SELECT * FROM produits;
 SELECT * FROM categories;
-
 
 /*Index sur les objets d'art fait par les artistes*/
 CREATE INDEX idx_artistes_nom ON artistes(nom);
