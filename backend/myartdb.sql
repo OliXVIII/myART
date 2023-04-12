@@ -7,10 +7,10 @@ CREATE DATABASE IF NOT EXISTS baseDeDonnees;
 USE baseDeDonnees;
 DROP TABLE IF EXISTS lignePanier;
 DROP TABLE IF EXISTS paiements;
+DROP TABLE IF EXISTS produits;
 DROP TABLE IF EXISTS artistes;
 DROP TABLE IF EXISTS commandes;
 DROP TABLE IF EXISTS paniers;
-DROP TABLE IF EXISTS produits;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS administrateurs;
 DROP TABLE IF EXISTS comptes;
@@ -147,6 +147,8 @@ SELECT * FROM categories;
 
 /*Index sur les objets d'art fait par les artistes*/
 CREATE INDEX idx_artistes_nom ON artistes(nom);
+
+SELECT * FROM produits WHERE artiste_id = (SELECT id FROM artistes WHERE nom LIKE '%Van Gogh%');
 
 
 

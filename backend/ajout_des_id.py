@@ -23,3 +23,4 @@ import uuid
  #   for line in lines:
   #      line = str(uuid.uuid4())+';'+line
     #    f.write(line)
+print(uuid.uuid4())

@@ -103,9 +103,9 @@ def insertProduits(produits):
 cursor = connection.cursor()
 
 if __name__ == '__main__':
-    artistes = createArtistsFromTxt("backend/artisteId.txt")
+    artistes = createArtistsFromTxt("artisteId.txt")
     insertArtistes(artistes)
-    categories = createCategoriesFromTxt("backend/categorieId.txt")
+    categories = createCategoriesFromTxt("categorieId.txt")
     insertCategories(categories)
-    produits = createProduitsFromTxt("backend/produitId.txt")
+    produits = createProduitsFromTxt("produitId.txt")
     insertProduits(produits)

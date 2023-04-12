@@ -17,7 +17,6 @@ e3384882-8022-4509-bf71-1069521175a9;Pierre-Auguste Renoir;France;un peintre imp
 13c8ec29-dbe1-4324-89fd-571a48b3d1b0;Edvard Munch;Norvège;un artiste norvégien du XIXe siècle connu pour son tableau Le Cri.;1863-12-12
 619b4e71-edeb-4912-9a58-a17086a01509;Paul Cézanne;France;un peintre français du XIXe siècle connu pour ses natures mortes et ses paysages.;1839-01-19
 24337437-0714-454a-9b1b-c9623dba5b06;Roy Lichtenstein;États-Unis;un artiste américain du XXe siècle connu pour ses bandes dessinées pop art.;1923-10-27
-abe6f7a2-c573-4701-83cd-6249817e9a95;Vincent Willem van Gogh;Pays-Bas;un peintre néerlandais post-impressionniste connu pour ses paysages et portraits expressifs.;1853-03-30
 17d28bf3-42e9-46a4-bcc3-36dbad48f828;Johannes Vermeer;Pays-Bas;un peintre néerlandais du XVIIe siècle connu pour ses scènes de la vie quotidienne.;1632-10-31
 61bc8f68-f7c0-4c3a-a8cc-4fadff10dbc2;Diego Rivera;Mexique;un artiste muraliste mexicain du XXe siècle connu pour ses fresques politiques et sociales.;1886-12-08
 cb43f810-8024-4762-bd14-4a98b7e3b97e;Marc Chagall;Russie;un artiste russe-français du XXe siècle connu pour ses peintures surréalistes et colorées.;1887-07-07
@@ -68,3 +67,8 @@ b093a496-8d68-49f6-a37f-7d7fc4773683;Takashi Murakami;Japon;un artiste contempor
 5b613f15-e3ba-435b-af9e-a84c9f305593;Nam June Paik;Corée du Sud;un artiste contemporain coréen-américain considéré comme le père de l'art vidéo.;1932-07-20
 ec0981ae-b326-4a8b-a6d1-560e06119219;Lorna Simpson;États-Unis;une artiste contemporaine américaine connue pour ses photographies, vidéos et collages explorant la race, le genre et l'identité.;1960-08-13
 d209e296-1963-4c94-b9d0-1d7728a791c7;Mickalene Thomas;États-Unis;une artiste contemporaine américaine connue pour ses peintures, collages et photographies explorant la représentation de la femme noire dans la culture populaire.;1971-01-28
+8719757e-7e68-44b6-8ee1-257aa7f17642;Katsushika Hokusai;Japon;un célèbre artiste japonais connu pour ses estampes ukiyo-e, dont La Grande Vague de Kanagawa.;1760-10-31
+63e6d626-8290-4c31-ae44-6b2d7a26a2a5;Raffaello Sanzio da Urbino;Italie;un célèbre peintre et architecte italien de la Renaissance, connu pour des œuvres telles que La Madone Sixtine et L'École d'Athènes.;1483-04-06
+6ad0c901-112b-4aa9-9de8-ef5544881084;Sandro Botticelli;Italie;un célèbre peintre italien de la Renaissance, connu pour des œuvres telles que La Naissance de Vénus et Le Printemps.;1445-03-01
+8fd4ae46-eb7f-4cb5-b4d8-98ae7584793f;Édouard Manet;France;un célèbre peintre français du XIXe siècle considéré comme l'un des pionniers de l'impressionnisme.;1832-01-23
+84bdba5e-83fb-4ce2-91a8-4d1b09be7ea0;Eugène Delacroix;France;un célèbre peintre français du XIXe siècle considéré comme l'un des chefs de file du mouvement romantique, connu pour des œuvres telles que La Liberté guidant le peuple et Les Femmes d'Alger dans leur appartement.;1798-04-26
