@@ -1,0 +1,68 @@
+.restaurant-banner {
+  height: 20rem;
+  margin: 2rem 0;
+  display: flex;
+  width: 100%;
+  color: black;
+  background: linear-gradient(145deg, Burlywood 20%, Bisque 40%, Burlywood 90%);
+  text-decoration: none;
+  cursor: default;
+
+
+  .restaurant-banner__image {
+    width: 40%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .restaurant-banner__info {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    padding: 2rem;
+    width: 60%;
+
+     h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+     p{
+        font-size: 1rem;
+        font-weight: 300;
+      }
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+  }
+  .restaurant-banner__info__stats {
+    display: flex;
+
+    p {
+      padding: 0 10px;
+      @media (max-width: 768px) {
+        padding: 0 3px;
+      }
+    }
+  }
+  .restaurant-banner__description {
+    padding-top: 20px;
+    @media (max-width: 500px) {
+      overflow-y: scroll;
+      max-height: 8rem;
+    }
+  }
+  .restaurant-banner__prompt {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .restaurant-banner__visit {
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
+
+}
