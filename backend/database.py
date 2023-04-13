@@ -123,6 +123,5 @@ if __name__ == '__main__':
     insertCategories(categories)
     artistes = createArtistsFromTxt("backend/artisteId.txt")
     insertArtistes(artistes)
-    produits = createProduitsFromTxt(
-        "/Applications/photopython/UL/Session/H23/SQL/Projet/myART/backend/produitId.txt")
+    produits = createProduitsFromTxt("/Applications/photopython/UL/Session/H23/SQL/Projet/myART/backend/produitId.txt")
     insertProduits(produits)
