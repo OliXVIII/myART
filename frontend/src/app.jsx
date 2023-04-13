@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Header } from "./components/header/header";
 import { Homepage } from "./components/homepage/homepage";
+import ArtistList from "./components/ArtistList";
 
 function App() {
   const [data, setData] = useState({
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
       <Header />
       <Homepage />
+        <ArtistList/>
     </div>
   );
 }

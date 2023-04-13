@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory,jsonify
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 
@@ -36,20 +36,18 @@ def home():
 #     return render_template("single_art.html", post=post)
 
 
-@app.route('/arts', methods=['GET', 'POST'])
+@app.route('/api/arts', methods=['GET', 'POST'])
 def posts():
     cur = mysql.connection.cursor()
-    # Modifiez cette ligne pour récupérer les artistes
     result = cur.execute("SELECT * FROM artistes")
     artists = cur.fetchall()
     if result > 0:
         cur.close()
-        return render_template('artists.html', artists=artists)
+        return jsonify(artists)
     else:
         msg = 'No artists found'
         cur.close()
-        return render_template('artists.html', msg=msg)
-
+        return jsonify({'msg': msg})
 
 if __name__ == '__main__':
     app.run(debug=True,  port=5000)
