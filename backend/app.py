@@ -67,5 +67,20 @@ def get_artists():
     return jsonify(artistes)
 
 
+@app.route('/art/<string:product_id>', methods=['GET'])
+def get_product(product_id):
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    cursor.execute('SELECT * FROM produits WHERE id = %s', (product_id,))
+    art = cursor.fetchone()
+
+    cursor.close()
+
+    if art is None:
+        abort(404)
+
+    return jsonify(art)
+
+
 if __name__ == '__main__':
     app.run(debug=True,  port=5000)

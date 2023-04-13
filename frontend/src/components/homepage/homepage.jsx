@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './homepage.scss';
+import { Link } from 'react-router-dom';
 
 const getAPI = async () => {
   const arts = await fetch('http://localhost:5000/arts');
@@ -29,11 +30,12 @@ export const Homepage = () => {
   return (
     <div className="homepage">
       {arts.map((art, i) => (
-        <div className={'art ' + i % 2 ? '' : 'art-impair'} key={art.id}>
-          <img src={art.image} alt={art.title} />
+        <div className={(i % 2) ? 'art' : 'art art-impair'} key={art.id}>
+          <img className='art-image' src={art.image_url} alt={art.nom} />
           <div className="art-info">
-            <h3>{art.title}</h3>
+            <h2>{art.nom}</h2>
             <p>{art.description}</p>
+            <Link className='learn-more' to={{pathname: `/art/${art.id}`}} state={{art: art}}>Découvrez cet article</Link>
           </div>
         </div>
       ))}
