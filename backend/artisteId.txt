@@ -60,7 +60,7 @@ f24a7d5e-f837-4aa5-9199-3eeb2aee709c;Lee Krasner;États-Unis;une artiste améric
 81975150-a22f-4a26-a418-eb642a93632d;Agnes Denes;Hongrie;une artiste contemporaine américaine d'origine hongroise connue pour ses œuvres environnementales et conceptuelles explorant l'écologie, la science et la philosophie.;1931-05-22
 9b24623e-b93b-4f1e-b3eb-04b70231b816;Gertrude Abercrombie;États-Unis;une artiste américaine du XXe siècle connue pour ses peintures surréalistes et expressionnistes explorant la psyché humaine.;1909-02-17
 561cfed9-8a5b-44b3-8d2a-0b903e4e379a;Juan Gris;Espagne;un artiste espagnol du XXe siècle et l'un des principaux représentants du mouvement cubiste.;1887-03-23
-1125f2a5-ab88-41e4-90bc-f483c8d18591;Kara Walker;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la race, le genre et l'identité.;1969-11-26
+1125f2a5-ab88-41e4-90bc-f483c8d18591;Kara Walkerr;États-Unis;une artiste contemporaine américaine connue pour ses installations artistiques explorant la race, le genre et l'identité.;1969-11-26
 a81d6402-6bea-4c8e-a5f4-ad9ee688e929;Betye Saar;États-Unis;une artiste contemporaine américaine connue pour ses sculptures, assemblages et installations explorant la race, la féminité et l'histoire américaine.;1926-07-30
 28333cda-a903-4303-abe1-8466520e5bc4;Michel Gondry;France;un réalisateur et artiste visuel français connu pour ses films et ses vidéos musicales créatives et expérimentales.;1963-05-08
 b093a496-8d68-49f6-a37f-7d7fc4773683;Takashi Murakami;Japon;un artiste contemporain japonais connu pour ses peintures et sculptures kawaii et pop art.;1962-02-01

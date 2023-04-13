@@ -1,10 +1,11 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, jsonify
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+import pymysql
+from database import connection
 
 
 from functools import wraps
-import os
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/public')
 CORS(app)
@@ -26,8 +27,6 @@ def home():
     return send_from_directory(app.static_folder, 'public/index.html')
 
 
-
-
 # @app.route('/art/<string:id>/')
 # def post(id):
 #     cur = mysql.connection.cursor()
@@ -36,19 +35,36 @@ def home():
 #     return render_template("single_art.html", post=post)
 
 
-@app.route('/arts', methods=['GET', 'POST'])
-def posts():
-    cur = mysql.connection.cursor()
-    # Modifiez cette ligne pour récupérer les artistes
-    result = cur.execute("SELECT * FROM artistes")
-    artists = cur.fetchall()
-    if result > 0:
-        cur.close()
-        return render_template('artists.html', artists=artists)
-    else:
-        msg = 'No artists found'
-        cur.close()
-        return render_template('artists.html', msg=msg)
+@app.route('/arts', methods=['GET'])
+def get_arts():
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Execute your SQL query
+    cursor.execute('SELECT * FROM produits')
+
+    # Fetch all rows as a list of dictionaries
+    arts = cursor.fetchall()
+
+    # Close the connection and cursor
+    cursor.close()
+
+    return jsonify(arts)
+
+
+@app.route('/artistes', methods=['GET'])
+def get_artists():
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Execute your SQL query
+    cursor.execute('SELECT * FROM artistes')
+
+    # Fetch all rows as a list of dictionaries
+    artistes = cursor.fetchall()
+
+    # Close the connection and cursor
+    cursor.close()
+
+    return jsonify(artistes)
 
 
 if __name__ == '__main__':
