@@ -3,7 +3,7 @@ import pymysql
 connection = pymysql.connect(
     host="localhost",
     user="root",
-    password="mariowii",
+    password="root",
     db="baseDeDonnees",
     autocommit=True
 )
@@ -119,6 +119,9 @@ def insertProduits(produits):
 cursor = connection.cursor()
 
 if __name__ == '__main__':
-    produits = createProduitsFromTxt(
-        "/Applications/photopython/UL/Session/H23/SQL/Projet/myART/backend/produitId.txt")
+    categories = createCategoriesFromTxt("categorieId.txt")
+    insertCategories(categories)
+    artistes = createArtistsFromTxt("artisteId.txt")
+    insertArtistes(artistes)
+    produits = createProduitsFromTxt("produitId.txt")
     insertProduits(produits)

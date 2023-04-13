@@ -6,7 +6,7 @@ from flask_cors import CORS
 from functools import wraps
 import os
 
-app = Flask(__name__, static_url_path='',static_folder='frontend/public')
+app = Flask(__name__, static_url_path='', static_folder='frontend/public')
 CORS(app)
 # app.secret_key = os.urandom(24)
 # Secret key is used for the security purposes
