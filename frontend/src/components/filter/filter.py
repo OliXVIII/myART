@@ -30,12 +30,13 @@ def get_artists_and_artworks():
             lines = f.readlines()
 
         # Extract the artist's name and art style from the database and print them to the console
+        filtre = []
         for line in lines:
             artist_name = line.split(';')[0]
             c.execute("SELECT art_style FROM artists WHERE name=?",
                       (artist_name,))
             art_style = c.fetchone()[0]
-            print(f"{artist_name} - {art_style}")
-
+            filtre.append(artist_name, art_style)
     finally:
         connection.close()
+        return filtre
