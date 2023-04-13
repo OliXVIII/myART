@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Header } from "./components/header/header";
 import { Homepage } from "./components/homepage/homepage";
-import ArtistList from "./components/ArtistList";
 
 function App() {
   const [data, setData] = useState({
@@ -11,7 +10,7 @@ function App() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/").then((res) =>
+    fetch("http://localhost:3001/").then((res) =>
       res.json().then((data) => {
         setData({
           title: data.title,
@@ -26,6 +25,7 @@ function App() {
       <Header />
       <Homepage />
         <ArtistList/>
+      <Filter />
     </div>
   );
 }
