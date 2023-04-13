@@ -1,3 +1,5 @@
+import uuid
+
 import pymysql
 
 connection = pymysql.connect(
@@ -115,6 +117,20 @@ def insertProduits(produits):
                 else:
                     print("Erreur lors de l'insertion des produits:", e)
 
+def insertClient(id, nom, email, mot_de_passe):
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("INSERT INTO clients(id, nom, email, mot_de_passe) VALUES (%s, %s, %s, %s)",
+                           (id, nom, email, mot_de_passe))
+            connection.commit()
+        except pymysql.err.IntegrityError as e:
+            if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
+                print(f"Erreur: L'email {email} existe déjà. Veuillez utiliser un email unique.")
+            else:
+                print("Erreur lors de l'insertion du client:", e)
+
+
+
 
 cursor = connection.cursor()
 
@@ -125,3 +141,4 @@ if __name__ == '__main__':
     insertArtistes(artistes)
     produits = createProduitsFromTxt("produitId.txt")
     insertProduits(produits)
+    insertClient(uuid.uuid4(),"Jean-Christophe Parent","jean-christophep@live.fr","lapin123")
