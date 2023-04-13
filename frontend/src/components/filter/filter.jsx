@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { categories, artistes } from '/Applications/photopython/UL/Session/H23/SQL/Projet/myART/frontend/src/components/filter/filter.py'
 
 export function Filter() {
   const [artists, setArtists] = useState([]);
   const [artworks, setArtworks] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/get_artists_and_artworks");
-      const data = await response.json();
-      setArtists(data.artists);
-      setArtworks(data.artworks);
-    }
-    fetchData();
+      setArtists(artistes);
+      setArtworks(categories);
   }, []);
 
   return (

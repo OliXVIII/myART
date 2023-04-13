@@ -4,8 +4,9 @@ import json
 import sqlite3
 
 app = Flask(__name__)
+import pymysql
 
-# Connexion à la base de données MySQL
+# Connectez-vous à la base de données
 connection = pymysql.connect(
     host='localhost',
     user='root',
@@ -15,28 +16,24 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
-# Point de terminaison pour récupérer les données pour les artistes et les oeuvres d'art
+categories = []
+artistes = []
 
-
-@app.route("/get_artists_and_artworks")
-def get_artists_and_artworks():
-    try:
-        # Connect to the database
-        conn = sqlite3.connect('art_database.db')
-        c = conn.cursor()
-
-        # Read the artiste.txt file
-        with open('artiste.txt', 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-
-        # Extract the artist's name and art style from the database and print them to the console
-        filtre = []
-        for line in lines:
-            artist_name = line.split(';')[0]
-            c.execute("SELECT art_style FROM artists WHERE name=?",
-                      (artist_name,))
-            art_style = c.fetchone()[0]
-            filtre.append(artist_name, art_style)
-    finally:
-        connection.close()
-        return filtre
+try:
+    with connection.cursor() as cursor:
+        # Sélectionnez tous les types d'oeuvres d'art dans la colonne "categorieId"
+        sql = "SELECT DISTINCT categorieId FROM nomDeLaTable;"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        for row in result:
+            categories.append(row['categorieId'])
+            
+        # Sélectionnez tous les artistes dans la colonne "artisteID"
+        sql = "SELECT DISTINCT artisteID FROM nomDeLaTable;"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        for row in result:
+            artistes.append(row['artisteID'])
+finally:
+    # Fermez la connexion à la base de données
+    connection.close()
