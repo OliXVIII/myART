@@ -3,7 +3,10 @@ import "./App.scss";
 import { Header } from "./components/header/header";
 import { Homepage } from "./components/homepage/homepage";
 import ArtistList from './components/ArtistList';
-import PaymentPage from './components/PaymentPage';
+import PaymentPage from './components/paiement/paymentPage.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+
 
 function App() {
   const [data, setData] = useState({
@@ -23,16 +26,16 @@ function App() {
   }, []);
 
   return (
-      <Router>
-        <div className="App">
-          <Header/>
-          <Switch>
-            <Route exact path="/" component={Homepage}/>
-            <Route path="/artistes" component={ArtistList}/>
-            <Route path="/paiement" component={PaymentPage}/>
-          </Switch>
-        </div>
-      </Router>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/artist-list" element={<ArtistList />} />
+          <Route path="/payment" element={<PaymentPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 export default App;
