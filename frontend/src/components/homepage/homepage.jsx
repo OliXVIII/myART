@@ -1,14 +1,30 @@
+import { useEffect, useState } from 'react';
 import './homepage.scss';
 
 const getAPI = async () => {
   const arts = await fetch('http://localhost:5000/arts');
   if (arts.ok) {
     const data = await arts.json();
+    console.log(data);
+    return data;
+  } else {
+    throw new Error(`Error retrieving data: ${arts.status} ${arts.statusText}`);
   }
 };
 
 export const Homepage = () => {
-  const arts = [];//getAPI();
+  const [arts, setArts] = useState([]);
+  useEffect(() => {
+    const fetchArts = async () => {
+      try {
+        const data = await getAPI();
+        setArts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchArts();
+  }, []);
 
   return (
     <div className="homepage">
