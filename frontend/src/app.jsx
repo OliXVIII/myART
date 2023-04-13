@@ -6,6 +6,7 @@ import ArtistList from './components/ArtistList';
 import PaymentPage from './components/paiement/paymentPage.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Art } from "./components/art_page/art";
+import { Filter } from "./components/filter/filter";
 
 
 
@@ -30,6 +31,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        <Filter />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/art/:id" element={<Art />} />

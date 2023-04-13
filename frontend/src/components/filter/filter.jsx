@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { categories, artistes } from '/Applications/photopython/UL/Session/H23/SQL/Projet/myART/frontend/src/components/filter/filter.py'
+import React, {useEffect, useState} from "react";
+import { get_categories, get_artistes } from "./filter.py";
+
+// Utilisez les fonctions pour obtenir les variables souhaitées
+const categories = get_categories();
+const artistes = get_artistes();
 
 export function Filter() {
   const [artists, setArtists] = useState([]);
