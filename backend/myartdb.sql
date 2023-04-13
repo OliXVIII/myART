@@ -138,6 +138,19 @@ END;
 //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE rechercher_produits(IN mot_recherche VARCHAR(255))
+BEGIN
+  SELECT *
+  FROM produits
+  WHERE nom LIKE CONCAT('%', mot_recherche, '%')
+  OR artiste_id IN (SELECT id FROM artistes WHERE nom LIKE CONCAT('%', mot_recherche, '%'));
+END;
+//
+DELIMITER ;
+
+
+
 
 SHOW TABLES;
 SELECT * FROM clients;
@@ -149,6 +162,7 @@ SELECT * FROM categories;
 CREATE INDEX idx_artistes_nom ON artistes(nom);
 
 SELECT * FROM produits WHERE artiste_id = (SELECT id FROM artistes WHERE nom LIKE '%Van Gogh%');
+CALL rechercher_produits('casso');
 
 
 

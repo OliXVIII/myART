@@ -6,7 +6,7 @@ from flask_cors import CORS
 from functools import wraps
 import os
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__, static_url_path='',static_folder='frontend/public')
 CORS(app)
 # app.secret_key = os.urandom(24)
 # Secret key is used for the security purposes
@@ -21,9 +21,11 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 
-@app.route("/", defaults={'path': ''})
-def serve(path):
-    return send_from_directory(app.static_folder, 'index.html')
+@app.route("/")
+def home():
+    return send_from_directory(app.static_folder, 'public/index.html')
+
+
 
 
 # @app.route('/art/<string:id>/')
