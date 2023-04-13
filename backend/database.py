@@ -119,6 +119,10 @@ def insertProduits(produits):
 cursor = connection.cursor()
 
 if __name__ == '__main__':
+    categories = createCategoriesFromTxt("backend/categorieId.txt")
+    insertCategories(categories)
+    artistes = createArtistsFromTxt("backend/artisteId.txt")
+    insertArtistes(artistes)
     produits = createProduitsFromTxt(
         "/Applications/photopython/UL/Session/H23/SQL/Projet/myART/backend/produitId.txt")
     insertProduits(produits)
