@@ -8,3 +8,4 @@ ff62bccb-30d1-4a5f-bf85-0fd86ab90275;Art moderne;L'art moderne est une catégori
 16726262-fe4d-4718-8a88-455ae33231ea;Art contemporain;L'art contemporain est une catégorie d'art qui se réfère à l'art créé depuis les années 1960 jusqu'à aujourd'hui.
 7e693970-ab19-4d47-8370-3514bc31fd12;Art de performance;L'art de performance est une catégorie d'art contemporain qui utilise le corps humain comme moyen d'expression artistique, souvent en combinaison avec d'autres médias tels que la vidéo et la musique.
 a429a92c-e91e-4b0a-8fff-c028479099ae;Art politique;L'art politique est une catégorie d'art qui utilise l'expression artistique pour commenter ou critiquer les problèmes sociaux, politiques et culturels.
+89b07c49-308c-40f7-87e3-ebdea92f573f;Art murale;L'art mural, également appelé art de la fresque, est une catégorie d'art qui consiste en la réalisation d'œuvres d'art directement sur des murs ou des surfaces murales.
