@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment} from "react";
 import "./homepage.scss";
 import { Link } from "react-router-dom";
+import Filter from "../filter/filter";
 
 const getAPI = async () => {
   const arts = await fetch("http://127.0.0.1:5000/arts");
@@ -28,23 +29,26 @@ export const Homepage = () => {
   }, []);
 
   return (
-    <div className="homepage">
-      {arts.map((art, i) => (
-        <div className={i % 2 ? "art" : "art art-impair"} key={art.id}>
-          <img className="art-image" src={art.image_url} alt={art.nom} />
-          <div className="art-info">
-            <h2>{art.nom}</h2>
-            <p>{art.description}</p>
-            <Link
-              className="learn-more"
-              to={{ pathname: `/art/${art.id}` }}
-              state={{ art: art }}
-            >
-              Découvrez cet article
-            </Link>
+    <Fragment>
+      <Filter />
+      <div className="homepage">
+        {arts.map((art, i) => (
+          <div className={i % 2 ? "art" : "art art-impair"} key={art.id}>
+            <img className="art-image" src={art.image_url} alt={art.nom} />
+            <div className="art-info">
+              <h2>{art.nom}</h2>
+              <p>{art.description}</p>
+              <Link
+                className="learn-more"
+                to={{ pathname: `/art/${art.id}` }}
+                state={{ art: art }}
+              >
+                Découvrez cet article
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Fragment>
   );
 }
