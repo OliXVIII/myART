@@ -8,9 +8,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Filter } from "./components/filter/filter.jsx";
 import { Art } from "./components/art_page/art.jsx";
 import { SignUp } from './components/SignUp/SignUp.jsx';
-
-
-
+import { Artists } from "./components/artist/artist";
+import { ArtistDetails } from "./components/ArtistDetails/ArtistDetails";
 
 function App() {
   const [data, setData] = useState({
@@ -25,7 +24,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/art/:id" element={<Art />} />
-          <Route path="/artists" element={<ArtistList />} />
+          <Route path="/artists" element={<Artists />} />
+          <Route path="/artist/:artistId" component={ArtistDetails} />
           <Route path="/checkout" element={<PaymentPage />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>

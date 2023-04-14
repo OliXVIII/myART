@@ -119,6 +119,21 @@ def create_new_client():
         abort(400, "Impossible de créer le client. Vérifiez les données et réessayez.")
 
 
+@app.route('/artist/<string:artist_id>', methods=['GET'])
+def get_artist(artist_id):
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    cursor.execute('SELECT * FROM artistes WHERE id = %s', (artist_id,))
+    artist = cursor.fetchone()
+
+    cursor.close()
+
+    if artist is None:
+        abort(404)
+
+    return jsonify(artist)
+
+
 def create_client(nom, email, mot_de_passe):
     with connection.cursor() as cursor:
         try:
@@ -135,6 +150,21 @@ def create_client(nom, email, mot_de_passe):
             else:
                 print("Erreur lors de l'insertion du client:", e)
                 return None
+
+@app.route('/artists', methods=['GET'])
+def get_artists():
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    cursor.execute("""
+        SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
+        FROM artistes
+        LEFT JOIN produits ON artistes.id = produits.artiste_id
+        GROUP BY artistes.id""")
+
+    artists = cursor.fetchall()
+    cursor.close()
+
+    return jsonify(artists)
 
 
 if __name__ == '__main__':
