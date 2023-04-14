@@ -13,8 +13,8 @@ export const Header = () => {
           <h2 className="header-logo-text">MyArt</h2>
         </div>
         <div className="header-nav">
-          <a className="header-nav-item">Gallerie</a>
-          <a className="header-nav-item">Artistes</a>
+          <a href="/" className="header-nav-item">Gallerie</a>
+          <a href="/artists" className="header-nav-item">Artistes</a>
           <a className="header-nav-item">Boutique</a>
           <a className="panier-logo">
             <img
@@ -25,8 +25,8 @@ export const Header = () => {
         </div>
         <div className="header-user">
           <ul>
-            <li className="header-user-item">S'inscrire</li>
-            <li className="header-user-item">Se connecter</li>
+            <li className="header-user-item"><a href="/sign-up">S'inscrire</a></li>
+            <li className="header-user-item"><a href="/login">Se connecter</a></li>
           </ul>
         </div>
       </div>

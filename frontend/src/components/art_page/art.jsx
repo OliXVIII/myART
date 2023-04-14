@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import "./art.scss";
 
 const getArt = async () => {
   const artId = window.location.pathname.split("/")[2];
@@ -33,16 +34,18 @@ export const Art = () => {
 
   return (
     <div className="art">
+      <h1 className="art-title">{art.nom}</h1>
       <div className="art__image">
         <img src={art.image_url} alt={art.title} />
       </div>
       <div className="art__info">
-        <h1>{art.nom}</h1>
+        
         <p>{art.description}</p>
-        <p>{art.quantite}</p>
+        <p>Examplaire: {art.quantite}</p>
         <div className="art__info__price">
-          <p>{art.price}</p>
+          <p>Prix: {art.prix}</p>
         </div>
+        <a className="art-acheter" href="/checkout">Acheter</a>
       </div>
     </div>
   );

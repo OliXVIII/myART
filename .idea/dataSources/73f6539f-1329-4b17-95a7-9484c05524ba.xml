@@ -1268,8 +1268,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <UnderlyingIndexName>nom</UnderlyingIndexName>
     </key>
     <column id="352" parent="308" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int|0s</DasType>
+      <DasType>varchar(36)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
@@ -1313,7 +1312,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
     </column>
     <column id="361" parent="309" name="client_id">
-      <DasType>int|0s</DasType>
+      <DasType>varchar(36)|0s</DasType>
       <Position>2</Position>
     </column>
     <column id="362" parent="309" name="adresse_id">
@@ -1374,7 +1373,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>2</Position>
     </column>
     <column id="373" parent="310" name="id_client">
-      <DasType>int|0s</DasType>
+      <DasType>varchar(36)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
@@ -1504,7 +1503,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
     </column>
     <column id="399" parent="313" name="client_id">
-      <DasType>int|0s</DasType>
+      <DasType>varchar(36)|0s</DasType>
       <Position>2</Position>
     </column>
     <foreign-key id="400" parent="313" name="paniers_ibfk_1">

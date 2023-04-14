@@ -32,8 +32,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />, <Filter />} />
           <Route path="/art/:id" element={<Art />} />
-          <Route path="/artist-list" element={<ArtistList />} />
-          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/artists" element={<ArtistList />} />
+          <Route path="/checkout" element={<PaymentPage />} />
         </Routes>
       </div>
     </Router>
