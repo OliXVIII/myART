@@ -55,6 +55,14 @@ export const Homepage = () => {
           </div>
         </div>
       ))}
+      {arts.length === 0 && (
+        <Fragment>
+          <h2>Aucun article trouvé</h2>
+          <p style={{ textAlign: "center" }}>
+            Nous n'avons pas trouvé d'article correspondant à votre recherche.
+          </p>
+        </Fragment>
+      )}
     </div>
   );
 };
