@@ -18,10 +18,10 @@ def createArtistsFromTxt(filePath):
             if not line.strip():  # Ignore les lignes vides
                 continue
             try:
-                id, nom, nationalite, description, dateDeNaissance = line.strip().split(
+                id, nom, nationalite, description, dateDeNaissance, url_img = line.strip().split(
                     ';')  # Utilise le séparateur ';'
                 artistes.append(
-                    (id, nom, nationalite, dateDeNaissance, description))
+                    (id, nom, nationalite, dateDeNaissance, description, url_img))
             except ValueError as e:
                 print(
                     f"Erreur lors du traitement de la ligne : {line.strip()}")
@@ -89,10 +89,10 @@ def insertCategories(categories):
 def insertArtistes(artistes):
     with connection.cursor() as cursor:
         for artiste in artistes:
-            id, nom, nationalite, anneeDeNaissance, bibliographie = artiste
+            id, nom, nationalite, anneeDeNaissance, bibliographie, url_img = artiste
             try:
-                cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie) VALUES (%s, %s, %s, %s, %s)", (
-                    id, nom, nationalite, anneeDeNaissance, bibliographie))
+                cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie,url_img) VALUES (%s, %s, %s, %s, %s, %s)", (
+                    id, nom, nationalite, anneeDeNaissance, bibliographie, url_img))
                 connection.commit()
             except pymysql.err.IntegrityError as e:
                 if e.args[0] == 1062:  # Code d'erreur pour les entrées en double

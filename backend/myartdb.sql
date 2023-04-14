@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS artistes(
     nationalite VARCHAR(255) NOT NULL,
     anneeDeNaissance DATE,
     bibliographie text,
+    url_img varchar(255),
     UNIQUE (id),
     UNIQUE (nom)
 );
