@@ -20,9 +20,12 @@ export const Header = () => {
           <h2 className="header-logo-text">MyArt</h2>
         </a>
         <div className="header-nav">
-          <a href="/" className="header-nav-item">Gallerie</a>
-          <a href="/artists" className="header-nav-item">Artistes</a>
-          <a className="header-nav-item">Boutique</a>
+          <a href="/" className="header-nav-item">
+            Gallerie
+          </a>
+          <a href="/artists" className="header-nav-item">
+            Artistes
+          </a>
           <a href="/checkout" className="panier-logo">
             <img
               src="https://previews.123rf.com/images/jongjet303/jongjet3031703/jongjet303170300058/73541589-aperçu-de-l-icône-du-panier-icône-pour-la-conception-du-site-web-logo.jpg"
@@ -33,8 +36,12 @@ export const Header = () => {
         </div>
         <div className="header-user">
           <ul>
-            <li className="header-user-item"><a href="/sign-up">S'inscrire</a></li>
-            <li className="header-user-item"><a href="/login">Se connecter</a></li>
+            <li className="header-user-item">
+              <a href="/sign-up">S'inscrire</a>
+            </li>
+            <li className="header-user-item">
+              <a href="/login">Se connecter</a>
+            </li>
           </ul>
         </div>
       </div>

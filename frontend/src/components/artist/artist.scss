@@ -1,4 +1,4 @@
-.artists {
+.artist {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,10 +28,14 @@
     li {
       padding: 10px;
       font-size: 1.1rem;
-      border-bottom: 1px solid #ccc;
+      border: 1px solid #ccc;
 
       &:last-child {
         border-bottom: none;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
       }
     }
   }

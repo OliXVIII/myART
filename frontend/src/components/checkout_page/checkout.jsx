@@ -31,7 +31,7 @@ export const Checkout= () => {
         {cartItems.map((art, index) => (
           <div key={index} className='checkout-item'><div className='checkout-item-left'><img src={art.image_url}></img><p>{art.nom} - ${art.prix}</p></div><button onClick={() => handleRemoveFromCart(art)}>Supprimer l'article</button></div>
         ))}
-        <button className='checkout-button'>Payer</button>
+        <button className='checkout-button'>Payer avec des jetons magiques</button>
     </div>
   );
 }
