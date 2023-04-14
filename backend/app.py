@@ -60,9 +60,21 @@ def get_arts():
 
 @app.route('/art/<string:product_id>', methods=['GET'])
 def get_product(product_id):
+    include_category = request.args.get('includeCategory', None) == 'true'
+
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
-    cursor.execute('SELECT * FROM produits WHERE id = %s', (product_id,))
+    if include_category:
+        query = """
+        SELECT produits.*, categories.nom as categorie_nom, categories.description as categorie_description
+        FROM produits
+        LEFT JOIN categories ON produits.categorie_id = categories.id
+        WHERE produits.id = %s
+        """
+    else:
+        query = 'SELECT * FROM produits WHERE id = %s'
+
+    cursor.execute(query, (product_id,))
     art = cursor.fetchone()
 
     cursor.close()
