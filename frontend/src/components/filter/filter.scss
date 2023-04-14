@@ -1,11 +1,49 @@
 .objet-filtre {
-    background-color: #ffff00;
+  background-color: #ffff00;
 }
 
 .filtre {
-    position: absolute;
-    left: 20%;
-    top: 5rem;
+  display: block;
+  position: fixed;
+  z-index: 100;
+
+  .filtre-listt {
     display: flex;
-    
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0;
+  }
+  button {
+    width: 200px;
+  }
+  ul {
+    width: 200px;
+    margin: 0;
+    background-color: #fff;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid #d5d9d9;
+    border-radius: 5px;
+    li {
+      padding: 0 10px 0 11px;
+      font-size: 1.1rem;
+      border: 1px solid #ccc;
+      cursor: pointer;
+
+      &:last-child {
+        border-bottom: none;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
 }

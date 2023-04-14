@@ -33,56 +33,29 @@ mysql = MySQL(app)
 
 @app.route('/arts', methods=['GET'])
 def get_arts():
+    categorie_id = request.args.get('categorie_id', None)
+
     cursor = connection.cursor(pymysql.cursors.DictCursor)
+    query = 'SELECT * FROM produits'
 
-    # Execute your SQL query
-    cursor.execute('SELECT * FROM produits')
+    try:
+        if categorie_id:
+            query += ' WHERE categorie_id = %s'
+            cursor.execute(query, (categorie_id,))
+        else:
+            cursor.execute(query)
+        arts = cursor.fetchall()
+        cursor.execute('SELECT * FROM categories')
+        categories = cursor.fetchall()
+        cursor.close()
+    except Exception as e:
+        cursor.close()
+        abort(500, description=str(e))
 
-    # Fetch all rows as a list of dictionaries
-    arts = cursor.fetchall()
+    if arts is None:
+        abort(404)
 
-    # Close the connection and cursor
-    cursor.close()
-
-    return jsonify(arts)
-
-
-# @app.route('/dist_artistes', methods=['GET'])
-# def get_artistes():
-#     cursor = connection.cursor(pymysql.cursors.DictCursor)
-
-#     # Execute your SQL query
-#     cursor.execute('SELECT DISTINCT * FROM artistes')
-
-#     # Fetch all rows as a list of dictionaries
-#     artistes = cursor.fetchall()
-
-#     # Close the connection and cursor
-#     cursor.close()
-
-#     if artistes is None:
-#         abort(404)
-
-#     return jsonify(artistes)
-
-
-# @app.route('/dist_categories', methods=['GET'])
-# def get_categories():
-#     cursor = connection.cursor(pymysql.cursors.DictCursor)
-
-#     # Execute your SQL query
-#     cursor.execute('SELECT DISTINCT nom FROM categories')
-
-#     # Fetch all rows as a list of dictionaries
-#     categories = cursor.fetchall()
-
-#     # Close the connection and cursor
-#     cursor.close()
-
-#     if categories is None:
-#         abort(404)
-
-#     return jsonify(categories)
+    return jsonify({"arts": arts, "categories": categories})
 
 
 @app.route('/art/<string:product_id>', methods=['GET'])
@@ -150,6 +123,7 @@ def create_client(nom, email, mot_de_passe):
             else:
                 print("Erreur lors de l'insertion du client:", e)
                 return None
+
 
 @app.route('/artists', methods=['GET'])
 def get_artists():
