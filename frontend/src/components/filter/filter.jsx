@@ -1,37 +1,52 @@
 import React, { useState, useEffect } from "react";
-import { categories, artistes } from '/Applications/photopython/UL/Session/H23/SQL/Projet/myART/frontend/src/components/filter/filter.py'
+import "./filter.scss";
 
-export function Filter() {
-  const [artists, setArtists] = useState([]);
-  const [artworks, setArtworks] = useState([]);
+const getAPI = async () => {
+  const artistes = await fetch("http://127.0.0.1:5000/dist_artistes");
+  const categories = await fetch("http://127.0.0.1:5000/dist_categories");
+  if (artistes.ok && categories.ok) {
+    const data = await artistes.json();
+    const dataC = await categories.json();
+    console.log(data, dataC);
+    return [data, dataC]; // return an array of the fetched data
+  } else {
+    throw new Error(`Error retrieving data: ${artistes.status} ${artistes.statusText} or ${categories.status} ${categories.statusText}`);
+  }
+};
 
+export const Filter = () => {
+  const [artistes, setArtistes] = useState([]);
+  const [categories, setCategories] = useState([]);
+  
   useEffect(() => {
-      setArtists(artistes);
-      setArtworks(categories);
+    const fetchData = async () => {
+      try {
+        const [data, dataC] = await getAPI(); // destructure the returned array
+        setArtistes(data);
+        setCategories(dataC);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
-    <div className="filter-section">
-      <div className="filter-group">
-        <label htmlFor="artist-filter">Artiste</label>
-        <select id="artist-filter">
-          {artists.map((artist) => (
-            <option key={artist.artist} value={artist.artist}>
-              {artist.artist}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="filter-group">
-        <label htmlFor="artwork-filter">Oeuvre d'art</label>
-        <select id="artwork-filter">
-          {artworks.map((artwork) => (
-            <option key={artwork.artwork} value={artwork.artwork}>
-              {artwork.artwork}
-            </option>
-          ))}
-        </select>
-      </div>
+    <div className="filtre">
+      <ul className="objet-fitre">
+        Artistes
+        {artistes.map((artiste) => (
+          <li key={artiste.id}>{artiste.name}</li>
+        ))}
+      </ul>
+      <ul className="objet-fitre">
+        Categories
+        {categories.map((category) => (
+          <li key={category.id}>{category.name}</li>
+        ))}
+      </ul>
     </div>
   );
-}
+};
+
+export default Filter;

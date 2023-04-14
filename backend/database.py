@@ -3,7 +3,7 @@ import pymysql
 connection = pymysql.connect(
     host="localhost",
     user="root",
-    password="root",
+    password="Oli$2plate",
     db="baseDeDonnees",
     autocommit=True
 )
@@ -119,9 +119,9 @@ def insertProduits(produits):
 cursor = connection.cursor()
 
 if __name__ == '__main__':
-    categories = createCategoriesFromTxt("categorieId.txt")
+    categories = createCategoriesFromTxt("backend/categorieId.txt")
     insertCategories(categories)
-    artistes = createArtistsFromTxt("artisteId.txt")
+    artistes = createArtistsFromTxt("backend/artisteId.txt")
     insertArtistes(artistes)
-    produits = createProduitsFromTxt("produitId.txt")
+    produits = createProduitsFromTxt("backend/produitId.txt")
     insertProduits(produits)

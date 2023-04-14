@@ -15,7 +15,7 @@ CORS(app)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'Oli$2plate'
 app.config['MYSQL_DB'] = 'baseDeDonnees'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -51,15 +51,31 @@ def get_arts():
     return jsonify(arts)
 
 
-@app.route('/artistes', methods=['GET'])
-def get_artists():
+@app.route('/dist_artistes', methods=['GET'])
+def get_artistes():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
     # Execute your SQL query
-    cursor.execute('SELECT * FROM artistes')
+    cursor.execute('SELECT DISTINCT nom FROM artistes')
 
     # Fetch all rows as a list of dictionaries
     artistes = cursor.fetchall()
+
+    # Close the connection and cursor
+    cursor.close()
+
+    return jsonify(artistes)
+
+
+@app.route('/dist_categories', methods=['GET'])
+def get_categories():
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+
+    # Execute your SQL query
+    cursor.execute('SELECT DISTINCT nom FROM categories')
+
+    # Fetch all rows as a list of dictionaries
+    categories = cursor.fetchall()
 
     # Close the connection and cursor
     cursor.close()

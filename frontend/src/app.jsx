@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Header } from "./components/header/header";
 import { Homepage } from "./components/homepage/homepage";
-import ArtistList from './components/ArtistList';
-import PaymentPage from './components/paiement/paymentPage.jsx';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Art } from "./components/art_page/art";
-
-
+import ArtistList from "./components/ArtistList";
+import PaymentPage from "./components/paiement/paymentPage.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Filter } from "./components/filter/filter.jsx";
+import { Art } from "./components/art_page/art.jsx";
 
 function App() {
   const [data, setData] = useState({
@@ -17,12 +16,12 @@ function App() {
 
   useEffect(() => {
     fetch("http://localhost:3001/").then((res) =>
-        res.json().then((data) => {
-          setData({
-            title: data.title,
-            description: data.description,
-          });
-        })
+      res.json().then((data) => {
+        setData({
+          title: data.title,
+          description: data.description,
+        });
+      })
     );
   }, []);
 
@@ -31,7 +30,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Homepage />, <Filter />} />
           <Route path="/art/:id" element={<Art />} />
           <Route path="/artist-list" element={<ArtistList />} />
           <Route path="/payment" element={<PaymentPage />} />

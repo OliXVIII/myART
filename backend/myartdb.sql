@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS paniers (
   client_id INT,
   FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
 );
-/*Si on supprime un clients on supprime tous les commandes qu'il a fait*/
+/*Si on supprime un clients on supprime tous les commandes quil a fait*/
 CREATE TABLE IF NOT EXISTS commandes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     client_id INT,
@@ -158,7 +158,7 @@ SELECT * FROM artistes;
 SELECT * FROM produits;
 SELECT * FROM categories;
 
-/*Index sur les objets d'art fait par les artistes*/
+/*Index sur les objets dart fait par les artistes*/
 CREATE INDEX idx_artistes_nom ON artistes(nom);
 
 SELECT * FROM produits WHERE artiste_id = (SELECT id FROM artistes WHERE nom LIKE '%Van Gogh%');
