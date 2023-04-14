@@ -9,3 +9,5 @@ ff62bccb-30d1-4a5f-bf85-0fd86ab90275;Art moderne;L'art moderne est une catégori
 7e693970-ab19-4d47-8370-3514bc31fd12;Art de performance;L'art de performance est une catégorie d'art contemporain qui utilise le corps humain comme moyen d'expression artistique, souvent en combinaison avec d'autres médias tels que la vidéo et la musique.
 a429a92c-e91e-4b0a-8fff-c028479099ae;Art politique;L'art politique est une catégorie d'art qui utilise l'expression artistique pour commenter ou critiquer les problèmes sociaux, politiques et culturels.
 89b07c49-308c-40f7-87e3-ebdea92f573f;Art murale;L'art mural, également appelé art de la fresque, est une catégorie d'art qui consiste en la réalisation d'œuvres d'art directement sur des murs ou des surfaces murales.
+3d3c8e05-b9e0-4919-affa-b258d99f446f;Art baroque;L'art baroque est un style artistique qui a émergé en Europe au début du XVIIe siècle et qui se caractérise par l'utilisation de l'émotion, de la grandeur et de la dramatisation dans la représentation artistique.
+06856aaf-f807-467e-89f1-7b6cabd15688;Art documentaire;L'art documentaire est une forme d'art contemporain qui se concentre sur la documentation de la réalité.
