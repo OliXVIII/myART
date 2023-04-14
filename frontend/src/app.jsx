@@ -7,6 +7,10 @@ import PaymentPage from "./components/paiement/paymentPage.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Filter } from "./components/filter/filter.jsx";
 import { Art } from "./components/art_page/art.jsx";
+import { SignUp } from './components/SignUp/SignUp.jsx';
+
+
+
 
 function App() {
   const [data, setData] = useState({
@@ -23,6 +27,7 @@ function App() {
           <Route path="/art/:id" element={<Art />} />
           <Route path="/artists" element={<ArtistList />} />
           <Route path="/checkout" element={<PaymentPage />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </div>
     </Router>

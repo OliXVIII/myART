@@ -9,7 +9,7 @@ from database import connection
 from functools import wraps
 
 app = Flask(__name__, static_url_path='', static_folder='frontend/public')
-CORS(app)
+CORS(app, resources={r'*': {'origins': '*'}})
 # app.secret_key = os.urandom(24)
 # Secret key is used for the security purposes
 
