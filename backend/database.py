@@ -5,7 +5,7 @@ import pymysql
 connection = pymysql.connect(
     host="localhost",
     user="root",
-    password="Oli$2plate",
+    password="root",
     db="baseDeDonnees",
     autocommit=True
 )
@@ -117,6 +117,7 @@ def insertProduits(produits):
                 else:
                     print("Erreur lors de l'insertion des produits:", e)
 
+
 def insertClient(id, nom, email, mot_de_passe):
     with connection.cursor() as cursor:
         try:
@@ -125,20 +126,20 @@ def insertClient(id, nom, email, mot_de_passe):
             connection.commit()
         except pymysql.err.IntegrityError as e:
             if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
-                print(f"Erreur: L'email {email} existe déjà. Veuillez utiliser un email unique.")
+                print(
+                    f"Erreur: L'email {email} existe déjà. Veuillez utiliser un email unique.")
             else:
                 print("Erreur lors de l'insertion du client:", e)
-
-
 
 
 cursor = connection.cursor()
 
 if __name__ == '__main__':
-    categories = createCategoriesFromTxt("backend/categorieId.txt")
+    categories = createCategoriesFromTxt("./categorieId.txt")
     insertCategories(categories)
-    artistes = createArtistsFromTxt("backend/artisteId.txt")
+    artistes = createArtistsFromTxt("./artisteId.txt")
     insertArtistes(artistes)
-    produits = createProduitsFromTxt("backend/produitId.txt")
+    produits = createProduitsFromTxt("./produitId.txt")
     insertProduits(produits)
-    insertClient(uuid.uuid4(),"Jean-Christophe Parent","jean-christophep@live.fr","lapin123")
+    insertClient(uuid.uuid4(), "Jean-Christophe Parent",
+                 "jean-christophep@live.fr", "lapin123")

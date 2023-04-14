@@ -16,16 +16,11 @@ CORS(app)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Oli$2plate'
+app.config['MYSQL_PASSWORD'] = 'root'
 app.config['MYSQL_DB'] = 'baseDeDonnees'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 mysql = MySQL(app)
-
-
-@app.route("/")
-def home():
-    return send_from_directory(app.static_folder, 'public/index.html')
 
 
 # @app.route('/art/<string:id>/')
@@ -52,42 +47,42 @@ def get_arts():
     return jsonify(arts)
 
 
-@app.route('/dist_artistes', methods=['GET'])
-def get_artistes():
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
+# @app.route('/dist_artistes', methods=['GET'])
+# def get_artistes():
+#     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
-    # Execute your SQL query
-    cursor.execute('SELECT DISTINCT * FROM artistes')
+#     # Execute your SQL query
+#     cursor.execute('SELECT DISTINCT * FROM artistes')
 
-    # Fetch all rows as a list of dictionaries
-    artistes = cursor.fetchall()
+#     # Fetch all rows as a list of dictionaries
+#     artistes = cursor.fetchall()
 
-    # Close the connection and cursor
-    cursor.close()
+#     # Close the connection and cursor
+#     cursor.close()
 
-    if artistes is None:
-        abort(404)
+#     if artistes is None:
+#         abort(404)
 
-    return jsonify(artistes)
+#     return jsonify(artistes)
 
 
-@app.route('/dist_categories', methods=['GET'])
-def get_categories():
-    cursor = connection.cursor(pymysql.cursors.DictCursor)
+# @app.route('/dist_categories', methods=['GET'])
+# def get_categories():
+#     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
-    # Execute your SQL query
-    cursor.execute('SELECT DISTINCT nom FROM categories')
+#     # Execute your SQL query
+#     cursor.execute('SELECT DISTINCT nom FROM categories')
 
-    # Fetch all rows as a list of dictionaries
-    categories = cursor.fetchall()
+#     # Fetch all rows as a list of dictionaries
+#     categories = cursor.fetchall()
 
-    # Close the connection and cursor
-    cursor.close()
+#     # Close the connection and cursor
+#     cursor.close()
 
-    if categories is None:
-        abort(404)
+#     if categories is None:
+#         abort(404)
 
-    return jsonify(categories)
+#     return jsonify(categories)
 
 
 @app.route('/art/<string:product_id>', methods=['GET'])
