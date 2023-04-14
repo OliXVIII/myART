@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Artists.module.scss";
 import { Link } from "react-router-dom";
-
-
+import "./artist.scss";
 const Artists = () => {
   const [artists, setArtists] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +20,7 @@ const Artists = () => {
   );
 
   return (
-        <div className={styles.artists}>
+    <div className="artist">
       <h1>Liste des artistes</h1>
       <input
         type="text"
@@ -33,7 +31,7 @@ const Artists = () => {
       <ul>
         {filteredArtists.map((artist) => (
           <li key={artist.id}>
-            <Link to={`/artist/${artist.id}`}>
+            <Link to={`/artist/${artist.id}`} state={{ artist: artist }}>
               {artist.nom} - {artist.nb_produits} produit(s)
             </Link>
           </li>
