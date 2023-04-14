@@ -66,31 +66,17 @@
       justify-content: center;
       padding-bottom: 20px;
       position: relative;
-      .art-info-left-img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
-      .art-info-left-name {
-        font-size: 16px;
-        font-weight: 600;
-      }
       .learn-more {
         position: absolute;
         bottom: 5px;
         right: 5px;
-        padding: 3px;
-        border-radius: 5px;
-        border: 1px solid black;
         text-decoration: none;
-        color: black;
       }
     }
     .art-image {
-      width: 50%;
+      width: 45%;
       font-size: 14px;
-      color: #999;
+      padding: 2.5%;
     }
   }
   .art-impair {

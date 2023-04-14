@@ -3,11 +3,11 @@ import "./App.scss";
 import { Header } from "./components/header/header";
 import { Homepage } from "./components/homepage/homepage";
 import ArtistList from "./components/ArtistList";
-import PaymentPage from "./components/paiement/paymentPage.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Filter } from "./components/filter/filter.jsx";
 import { Art } from "./components/art_page/art.jsx";
 import { SignUp } from './components/SignUp/SignUp.jsx';
+import { Checkout } from "./components/checkout_page/checkout";
 
 
 
@@ -26,7 +26,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/art/:id" element={<Art />} />
           <Route path="/artists" element={<ArtistList />} />
-          <Route path="/checkout" element={<PaymentPage />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </div>

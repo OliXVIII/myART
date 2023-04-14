@@ -14,6 +14,15 @@ const getArt = async () => {
   }
 };
 
+const addItemToLocalStorage = (item) => {
+  const items = JSON.parse(localStorage.getItem("myArt_items")) || [];
+  if (!items.find((i) => i.id === item.id)) {
+      items.push(item);
+      localStorage.setItem("myArt_items", JSON.stringify(items));
+  }
+
+}
+
 
 export const Art = () => {
   let { state } = useLocation();
@@ -32,8 +41,13 @@ export const Art = () => {
     }
   }, []);
 
+  const handleAddToCart = () => {
+    addItemToLocalStorage(art);
+  };
+
+
   return (
-    <div className="art">
+    <div className="art-page">
       <h1 className="art-title">{art.nom}</h1>
       <div className="art__image">
         <img src={art.image_url} alt={art.title} />
@@ -45,7 +59,7 @@ export const Art = () => {
         <div className="art__info__price">
           <p>Prix: {art.prix}</p>
         </div>
-        <a className="art-acheter" href="/checkout">Acheter</a>
+        <a onClick={handleAddToCart} className="art-acheter button" href="/checkout">Acheter</a>
       </div>
     </div>
   );

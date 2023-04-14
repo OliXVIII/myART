@@ -39,7 +39,7 @@ export const Homepage = () => {
               <h2>{art.nom}</h2>
               <p>{art.description}</p>
               <Link
-                className="learn-more"
+                className="learn-more button"
                 to={{ pathname: `/art/${art.id}` }}
                 state={{ art: art }}
               >

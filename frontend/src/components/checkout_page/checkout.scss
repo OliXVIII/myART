@@ -1,0 +1,33 @@
+.checkout {
+  margin: 4rem auto 0;
+
+  .checkout-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    border-bottom: 1px solid darkgrey;
+    font-size: 20px;
+    @media (max-width: 768px) {
+      padding: 15px 5px;
+      font-size: 16px;
+    }
+    @media (min-width: 768px) {
+      font-size: 16px;
+      padding: 15px 20px;
+    }
+    img {
+      height: 80px;
+      width: 80px;
+      margin-right: 20px;
+    }
+    .checkout-item-left {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .checkout-button {
+    margin-top: 30px;
+    padding: 2px 30px 2px 33px;
+  }
+}
