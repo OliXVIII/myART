@@ -7,13 +7,17 @@ import PaymentPage from "./components/paiement/paymentPage.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Filter } from "./components/filter/filter.jsx";
 import { Art } from "./components/art_page/art.jsx";
+import { SignUp } from './components/SignUp/SignUp.jsx';
+
+
+
 
 function App() {
   const [data, setData] = useState({
     title: "",
     description: "",
   });
-
+/*
   useEffect(() => {
     fetch("http://localhost:3001/").then((res) =>
       res.json().then((data) => {
@@ -23,7 +27,7 @@ function App() {
         });
       })
     );
-  }, []);
+  }, []);*/
 
   return (
     <Router>
@@ -34,6 +38,7 @@ function App() {
           <Route path="/art/:id" element={<Art />} />
           <Route path="/artists" element={<ArtistList />} />
           <Route path="/checkout" element={<PaymentPage />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </div>
     </Router>
