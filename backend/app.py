@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, jsonify,request,abort
+from flask import Flask, render_template, send_from_directory, jsonify, request, abort
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 import pymysql
@@ -57,13 +57,16 @@ def get_artistes():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
     # Execute your SQL query
-    cursor.execute('SELECT DISTINCT nom FROM artistes')
+    cursor.execute('SELECT DISTINCT * FROM artistes')
 
     # Fetch all rows as a list of dictionaries
     artistes = cursor.fetchall()
 
     # Close the connection and cursor
     cursor.close()
+
+    if artistes is None:
+        abort(404)
 
     return jsonify(artistes)
 
@@ -81,7 +84,10 @@ def get_categories():
     # Close the connection and cursor
     cursor.close()
 
-    return jsonify(artistes)
+    if categories is None:
+        abort(404)
+
+    return jsonify(categories)
 
 
 @app.route('/art/<string:product_id>', methods=['GET'])
@@ -97,6 +103,7 @@ def get_product(product_id):
         abort(404)
 
     return jsonify(art)
+
 
 @app.route('/clients', methods=['POST'])
 def create_new_client():
@@ -127,7 +134,8 @@ def create_client(nom, email, mot_de_passe):
             return client_id
         except pymysql.err.IntegrityError as e:
             if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
-                print(f"Erreur: L'email {email} existe déjà. Veuillez utiliser un email unique.")
+                print(
+                    f"Erreur: L'email {email} existe déjà. Veuillez utiliser un email unique.")
                 return None
             else:
                 print("Erreur lors de l'insertion du client:", e)
