@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import "./artist-details.scss";
 
 const ArtistDetails = () => {
@@ -38,7 +38,9 @@ const ArtistDetails = () => {
       <div className="artist-details-list">
         {products.map((product, i) => (
           <div key={i}>
-            <a href={`/art/${product["p.id"]}`}>{product["p.nom"]}</a>
+            <Link to={`/art/${product["p.id"]}`} state={{ art: product }}>
+              {product["p.nom"]}
+            </Link>
             <img src={product.image_url}></img>
           </div>
         ))}

@@ -31,32 +31,47 @@ mysql = MySQL(app)
 #     return render_template("single_art.html", post=post)
 
 
-@app.route('/arts', methods=['GET'])
-def get_arts():
-    categorie_id = request.args.get('categorie_id', None)
-
+@app.route('/arts', methods=['GET', 'DELETE'])
+def arts():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
-    query = 'SELECT p.*, c.nom, a.nom FROM produits p JOIN categories c ON p.categorie_id = c.id JOIN artistes a ON p.artiste_id = a.id '
 
-    try:
-        if categorie_id:
-            query += ' WHERE categorie_id = %s '
+    if request.method == 'GET':
+        categorie_id = request.args.get('categorie_id', None)
+        query = 'SELECT p.*, c.nom, a.nom FROM produits p JOIN categories c ON p.categorie_id = c.id JOIN artistes a ON p.artiste_id = a.id '
 
-            cursor.execute(query, (categorie_id,))
-        else:
-            cursor.execute(query)
-        arts = cursor.fetchall()
-        cursor.execute('SELECT * FROM categories')
-        categories = cursor.fetchall()
+        try:
+            if categorie_id:
+                query += ' WHERE categorie_id = %s '
+
+                cursor.execute(query, (categorie_id,))
+            else:
+                cursor.execute(query)
+            arts = cursor.fetchall()
+            cursor.execute('SELECT * FROM categories')
+            categories = cursor.fetchall()
+            cursor.close()
+        except Exception as e:
+            cursor.close()
+            abort(500, description=str(e))
+
+        if arts is None:
+            abort(404)
+
+        return jsonify({"arts": arts, "categories": categories})
+
+    elif request.method == 'DELETE':
+        productIds = request.get_json()
+        print(productIds)
+
+        if not productIds:
+            return jsonify({"error": "No product IDs provided"}), 400
+
+        query = f'DELETE FROM produits WHERE id IN ({", ".join(["%s"] * len(productIds))})'
+        affected_rows = cursor.execute(query, productIds)
+        connection.commit()
         cursor.close()
-    except Exception as e:
-        cursor.close()
-        abort(500, description=str(e))
 
-    if arts is None:
-        abort(404)
-
-    return jsonify({"arts": arts, "categories": categories})
+        return jsonify({"affectedRows": affected_rows})
 
 
 @app.route('/art/<string:product_id>', methods=['GET'])
@@ -64,11 +79,12 @@ def get_product(product_id):
     include_category = request.args.get('includeCategory', None) == 'true'
 
     cursor = connection.cursor(pymysql.cursors.DictCursor)
-
+# 'SELECT p.*, c.nom, a.nom FROM produits p JOIN categories c ON p.categorie_id = c.id JOIN artistes a ON p.artiste_id = a.id
     if include_category:
         query = """
-        SELECT produits.*, categories.nom as categorie_nom, categories.description as categorie_description
+        SELECT produits.*, categories.nom as categorie_nom, categories.description as categorie_description, a.nom
         FROM produits
+        JOIN artistes a ON produits.artiste_id = a.id
         LEFT JOIN categories ON produits.categorie_id = categories.id
         WHERE produits.id = %s
         """

@@ -9,6 +9,7 @@ function removeItemFromLocalStorage(itemId) {
 
 export const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [productIds, setProductIds] = useState([]);
 
   useEffect(() => {
     loadCartItems();
@@ -17,12 +18,36 @@ export const Checkout = () => {
   const loadCartItems = () => {
     const items = JSON.parse(localStorage.getItem("myArt_items")) || [];
     setCartItems(items);
+    if (items) setProductIds(items.map((art) => art.id));
   };
 
   const handleRemoveFromCart = (item) => {
     removeItemFromLocalStorage(item.id);
     loadCartItems();
   };
+
+  const handleCheckout = () => {
+    try {
+      console.log(productIds);
+      const response = fetch(`http://localhost:5000/arts`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productIds),
+      });
+      if (response.ok) {
+        console.log("Client registered successfully");
+      } else {
+        console.log("Error registering client");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    localStorage.removeItem("myArt_items");
+    setCartItems([]);
+  };
+
   return (
     <div className="checkout">
       <h1>Page de paiement</h1>
@@ -45,7 +70,7 @@ export const Checkout = () => {
           Voir les articles disponibles
         </a>
       ) : (
-        <button className="checkout-button">
+        <button onClick={() => handleCheckout()} className="checkout-button">
           Payer avec des jetons magiques
         </button>
       )}

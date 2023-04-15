@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    nom: '',
-    email: '',
-    mot_de_passe: '',
+    nom: "",
+    email: "",
+    mot_de_passe: "",
   });
 
   const handleChange = (e) => {
@@ -12,29 +12,25 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  // Send form data to your backend
-  try {
-    const response = await fetch('http://localhost:5000/clients', { // Update the endpoint here
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-    if (response.ok) {
-      console.log('Client registered successfully');
-      // Redirect or show success message
-    } else {
-      console.log('Error registering client');
-      // Show error message or handle error
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/clients", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("Client registered successfully");
+      } else {
+        console.log("Error registering client");
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-  } catch (error) {
-    console.error('Error:', error);
-    // Show error message or handle error
-  }
-};
+  };
 
   return (
     <div>
@@ -77,4 +73,3 @@ const handleSubmit = async (e) => {
 };
 
 export { SignUp };
-
