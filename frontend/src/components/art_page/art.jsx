@@ -4,7 +4,7 @@ import "./art.scss";
 
 const getArt = async () => {
   const artId = window.location.pathname.split("/")[2];
-  const art = await fetch(`http://localhost:5000/art/${artId}`);
+  const art = await fetch(`http://localhost:5000/art/${artId}?includeCategory=true`);
   if (art.ok) {
     const data = await art.json();
     console.log(data);
@@ -51,6 +51,8 @@ export const Art = () => {
       </div>
       <div className="art__info">
         <p>{art.description}</p>
+        <p>Catégorie: {art.categorie_nom}</p>
+        <p>Description de la catégorie: {art.categorie_description}</p>
         <p>Examplaire: {art.quantite}</p>
         <p>Prix: {art.prix}</p>
         <p>Mouvements artistiques: {art["c.nom"]}</p>
