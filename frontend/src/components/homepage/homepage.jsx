@@ -45,6 +45,7 @@ export const Homepage = () => {
           <div className="art-info">
             <h2>{art.nom}</h2>
             <p>{art.description}</p>
+            <p>Mouvements artistiques: {art["c.nom"]}</p>
             <Link
               className="learn-more button"
               to={{ pathname: `/art/${art.id}` }}

@@ -11,6 +11,9 @@ export const Filter = ({ categories, setCategorie }) => {
       </button>
       {showCategories && (
         <ul className="filtre-list">
+          <li onClick={() => setCategorie("")} key={41412}>
+            Toutes les categories
+          </li>
           {categories.map((categorie, i) => (
             <li onClick={() => setCategorie(categorie.id)} key={i}>
               {categorie.nom}

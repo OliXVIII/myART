@@ -7,7 +7,7 @@ const getArt = async () => {
   const art = await fetch(`http://localhost:5000/art/${artId}`);
   if (art.ok) {
     const data = await art.json();
-    console.log(data)
+    console.log(data);
     return data;
   } else {
     throw new Error(`Error retrieving data: ${art.status} ${art.statusText}`);
@@ -17,18 +17,16 @@ const getArt = async () => {
 const addItemToLocalStorage = (item) => {
   const items = JSON.parse(localStorage.getItem("myArt_items")) || [];
   if (!items.find((i) => i.id === item.id)) {
-      items.push(item);
-      localStorage.setItem("myArt_items", JSON.stringify(items));
+    items.push(item);
+    localStorage.setItem("myArt_items", JSON.stringify(items));
   }
-
-}
-
+};
 
 export const Art = () => {
   let { state } = useLocation();
   const [art, setArt] = useState(state.art || null);
   useEffect(() => {
-    if (!state.art) {
+    if (state.art) {
       const fetchArts = async () => {
         try {
           const data = await getArt();
@@ -45,7 +43,6 @@ export const Art = () => {
     addItemToLocalStorage(art);
   };
 
-
   return (
     <div className="art-page">
       <h1 className="art-title">{art.nom}</h1>
@@ -53,14 +50,24 @@ export const Art = () => {
         <img src={art.image_url} alt={art.title} />
       </div>
       <div className="art__info">
-        
         <p>{art.description}</p>
         <p>Examplaire: {art.quantite}</p>
-        <div className="art__info__price">
-          <p>Prix: {art.prix}</p>
-        </div>
-        <a onClick={handleAddToCart} className="art-acheter button" href="/checkout">Acheter</a>
+        <p>Prix: {art.prix}</p>
+        <p>Mouvements artistiques: {art["c.nom"]}</p>
+        <p>
+          Artiste:{" "}
+          <a className="artist-link" href={`/artist/${art.artiste_id}`}>
+            {art["a.nom"]}
+          </a>
+        </p>
+        <a
+          onClick={handleAddToCart}
+          className="art-acheter button"
+          href="/checkout"
+        >
+          Acheter
+        </a>
       </div>
     </div>
   );
-}
+};

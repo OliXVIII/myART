@@ -36,11 +36,12 @@ def get_arts():
     categorie_id = request.args.get('categorie_id', None)
 
     cursor = connection.cursor(pymysql.cursors.DictCursor)
-    query = 'SELECT * FROM produits'
+    query = 'SELECT p.*, c.nom, a.nom FROM produits p JOIN categories c ON p.categorie_id = c.id JOIN artistes a ON p.artiste_id = a.id '
 
     try:
         if categorie_id:
-            query += ' WHERE categorie_id = %s'
+            query += ' WHERE categorie_id = %s '
+
             cursor.execute(query, (categorie_id,))
         else:
             cursor.execute(query)
@@ -96,8 +97,13 @@ def create_new_client():
 def get_artist(artist_id):
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
-    cursor.execute('SELECT * FROM artistes WHERE id = %s', (artist_id,))
-    artist = cursor.fetchone()
+    cursor.execute("""
+        SELECT a.*, p.nom, p.image_url, p.id
+        FROM artistes a
+        JOIN produits p ON a.id = p.artiste_id
+        WHERE a.id = %s;
+        """, (artist_id,))
+    artist = cursor.fetchall()
 
     cursor.close()
 
