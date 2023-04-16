@@ -1,3 +1,5 @@
+import hashlib
+
 from flask import Flask, render_template, send_from_directory, jsonify, request, abort
 from flask_mysqldb import MySQL
 from flask_cors import CORS
@@ -112,8 +114,8 @@ def create_new_client():
     nom = data['nom']
     email = data['email']
     mot_de_passe = data['mot_de_passe']
-
-    client_id = create_client(nom, email, mot_de_passe)
+    mot_de_passe_crypte = hashlib.sha256(mot_de_passe.encode('utf-8')).hexdigest()
+    client_id = create_client(nom, email, mot_de_passe_crypte)
 
     if client_id is not True or client_id is not False:
         return jsonify({"id": client_id, "nom": nom, "email": email}), 201
@@ -138,7 +140,7 @@ def create_client(nom, email, mot_de_passe):
                 return True
             else:
                 print("Erreur lors de l'insertion du client:", e)
-                return False
+                return None
 
 
 @app.route('/artist/<string:artist_id>', methods=['GET'])
