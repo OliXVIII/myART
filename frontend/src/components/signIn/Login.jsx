@@ -36,7 +36,8 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log('Connexion réussie');
-        localStorage.setItem('userData', data.nom);
+        console.log('Data:', data)
+        localStorage.setItem('userData', data[1]);
         window.location.href = '/';
       } else {
         setError('Email ou mot de passe incorrect');
