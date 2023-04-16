@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AES } from "crypto-js";
+
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -17,11 +17,6 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const encryptedData = AES.encrypt(
-        JSON.stringify({ ...formData }),
-        "secret key 123"
-      ).toString();
-
       const response = await fetch("http://localhost:5000/clients", {
         method: "POST",
         headers: {

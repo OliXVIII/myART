@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { Header } from "./components/header/header";
 import { Homepage } from "./components/homepage/homepage";
-import ArtistList from "./components/ArtistList";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Filter } from "./components/filter/filter.jsx";
 import { Art } from "./components/art_page/art.jsx";
@@ -10,7 +9,7 @@ import { SignUp } from "./components/SignUp/SignUp.jsx";
 import { Artists } from "./components/artist/artist";
 import { ArtistDetails } from "./components/artist-details/artist-details.jsx";
 import { Checkout } from "./components/checkout_page/checkout";
-
+import { Login } from './components/signIn/Login.jsx';
 function App() {
   const [data, setData] = useState({
     title: "",
@@ -28,6 +27,7 @@ function App() {
           <Route path="/artist/:id" element={<ArtistDetails />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

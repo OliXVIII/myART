@@ -178,6 +178,26 @@ def get_artists():
 
     return jsonify(artists)
 
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+
+    if 'email' not in data or 'mot_de_passe' not in data:
+        abort(400, "Les champs 'email' et 'mot_de_passe' sont requis.")
+
+    email = data['email']
+    mot_de_passe = data['mot_de_passe']
+    mot_de_passe_crypte = hashlib.sha256(mot_de_passe.encode('utf-8')).hexdigest()
+
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM clients WHERE email = %s AND mot_de_passe = %s",(email, mot_de_passe_crypte))
+    client = cursor.fetchone()
+
+    if client is None:
+        abort(400, "Email ou mot de passe incorrect.")
+
+    return jsonify(client)
+
 
 if __name__ == '__main__':
     app.run(debug=True,  port=5000)
