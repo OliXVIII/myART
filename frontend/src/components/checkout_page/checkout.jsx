@@ -15,6 +15,9 @@ export const Checkout = () => {
     code_postale:"",
 
   });
+  const [adresseAdded, setAdresseAdded] = useState(false);
+  const [adresseId, setAdresseId] = useState(null);
+
 
   useEffect(() => {
     loadCartItems();
@@ -43,6 +46,7 @@ export const Checkout = () => {
       console.log(response);
       if (response.ok) {
         console.log("Paid successfully");
+        handleCreateCommande();
         localStorage.removeItem("myArt_items");
         setCartItems([]);
       } else {
@@ -61,25 +65,60 @@ export const Checkout = () => {
   };
 
    const handleCreateAdresse = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/adresses`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(adresseForm),
-      });
+   try {
+    const response = await fetch(`http://localhost:5000/adresses`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(adresseForm),
+    });
 
-      if (response.ok) {
-        const adresse = await response.json();
-        console.log("Adresse créée avec succès :", adresse);
-      } else {
-        console.log("Erreur lors de la création de l'adresse");
-      }
-    } catch (error) {
-      console.error("Erreur:", error);
+    if (response.ok) {
+      const adresse = await response.json();
+      console.log("Adresse créée avec succès :", adresse);
+      setAdresseMessage("Adresse ajoutée avec succès !");
+      setAdresseAdded(true);
+      setAdresseId(adresse.id);
+    } else {
+      console.log("Erreur lors de la création de l'adresse");
+      setAdresseMessage("Erreur lors de l'ajout de l'adresse.");
     }
+  } catch (error) {
+    console.error("Erreur:", error);
+    setAdresseMessage("Erreur lors de l'ajout de l'adresse.");
+  }
   };
+   const handleCreateCommande = async () => {
+  try {
+    const clientId = localStorage.getItem("userid");
+    if (!clientId) {
+      console.log("Erreur: Aucun utilisateur connecté");
+      return;
+    }
+
+    const response = await fetch(`http://localhost:5000/commandes`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        client_id: clientId,
+        adresse_id: adresseId,
+        statut: "En attente",
+      }),
+    });
+
+    if (response.ok) {
+      console.log("Commande créée avec succès");
+    } else {
+      console.log("Erreur lors de la création de la commande");
+    }
+  } catch (error) {
+    console.error("Erreur:", error);
+  }
+};
+
 
   return (
     <div className="checkout">
@@ -107,6 +146,7 @@ export const Checkout = () => {
           Payer avec des jetons magiques
         </button>
       )}
+      {!adresseAdded &&(
       <div className="adresse-form">
         <h2>Ajouter une adresse</h2>
         <form onSubmit={(e) => e.preventDefault()}>
@@ -152,6 +192,7 @@ export const Checkout = () => {
           <button onClick={handleCreateAdresse}>Ajouter une adresse</button>
         </form>
       </div>
+      )}
     </div>
   );
 };

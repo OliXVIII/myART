@@ -38,6 +38,7 @@ const Login = () => {
         console.log('Connexion réussie');
         console.log('Data:', data)
         localStorage.setItem('userData', data[1]);
+        localStorage.setItem('userid',data[0])
         window.location.href = '/';
       } else {
         setError('Email ou mot de passe incorrect');
