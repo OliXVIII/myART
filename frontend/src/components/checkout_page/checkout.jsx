@@ -10,6 +10,11 @@ function removeItemFromLocalStorage(itemId) {
 export const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
   const [productIds, setProductIds] = useState([]);
+  const [adresseForm,setAdresseForm] = useState({
+    pays:"",
+    code_postale:"",
+
+  });
 
   useEffect(() => {
     loadCartItems();
@@ -47,6 +52,34 @@ export const Checkout = () => {
       console.error("Error:", error);
     }
   };
+  const handleAdresseChange = (event) => {
+    const { name, value } = event.target;
+    setAdresseForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+   const handleCreateAdresse = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/adresses`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(adresseForm),
+      });
+
+      if (response.ok) {
+        const adresse = await response.json();
+        console.log("Adresse créée avec succès :", adresse);
+      } else {
+        console.log("Erreur lors de la création de l'adresse");
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
 
   return (
     <div className="checkout">
@@ -74,6 +107,51 @@ export const Checkout = () => {
           Payer avec des jetons magiques
         </button>
       )}
+      <div className="adresse-form">
+        <h2>Ajouter une adresse</h2>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            name="pays"
+            value={adresseForm.pays}
+            onChange={handleAdresseChange}
+            placeholder="Pays"
+            required
+          />
+          <input
+            type="text"
+            name="code_postale"
+            value={adresseForm.code_postale}
+            onChange={handleAdresseChange}
+            placeholder="Code postal"
+            required
+          />
+          <input
+            type="text"
+            name="ville"
+            value={adresseForm.ville}
+            onChange={handleAdresseChange}
+            placeholder="Ville"
+            required
+          />
+          <input
+            type="text"
+            name="rue"
+            value={adresseForm.rue}
+            onChange={handleAdresseChange}
+            placeholder="Rue"
+            required
+          />
+          <input
+            type="number"
+            name="numero_porte"
+            value={adresseForm.numero_porte}
+            onChange={handleAdresseChange}
+            placeholder="Numéro de porte"
+          />
+          <button onClick={handleCreateAdresse}>Ajouter une adresse</button>
+        </form>
+      </div>
     </div>
   );
 };

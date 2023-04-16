@@ -199,5 +199,39 @@ def login():
     return jsonify(client)
 
 
+@app.route('/adresses', methods=['POST'])
+def create_adresse():
+    id = str(uuid.uuid4())
+    data = request.get_json()
+
+    if 'pays' not in data or 'code_postale' not in data or 'ville' not in data or 'rue' not in data:
+        abort(400, "Les champs 'pays', 'code_postale', 'ville' et 'rue' sont requis.")
+
+    pays = data['pays']
+    code_postale = data['code_postale']
+    ville = data['ville']
+    rue = data['rue']
+    numero_porte = data.get('numero_porte', None)
+
+    adresse_id = create_adresse_db(id,pays, code_postale, ville, rue, numero_porte)
+
+    if adresse_id is not None:
+        return jsonify({"id": adresse_id, "pays": pays, "code_postale": code_postale, "ville": ville, "rue": rue, "numero_porte": numero_porte}), 201
+    else:
+        abort(400, "Impossible de créer l'adresse. Vérifiez les données et réessayez.")
+
+def create_adresse_db(id,pays, code_postale, ville, rue, numero_porte):
+    with connection.cursor() as cursor:
+        try:
+            cursor.execute("INSERT INTO adresses(id,pays, code_postale, ville, rue, numero_porte) VALUES (%s,%s, %s, %s, %s, %s)",
+                           (id,pays, code_postale, ville, rue, numero_porte))
+            connection.commit()
+            adresse_id = cursor.lastrowid
+            return adresse_id
+        except Exception as e:
+            print("Erreur lors de l'insertion de l'adresse:", e)
+            return None
+
+
 if __name__ == '__main__':
     app.run(debug=True,  port=5000)

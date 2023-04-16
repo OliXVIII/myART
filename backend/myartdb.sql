@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS adresses;
 
 CREATE TABLE IF NOT EXISTS adresses(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(36) PRIMARY KEY,
     pays VARCHAR(255) NOT NULL,
     code_postale VARCHAR(10) NOT NULL,
     ville VARCHAR(255) NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS paniers (
 CREATE TABLE IF NOT EXISTS commandes (
     id INT PRIMARY KEY AUTO_INCREMENT,
     client_id varchar(36),
-    adresse_id INT,
+    adresse_id VARCHAR(36),
     date_commande TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('En attente', 'En cours', 'Expédié', 'Livré', 'Annulé') NOT NULL,
     FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
@@ -150,6 +150,8 @@ SELECT * FROM produits;
 SELECT * FROM categories;
 SELECT * FROM comptes;
 SELECT * FROM clients;
+SELECT * FROM commandes;
+SELECT * FROM adresses;
 
 /*Index sur les objets dart fait par les artistes*/
 CREATE INDEX idx_artistes_nom ON artistes(nom);
