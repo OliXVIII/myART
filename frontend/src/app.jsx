@@ -8,7 +8,7 @@ import { Filter } from "./components/filter/filter.jsx";
 import { Art } from "./components/art_page/art.jsx";
 import { SignUp } from "./components/SignUp/SignUp.jsx";
 import { Artists } from "./components/artist/artist";
-import { ArtistDetails } from "./components/ArtistDetails/artist-details.jsx";
+import { ArtistDetails } from "./components/artist-details/artist-details.jsx";
 import { Checkout } from "./components/checkout_page/checkout";
 
 function App() {

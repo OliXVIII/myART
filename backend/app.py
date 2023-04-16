@@ -71,7 +71,7 @@ def arts():
         connection.commit()
         cursor.close()
 
-        return jsonify({"affectedRows": affected_rows})
+        return jsonify({"affectedRows": affected_rows}), 202
 
 
 @app.route('/art/<string:product_id>', methods=['GET'])
@@ -115,10 +115,30 @@ def create_new_client():
 
     client_id = create_client(nom, email, mot_de_passe)
 
-    if client_id is not None:
+    if client_id is not True or client_id is not False:
         return jsonify({"id": client_id, "nom": nom, "email": email}), 201
     else:
+        if client_id:
+            abort(400, "L'email existe déjà.")
         abort(400, "Impossible de créer le client. Vérifiez les données et réessayez.")
+
+
+def create_client(nom, email, mot_de_passe):
+    with connection.cursor() as cursor:
+        try:
+            client_id = str(uuid.uuid4())
+            cursor.execute("INSERT INTO clients(id, nom, email, mot_de_passe) VALUES (%s, %s, %s, %s)",
+                           (client_id, nom, email, mot_de_passe))
+            connection.commit()
+            return client_id
+        except pymysql.err.IntegrityError as e:
+            if e.args[0] == 1062:
+                print(
+                    f"L'email {email} existe déjà.")
+                return True
+            else:
+                print("Erreur lors de l'insertion du client:", e)
+                return False
 
 
 @app.route('/artist/<string:artist_id>', methods=['GET'])
@@ -139,24 +159,6 @@ def get_artist(artist_id):
         abort(404)
 
     return jsonify(artist)
-
-
-def create_client(nom, email, mot_de_passe):
-    with connection.cursor() as cursor:
-        try:
-            client_id = str(uuid.uuid4())
-            cursor.execute("INSERT INTO clients(id, nom, email, mot_de_passe) VALUES (%s, %s, %s, %s)",
-                           (client_id, nom, email, mot_de_passe))
-            connection.commit()
-            return client_id
-        except pymysql.err.IntegrityError as e:
-            if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
-                print(
-                    f"Erreur: L'email {email} existe déjà. Veuillez utiliser un email unique.")
-                return None
-            else:
-                print("Erreur lors de l'insertion du client:", e)
-                return None
 
 
 @app.route('/artists', methods=['GET'])

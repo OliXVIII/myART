@@ -26,26 +26,26 @@ export const Checkout = () => {
     loadCartItems();
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     try {
-      console.log(productIds);
-      const response = fetch(`http://localhost:5000/arts`, {
+      const response = await fetch(`http://localhost:5000/arts`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(productIds),
       });
+      console.log(response);
       if (response.ok) {
-        console.log("Client registered successfully");
+        console.log("Paid successfully");
+        localStorage.removeItem("myArt_items");
+        setCartItems([]);
       } else {
-        console.log("Error registering client");
+        console.log("Error in paiement client");
       }
     } catch (error) {
       console.error("Error:", error);
     }
-    localStorage.removeItem("myArt_items");
-    setCartItems([]);
   };
 
   return (

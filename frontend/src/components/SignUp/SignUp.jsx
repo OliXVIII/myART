@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AES } from "crypto-js";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +7,7 @@ const SignUp = () => {
     email: "",
     mot_de_passe: "",
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,6 +17,11 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const encryptedData = AES.encrypt(
+        JSON.stringify({ ...formData }),
+        "secret key 123"
+      ).toString();
+
       const response = await fetch("http://localhost:5000/clients", {
         method: "POST",
         headers: {
@@ -24,13 +31,20 @@ const SignUp = () => {
       });
       if (response.ok) {
         console.log("Client registered successfully");
+        localStorage.setItem("userData", formData.nom);
+        window.location.href = "/";
       } else {
-        console.log("Error registering client");
+        if (response == "Email already exists") {
+          setError("Email already exists");
+        }
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
+  if (error == "Email already exists") {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>

@@ -3,11 +3,19 @@ import "./header.scss";
 
 export const Header = () => {
   const [itemsCount, setCartItems] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("myArt_items")) || [];
+    const userData = localStorage.getItem("userData") || "";
     setCartItems(items.length);
+    setUser(userData);
   }, [localStorage]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    window.location.href = "/";
+  };
 
   return (
     <header className="header">
@@ -35,14 +43,31 @@ export const Header = () => {
           </a>
         </div>
         <div className="header-user">
-          <ul>
-            <li className="header-user-item">
-              <a href="/sign-up">S'inscrire</a>
-            </li>
-            <li className="header-user-item">
-              <a href="/login">Se connecter</a>
-            </li>
-          </ul>
+          {user ? (
+            <ul>
+              <li className="header-user-item">
+                <a>{user}</a>
+              </li>
+              <li className="header-user-item">
+                <a
+                  href="/"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleLogout()}
+                >
+                  Se déconnecter
+                </a>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li className="header-user-item">
+                <a href="/sign-up">S'inscrire</a>
+              </li>
+              <li className="header-user-item">
+                <a href="/login">Se connecter</a>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </header>
