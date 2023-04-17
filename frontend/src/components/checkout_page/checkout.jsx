@@ -13,11 +13,12 @@ export const Checkout = () => {
   const [adresseForm,setAdresseForm] = useState({
     pays:"",
     code_postale:"",
-
+    ville:""
   });
   const [adresseAdded, setAdresseAdded] = useState(false);
   const [adresseId, setAdresseId] = useState(null);
   const [adresseMessage, setAdresseMessage] = useState("");
+  const [paiementAvecLivraison, setPaiementAvecLivraison] = useState(false);
 
 
 
@@ -37,25 +38,14 @@ export const Checkout = () => {
   };
 
   const handleCheckout = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/arts`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(productIds),
-      });
-      console.log(response);
-      if (response.ok) {
-        console.log("Paid successfully");
-        handleCreateCommande();
-        localStorage.removeItem("myArt_items");
-        setCartItems([]);
-      } else {
-        console.log("Error in paiement client");
-      }
-    } catch (error) {
-      console.error("Error:", error);
+     if (modePaiement === "magasin") {
+      handleCreateCommande(null);
+      localStorage.removeItem("myArt_items");
+      setCartItems([]);
+    } else if (modePaiement === "livraison") {
+      handleCreateAdresse();
+    } else {
+      console.log("Veuillez choisir un mode de paiement");
     }
   };
   const handleAdresseChange = (event) => {
@@ -121,80 +111,73 @@ export const Checkout = () => {
   }
 };
 
+   const handlePayInStore = () => {
+     removeItemFromLocalStorage(null); // Pass null as itemId to remove all items
+     setCartItems([]);
+     window.location.href = '/';
+   }
 
   return (
     <div className="checkout">
-      <h1>Page de paiement</h1>
-      {cartItems.map((art, index) => (
-        <div key={index} className="checkout-item">
-          <div className="checkout-item-left">
-            <img src={art.image_url}></img>
-            <p>
-              {art.nom} - ${art.prix}
-            </p>
-          </div>
-          <button onClick={() => handleRemoveFromCart(art)}>
-            Supprimer l'article
-          </button>
+    <h1>Page de paiement</h1>
+    {cartItems.map((art, index) => (
+      <div key={index} className="checkout-item">
+        <div className="checkout-item-left">
+          <img src={art.image_url}></img>
+          <p>
+            {art.nom} - ${art.prix}
+          </p>
         </div>
-      ))}
-      {cartItems.length === 0 && <p>Votre panier est vide</p>}
-      {cartItems.length === 0 ? (
-        <a href="/" className="checkout-button button">
-          Voir les articles disponibles
-        </a>
-      ) : (
-        <button onClick={() => handleCheckout()} className="checkout-button">
-          Payer avec des jetons magiques
+        <button onClick={() => handleRemoveFromCart(art)}>
+          Supprimer l'article
         </button>
-      )}
-      {!adresseAdded &&(
+      </div>
+    ))}
+    {cartItems.length === 0 && <p>Votre panier est vide</p>}
+    {cartItems.length === 0 ? (
+      <a href="/" className="checkout-button button">
+        Voir les articles disponibles
+      </a>
+    ) : (
+      <div>
+        <button onClick={() => handlePayInStore()} className="checkout-button">
+          Payer en magasin
+        </button>
+        <button onClick={() => handlePaymentWithDelivery()} className="checkout-button">
+          Paiement avec livraison
+        </button>
+      </div>
+    )}
+    {!adresseAdded && (
       <div className="adresse-form">
         <h2>Ajouter une adresse</h2>
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             name="pays"
+            placeholder="Pays"
             value={adresseForm.pays}
             onChange={handleAdresseChange}
-            placeholder="Pays"
-            required
           />
           <input
             type="text"
             name="code_postale"
+            placeholder="Code postal"
             value={adresseForm.code_postale}
             onChange={handleAdresseChange}
-            placeholder="Code postal"
-            required
           />
           <input
             type="text"
             name="ville"
+            placeholder="Ville"
             value={adresseForm.ville}
             onChange={handleAdresseChange}
-            placeholder="Ville"
-            required
           />
-          <input
-            type="text"
-            name="rue"
-            value={adresseForm.rue}
-            onChange={handleAdresseChange}
-            placeholder="Rue"
-            required
-          />
-          <input
-            type="number"
-            name="numero_porte"
-            value={adresseForm.numero_porte}
-            onChange={handleAdresseChange}
-            placeholder="Numéro de porte"
-          />
-          <button onClick={handleCreateAdresse}>Ajouter une adresse</button>
+          <button onClick={() => handleCreateAdresse()}>Confirmer</button>
         </form>
+        {adresseMessage && <p>{adresseMessage}</p>}
       </div>
-      )}
-    </div>
+    )}
+  </div>
   );
 };
