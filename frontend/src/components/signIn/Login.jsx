@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, {useContext, useState } from 'react';
+import {UserContext} from "../../UserContext";
 
-const Login = () => {
+const Login = () =>{
+
+  const { setClientID } = useContext(UserContext);
+
   const [formData, setFormData] = useState({
     email: '',
     mot_de_passe: '',
@@ -39,6 +43,7 @@ const Login = () => {
         console.log('Data:', data)
         localStorage.setItem('userData', data[1]);
         localStorage.setItem('userid',data[0])
+        setClientID(data[0]);
         window.location.href = '/';
       } else {
         setError('Email ou mot de passe incorrect');

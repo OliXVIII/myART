@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS paniers (
 );
 /*Si on supprime un clients on supprime tous les commandes quil a fait*/
 CREATE TABLE IF NOT EXISTS commandes (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(36) PRIMARY KEY ,
     client_id varchar(36),
     adresse_id VARCHAR(36),
     date_commande TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -83,12 +83,12 @@ CREATE TABLE IF NOT EXISTS commandes (
     FOREIGN KEY (adresse_id) REFERENCES adresses(id) ON DELETE SET NULL
 );
 CREATE TABLE IF NOT EXISTS paiements(
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id VARCHAR(36) PRIMARY KEY,
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     type ENUM('argent','crédit','débit','autre'),
     montant DECIMAL(10, 2) NOT NULL,
     statut ENUM('En cours','Complété','Échec'),
-    commande_id INT,
+    commande_id VARCHAR(36),
     FOREIGN KEY (commande_id) REFERENCES commandes(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS lignePanier(

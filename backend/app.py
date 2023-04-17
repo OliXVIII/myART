@@ -232,25 +232,38 @@ def create_adresse_db(id,pays, code_postale, ville, rue, numero_porte):
             print("Erreur lors de l'insertion de l'adresse:", e)
             return None
 
+
+
 @app.route('/commandes', methods=['POST'])
 def create_commande():
     data = request.get_json()
+    print("Données reçues :", data)
 
-    # Vérifiez si toutes les informations requises sont présentes dans la requête
-    if not data or 'client_id' not in data or 'adresse_id' not in data or 'panier' not in data:
-        abort(400, "Les champs 'client_id', 'adresse_id' et 'panier' sont requis.")
+    if 'client_id' not in data or 'statut' not in data:
+        abort(400, "Les champs 'client_id' et 'statut' sont requis.")
 
-    # Récupérez les données de la requête
     client_id = data['client_id']
-    adresse_id = data['adresse_id']
-    panier = data['panier']
+    adresse_id = data.get('adresse_id', None)
+    statut = data['statut']
 
-    # Créez la nouvelle commande dans la base de données
-    try:
-        commande_id = create_commande_db(client_id, adresse_id, panier)
-        return jsonify({"commande_id": commande_id}), 201
-    except Exception as e:
-        abort(500, str(e))
+    commande_id = create_commande_db(client_id, adresse_id, statut)
+
+    if commande_id is not None:
+        return jsonify({"id": commande_id, "client_id": client_id, "adresse_id": adresse_id, "statut": statut}), 201
+    else:
+        abort(400, "Impossible de créer la commande. Vérifiez les données et réessayez.")
+
+def create_commande_db(client_id, adresse_id, statut):
+    with connection.cursor() as cursor:
+        try:
+            id = str(uuid.uuid4())
+            cursor.execute("INSERT INTO commandes(id, client_id, adresse_id, statut) VALUES (%s, %s, %s, %s)",
+                           (id, client_id, adresse_id, statut))
+            connection.commit()
+            return id
+        except Exception as e:
+            print("Erreur lors de l'insertion de la commande:", e)
+            return None
 
 
 

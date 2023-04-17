@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import {UserContext} from "../../UserContext";
 import "./checkout.scss";
 
 function removeItemFromLocalStorage(itemId) {
@@ -19,7 +20,7 @@ export const Checkout = () => {
   const [adresseId, setAdresseId] = useState(null);
   const [adresseMessage, setAdresseMessage] = useState("");
   const [paiementAvecLivraison, setPaiementAvecLivraison] = useState(false);
-
+  const { client_id } = useContext(UserContext);
 
 
   useEffect(() => {
@@ -81,13 +82,15 @@ export const Checkout = () => {
     setAdresseMessage("Erreur lors de l'ajout de l'adresse.");
   }
   };
-   const handleCreateCommande = async () => {
+   const handleCreateCommande = async (adresseId = null) => {
   try {
     const clientId = localStorage.getItem("userid");
     if (!clientId) {
       console.log("Erreur: Aucun utilisateur connecté");
       return;
     }
+
+    console.log("Données envoyées :", { client_id: clientId, adresse_id: adresseId, statut: "En attente" });
 
     const response = await fetch(`http://localhost:5000/commandes`, {
       method: "POST",
@@ -104,7 +107,8 @@ export const Checkout = () => {
     if (response.ok) {
       console.log("Commande créée avec succès");
     } else {
-      console.log("Erreur lors de la création de la commande");
+      const errorData = await response.json();
+      console.log("Erreur lors de la création de la commande",errorData);
     }
   } catch (error) {
     console.error("Erreur:", error);
@@ -112,9 +116,10 @@ export const Checkout = () => {
 };
 
    const handlePayInStore = () => {
-     removeItemFromLocalStorage(null); // Pass null as itemId to remove all items
-     setCartItems([]);
-     window.location.href = '/';
+    handleCreateCommande(null);
+    removeItemFromLocalStorage(null);
+    setCartItems([]);
+    //window.location.href = '/';
    }
 
   return (

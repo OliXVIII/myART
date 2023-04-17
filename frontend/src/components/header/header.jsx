@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext,useEffect, useState } from "react";
+import{UserContext} from "../../UserContext";
 import "./header.scss";
 
 export const Header = () => {
   const [itemsCount, setCartItems] = useState([]);
   const [user, setUser] = useState(null);
+  const { setClientID } = useContext(UserContext);
+
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("myArt_items")) || [];
@@ -14,6 +17,8 @@ export const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("userData");
+    localStorage.removeItem("userid");
+    setClientID(null);
     window.location.href = "/";
   };
 
