@@ -71,6 +71,8 @@ export const Checkout = () => {
   };
 
   const handleCreateAdresse = async () => {
+    let adresseId = await searchAdresse(adresseForm);
+  if (!adresseId) {
     try {
       const response = await fetch(`http://localhost:5000/adresses`, {
         method: "POST",
@@ -84,10 +86,7 @@ export const Checkout = () => {
         const adresse = await response.json();
         console.log("Adresse créée avec succès :", adresse);
         setAdresseMessage("Adresse ajoutée avec succès !");
-        setAdresseAdded(true);
-        setAdresseId(adresse.id);
-        setShowAdresseForm(false);
-        setShowConfirmationButton(true);
+        adresseId = adresse.id;
       } else {
         console.log("Erreur lors de la création de l'adresse");
         setAdresseMessage("Erreur lors de l'ajout de l'adresse.");
@@ -96,6 +95,14 @@ export const Checkout = () => {
       console.error("Erreur:", error);
       setAdresseMessage("Erreur lors de l'ajout de l'adresse.");
     }
+  } else {
+    console.log("Adresse existante trouvée, ID :", adresseId);
+    setAdresseMessage("Adresse existante trouvée !");
+  }
+  setAdresseAdded(true);
+  setAdresseId(adresseId);
+  setShowAdresseForm(false);
+  setShowConfirmationButton(true);
   };
   const handleCreateCommande = async (adresseId = null) => {
     try {
@@ -153,6 +160,28 @@ export const Checkout = () => {
     setPaiementAvecLivraison(true);
     setShowAdresseForm(true);
   };
+  const searchAdresse = async (adresse) => {
+  try {
+    const response = await fetch("http://localhost:5000/adresses/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(adresse),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      if (result.length > 0) {
+        return result[0].id; // Retourne l'ID de la première adresse trouvée
+      }
+    }
+  } catch (error) {
+    console.error("Erreur lors de la recherche de l'adresse:", error);
+  }
+  return null;
+};
+
 
   return (
     <div className="checkout">
