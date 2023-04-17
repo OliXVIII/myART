@@ -273,6 +273,29 @@ def create_commande_db(client_id, adresse_id, statut):
         except Exception as e:
             print("Erreur lors de l'insertion de la commande:", e)
             return None
+@app.route('/adresses/search', methods=['GET'])
+def search_adresses():
+    query = request.args.get('query', None)
+
+    if not query:
+        return jsonify({"error": "Aucune requête de recherche fournie"}), 400
+
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    try:
+        cursor.execute("""
+            SELECT *
+            FROM adresses
+            WHERE pays LIKE %s OR code_postale LIKE %s OR ville LIKE %s OR rue LIKE %s
+            """, (f'%{query}%', f'%{query}%', f'%{query}%', f'%{query}%'))
+        adresses = cursor.fetchall()
+    except Exception as e:
+        cursor.close()
+        abort(500, description=str(e))
+
+    if not adresses:
+        return jsonify({"error": "Aucune adresse trouvée pour cette recherche"}), 404
+
+    return jsonify(adresses)
 
 
 if __name__ == '__main__':
