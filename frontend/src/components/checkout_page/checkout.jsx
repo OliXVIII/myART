@@ -14,13 +14,17 @@ export const Checkout = () => {
   const [adresseForm,setAdresseForm] = useState({
     pays:"",
     code_postale:"",
-    ville:""
+    ville:"",
+    rue:"",
+    numero_porte:"",
   });
   const [adresseAdded, setAdresseAdded] = useState(false);
   const [adresseId, setAdresseId] = useState(null);
   const [adresseMessage, setAdresseMessage] = useState("");
   const [paiementAvecLivraison, setPaiementAvecLivraison] = useState(false);
   const { client_id } = useContext(UserContext);
+  const [showAdresseForm, setShowAdresseForm] = useState(false);
+  const [showConfirmationButton, setShowConfirmationButton] = useState(false);
 
 
   useEffect(() => {
@@ -73,6 +77,8 @@ export const Checkout = () => {
       setAdresseMessage("Adresse ajoutée avec succès !");
       setAdresseAdded(true);
       setAdresseId(adresse.id);
+      setShowAdresseForm(false);
+      setShowConfirmationButton(true);
     } else {
       console.log("Erreur lors de la création de l'adresse");
       setAdresseMessage("Erreur lors de l'ajout de l'adresse.");
@@ -121,9 +127,22 @@ export const Checkout = () => {
     setCartItems([]);
     //window.location.href = '/';
    }
+const handleConfirmOrder = () => {
+    if (adresseId) {
+      handleCreateCommande(adresseId);
+      localStorage.removeItem("myArt_items");
+      setCartItems([]);
+    } else {
+      console.log("Veuillez ajouter une adresse");
+    }
+  };
+   const handlePaymentWithDelivery = () => {
+      setPaiementAvecLivraison(true);
+      setShowAdresseForm(true);
+    };
 
   return (
-    <div className="checkout">
+      <div className="checkout">
     <h1>Page de paiement</h1>
     {cartItems.map((art, index) => (
       <div key={index} className="checkout-item">
@@ -144,44 +163,67 @@ export const Checkout = () => {
         Voir les articles disponibles
       </a>
     ) : (
-      <div>
-        <button onClick={() => handlePayInStore()} className="checkout-button">
-          Payer en magasin
-        </button>
-        <button onClick={() => handlePaymentWithDelivery()} className="checkout-button">
-          Paiement avec livraison
-        </button>
-      </div>
-    )}
-    {!adresseAdded && (
-      <div className="adresse-form">
-        <h2>Ajouter une adresse</h2>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="text"
-            name="pays"
-            placeholder="Pays"
-            value={adresseForm.pays}
-            onChange={handleAdresseChange}
-          />
-          <input
-            type="text"
-            name="code_postale"
-            placeholder="Code postal"
-            value={adresseForm.code_postale}
-            onChange={handleAdresseChange}
-          />
-          <input
-            type="text"
-            name="ville"
-            placeholder="Ville"
-            value={adresseForm.ville}
-            onChange={handleAdresseChange}
-          />
-          <button onClick={() => handleCreateAdresse()}>Confirmer</button>
-        </form>
-        {adresseMessage && <p>{adresseMessage}</p>}
-      </div>
+      <>
+        {!paiementAvecLivraison && (
+          <div>
+            <button onClick={() => handlePayInStore()} className="checkout-button">
+              Payer en magasin
+            </button>
+            <button onClick={() => handlePaymentWithDelivery()} className="checkout-button">
+              Paiement avec livraison
+            </button>
+          </div>
+        )}
+        {showAdresseForm && (
+          <div className="adresse-form">
+            <h2>Ajouter une adresse</h2>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="text"
+                name="pays"
+                placeholder="Pays"
+                value={adresseForm.pays}
+                onChange={handleAdresseChange}
+              />
+              <input
+                type="text"
+                name="code_postale"
+                placeholder="Code postal"
+                value={adresseForm.code_postale}
+                onChange={handleAdresseChange}
+              />
+              <input
+                type="text"
+                name="ville"
+                placeholder="Ville"
+                value={adresseForm.ville}
+                onChange={handleAdresseChange}
+              />
+              <input
+                type="text"
+                name="rue"
+                placeholder="Rue"
+                value={adresseForm.rue}
+                onChange={handleAdresseChange}
+              />
+              <input
+                type="number"
+                name="numero_porte"
+                placeholder="Numéro de porte"
+                value={adresseForm.numero_porte}
+                onChange={handleAdresseChange}
+              />
+              <button onClick={() => handleCreateAdresse()}>Confirmer</button>
+            </form>
+            {adresseMessage && <p>{adresseMessage}</p>}
+          </div>
+        )}
+        {showConfirmationButton && (
+          <button onClick={() => handleConfirmOrder()} className="checkout-button">
+            Confirmer la commande
+          </button>
+        )}
+      </>
     )}
   </div>
   );
