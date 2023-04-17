@@ -151,7 +151,7 @@ def get_artist(artist_id):
     cursor.execute("""
         SELECT a.*, p.nom, p.image_url, p.id
         FROM artistes a
-        JOIN produits p ON a.id = p.artiste_id
+        LEFT JOIN produits p ON a.id = p.artiste_id
         WHERE a.id = %s;
         """, (artist_id,))
     artist = cursor.fetchall()
