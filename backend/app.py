@@ -151,7 +151,7 @@ def get_artist(artist_id):
     cursor.execute("""
         SELECT a.*, p.nom, p.image_url, p.id
         FROM artistes a USE INDEX (idx_artistes_id)
-        JOIN produits p USE INDEX (idx_produits_id)
+        JOIN produits p
         ON a.id = p.artiste_id
         WHERE a.id = %s;
         """, (artist_id,))
@@ -171,11 +171,10 @@ def get_artists():
 
     cursor.execute("""
         SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
-        USE INDEX (idx_artistes_id)
-        LEFT JOIN produits 
-        USE INDEX (idx_produits_artistes_id)
+        FROM artistes USE INDEX (idx_artiste_id)
+        LEFT JOIN produits
         ON artistes.id = produits.artiste_id
-        GROUP BY artistes.id""")
+        GROUP BY artistes.id;""")
 
     artists = cursor.fetchall()
     cursor.close()
