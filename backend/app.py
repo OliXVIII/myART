@@ -85,13 +85,13 @@ def get_product(product_id):
     if include_category:
         query = """
         SELECT produits.*, categories.nom as categorie_nom, categories.description as categorie_description, a.nom
-        FROM produits
+        FROM produits USE INDEX (idx_produits_artistes_id)
         JOIN artistes a ON produits.artiste_id = a.id
         LEFT JOIN categories ON produits.categorie_id = categories.id
         WHERE produits.id = %s
         """
     else:
-        query = 'SELECT * FROM produits WHERE id = %s'
+        query = 'SELECT * FROM produits USE INDEX(idx_produits_id) WHERE id = %s'
 
     cursor.execute(query, (product_id,))
     art = cursor.fetchone()
@@ -114,7 +114,8 @@ def create_new_client():
     nom = data['nom']
     email = data['email']
     mot_de_passe = data['mot_de_passe']
-    mot_de_passe_crypte = hashlib.sha256(mot_de_passe.encode('utf-8')).hexdigest()
+    mot_de_passe_crypte = hashlib.sha256(
+        mot_de_passe.encode('utf-8')).hexdigest()
     client_id = create_client(nom, email, mot_de_passe_crypte)
 
     if client_id is not True or client_id is not False:
@@ -149,8 +150,9 @@ def get_artist(artist_id):
 
     cursor.execute("""
         SELECT a.*, p.nom, p.image_url, p.id
-        FROM artistes a
-        JOIN produits p ON a.id = p.artiste_id
+        FROM artistes a USE INDEX (idx_artistes_id)
+        JOIN produits p USE INDEX (idx_produits_id)
+        ON a.id = p.artiste_id
         WHERE a.id = %s;
         """, (artist_id,))
     artist = cursor.fetchall()
@@ -169,14 +171,17 @@ def get_artists():
 
     cursor.execute("""
         SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
-        FROM artistes
-        LEFT JOIN produits ON artistes.id = produits.artiste_id
+        USE INDEX (idx_artistes_id)
+        LEFT JOIN produits 
+        USE INDEX (idx_produits_artistes_id)
+        ON artistes.id = produits.artiste_id
         GROUP BY artistes.id""")
 
     artists = cursor.fetchall()
     cursor.close()
 
     return jsonify(artists)
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -187,10 +192,12 @@ def login():
 
     email = data['email']
     mot_de_passe = data['mot_de_passe']
-    mot_de_passe_crypte = hashlib.sha256(mot_de_passe.encode('utf-8')).hexdigest()
+    mot_de_passe_crypte = hashlib.sha256(
+        mot_de_passe.encode('utf-8')).hexdigest()
 
     with connection.cursor() as cursor:
-        cursor.execute("SELECT * FROM clients WHERE email = %s AND mot_de_passe = %s",(email, mot_de_passe_crypte))
+        cursor.execute(
+            "SELECT * FROM clients USE INDEX (idx_clients_mdp) WHERE email = %s AND mot_de_passe = %s", (email, mot_de_passe_crypte))
     client = cursor.fetchone()
 
     if client is None:
@@ -213,25 +220,26 @@ def create_adresse():
     rue = data['rue']
     numero_porte = data.get('numero_porte', None)
 
-    adresse_id = create_adresse_db(id,pays, code_postale, ville, rue, numero_porte)
+    adresse_id = create_adresse_db(
+        id, pays, code_postale, ville, rue, numero_porte)
 
     if adresse_id is not None:
         return jsonify({"id": adresse_id, "pays": pays, "code_postale": code_postale, "ville": ville, "rue": rue, "numero_porte": numero_porte}), 201
     else:
         abort(400, "Impossible de créer l'adresse. Vérifiez les données et réessayez.")
 
-def create_adresse_db(id,pays, code_postale, ville, rue, numero_porte):
+
+def create_adresse_db(id, pays, code_postale, ville, rue, numero_porte):
     with connection.cursor() as cursor:
         try:
             cursor.execute("INSERT INTO adresses(id,pays, code_postale, ville, rue, numero_porte) VALUES (%s,%s, %s, %s, %s, %s)",
-                           (id,pays, code_postale, ville, rue, numero_porte))
+                           (id, pays, code_postale, ville, rue, numero_porte))
             connection.commit()
             adresse_id = cursor.lastrowid
             return adresse_id
         except Exception as e:
             print("Erreur lors de l'insertion de l'adresse:", e)
             return None
-
 
 
 @app.route('/commandes', methods=['POST'])
@@ -253,6 +261,7 @@ def create_commande():
     else:
         abort(400, "Impossible de créer la commande. Vérifiez les données et réessayez.")
 
+
 def create_commande_db(client_id, adresse_id, statut):
     with connection.cursor() as cursor:
         try:
@@ -264,9 +273,6 @@ def create_commande_db(client_id, adresse_id, statut):
         except Exception as e:
             print("Erreur lors de l'insertion de la commande:", e)
             return None
-
-
-
 
 
 if __name__ == '__main__':
