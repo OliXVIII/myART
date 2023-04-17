@@ -69,9 +69,6 @@ export const Checkout = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(adresseForm),
-    }).then(response => response.json())
-      .then(data => {
-        setAdresseId(data.id);
     });
 
     if (response.ok) {
