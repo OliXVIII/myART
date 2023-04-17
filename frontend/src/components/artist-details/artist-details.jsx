@@ -29,11 +29,18 @@ const ArtistDetails = () => {
 
   return (
     <div className="artist-details">
-      <h1>{artist.nom}</h1>
-      <p>Nationalité : {artist.nationalite}</p>
-      <p>Année de naissance : {artist.anneeDeNaissance}</p>
-      <p>Bibliographie :</p>
-      <p>{artist.bibliographie}</p>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ paddingRight: "3%", width: "50%" }}>
+          <img className="image-artist" src={artist.url_img}></img>
+        </div>
+        <div>
+          <h1>{artist.nom}</h1>
+          <p>Nationalité : {artist.nationalite}</p>
+          <p>Année de naissance : {artist.anneeDeNaissance}</p>
+          <p>Bibliographie :</p>
+          <p>{artist.bibliographie}</p>
+        </div>
+      </div>
       <h2>Oeuvre d'art fait par {artist.nom}</h2>
       <div className="artist-details-list">
         {products.map((product, i) => (
