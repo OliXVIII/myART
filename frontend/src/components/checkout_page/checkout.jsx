@@ -55,10 +55,20 @@ export const Checkout = () => {
   };
   const handleAdresseChange = (event) => {
     const { name, value } = event.target;
+    const pattern = /^(\d+)\s+(.*)/;
+    if (name === "rue" && value.match(pattern)) {
+      const match = value.match(pattern);
+      setAdresseForm((prevState) => ({
+        ...prevState,
+        rue: match[2],
+        numero_porte: match[1],
+      }));
+    }
     setAdresseForm((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+
   };
 
    const handleCreateAdresse = async () => {
@@ -204,13 +214,6 @@ const handleConfirmOrder = () => {
                 name="rue"
                 placeholder="Rue"
                 value={adresseForm.rue}
-                onChange={handleAdresseChange}
-              />
-              <input
-                type="number"
-                name="numero_porte"
-                placeholder="Numéro de porte"
-                value={adresseForm.numero_porte}
                 onChange={handleAdresseChange}
               />
               <button onClick={() => handleCreateAdresse()}>Confirmer</button>
