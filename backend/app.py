@@ -171,7 +171,7 @@ def get_artists():
 
     cursor.execute("""
         SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
-        FROM artistes USE INDEX (idx_artiste_id)
+        FROM artistes USE INDEX (idx_artistes_id)
         LEFT JOIN produits
         ON artistes.id = produits.artiste_id
         GROUP BY artistes.id;""")
@@ -195,8 +195,8 @@ def login():
         mot_de_passe.encode('utf-8')).hexdigest()
 
     with connection.cursor() as cursor:
-        cursor.execute(
-            "SELECT * FROM clients USE INDEX (idx_clients_mdp) WHERE email = %s AND mot_de_passe = %s", (email, mot_de_passe_crypte))
+        sql = "SELECT * FROM clients WHERE email = %s AND mot_de_passe = %s"
+        cursor.execute(sql, (email, mot_de_passe_crypte))
     client = cursor.fetchone()
 
     if client is None:
@@ -265,7 +265,7 @@ def create_commande_db(client_id, adresse_id, statut):
     with connection.cursor() as cursor:
         try:
             id = str(uuid.uuid4())
-            cursor.execute("INSERT INTO commandes(id, client_id, adresse_id, statut) VALUES (%s, %s, %s, %s)",
+            cursor.execute("INSERT INTO commandes(id, client_id, adresse_id, statut) VALUES (%s, %s, %s, %s)", 
                            (id, client_id, adresse_id, statut))
             connection.commit()
             return id
