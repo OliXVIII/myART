@@ -17,6 +17,8 @@ export const Checkout = () => {
   });
   const [adresseAdded, setAdresseAdded] = useState(false);
   const [adresseId, setAdresseId] = useState(null);
+  const [adresseMessage, setAdresseMessage] = useState("");
+
 
 
   useEffect(() => {

@@ -232,6 +232,29 @@ def create_adresse_db(id,pays, code_postale, ville, rue, numero_porte):
             print("Erreur lors de l'insertion de l'adresse:", e)
             return None
 
+@app.route('/commandes', methods=['POST'])
+def create_commande():
+    data = request.get_json()
+
+    # Vérifiez si toutes les informations requises sont présentes dans la requête
+    if not data or 'client_id' not in data or 'adresse_id' not in data or 'panier' not in data:
+        abort(400, "Les champs 'client_id', 'adresse_id' et 'panier' sont requis.")
+
+    # Récupérez les données de la requête
+    client_id = data['client_id']
+    adresse_id = data['adresse_id']
+    panier = data['panier']
+
+    # Créez la nouvelle commande dans la base de données
+    try:
+        commande_id = create_commande_db(client_id, adresse_id, panier)
+        return jsonify({"commande_id": commande_id}), 201
+    except Exception as e:
+        abort(500, str(e))
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True,  port=5000)

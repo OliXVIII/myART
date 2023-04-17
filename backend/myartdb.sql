@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS produits (
     FOREIGN KEY (artiste_id) REFERENCES artistes(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS paniers (
-  id INT PRIMARY KEY AUTO_INCREMENT,
+  id VARCHAR(36) PRIMARY KEY,
   client_id varchar(36),
   FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE
 );
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS paiements(
 CREATE TABLE IF NOT EXISTS lignePanier(
     id INT PRIMARY KEY AUTO_INCREMENT,
     quantite INT,
-    id_panier INT NOT NULL,
+    id_panier VARCHAR(36) NOT NULL,
     id_produit VARCHAR(36) NOT NULL,
     FOREIGN KEY(id_panier) REFERENCES paniers(id) ON DELETE CASCADE,
     FOREIGN KEY(id_produit) REFERENCES produits(id) ON DELETE CASCADE
@@ -152,6 +152,7 @@ SELECT * FROM comptes;
 SELECT * FROM clients;
 SELECT * FROM commandes;
 SELECT * FROM adresses;
+SELECT * FROM paniers;
 
 /*Index sur les objets dart fait par les artistes*/
 CREATE INDEX idx_artistes_nom ON artistes(nom);
