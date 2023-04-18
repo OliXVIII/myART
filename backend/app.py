@@ -65,7 +65,7 @@ def arts():
         connection.commit()
         cursor.close()
 
-        return jsonify({"affectedRows": affected_rows}), 202
+        return jsonify({"affectedRows": affected_rows}), 204
 
 
 @app.route('/art/<string:product_id>', methods=['GET'])
