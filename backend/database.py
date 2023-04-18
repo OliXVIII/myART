@@ -87,10 +87,21 @@ def insertCategories(categories):
                     print("Erreur lors de l'insertion des catégories:", e)
 
 
+def artiste_exists(id):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT COUNT(*) FROM artistes WHERE id = %s", (id,))
+        result = cursor.fetchone()
+        return result[0] > 0
+
 def insertArtistes(artistes):
     with connection.cursor() as cursor:
         for artiste in artistes:
             id, nom, nationalite, anneeDeNaissance, bibliographie, url_img = artiste
+            if artiste_exists(id):
+                print(
+                    f"Erreur: L'ID de l'artiste {nom} existe déjà. Veuillez utiliser un ID unique.")
+                continue  # Continue avec le prochain artiste
+
             try:
                 cursor.execute("INSERT INTO artistes(id, nom, nationalite, anneeDeNaissance, bibliographie,url_img) VALUES (%s, %s, %s, %s, %s, %s)", (
                     id, nom, nationalite, anneeDeNaissance, bibliographie, url_img))
@@ -132,6 +143,38 @@ def insertClient(id, nom, email, mot_de_passe):
             else:
                 print("Erreur lors de l'insertion du client:", e)
 
+def insertAdminsFromTxt(filePath):
+    admins = []
+
+    with open(filePath, "r", encoding="utf-8") as file:
+        for line in file:
+            if not line.strip():  # Ignore les lignes vides
+                continue
+            try:
+                id, username, password, email = line.strip().split(';')  # Utilise le séparateur ';'
+                hashed_password = hashlib.sha256(password.encode()).hexdigest()
+                admins.append((id, username, hashed_password, email))
+            except ValueError as e:
+                print(f"Erreur lors du traitement de la ligne : {line.strip()}")
+                print(f"Valeurs extraites : {line.strip().split(';')}")
+                print(e)
+
+    with connection.cursor() as cursor:
+        for admin in admins:
+            id, username, hashed_password, email = admin
+            try:
+                cursor.execute("INSERT INTO administrateurs(id, nom, mot_de_passe, email) VALUES (%s, %s, %s, %s)",
+                               (id, username, hashed_password, email))
+                connection.commit()
+            except pymysql.err.IntegrityError as e:
+                if e.args[0] == 1062:  # Code d'erreur pour les entrées en double
+                    print(
+                        f"Erreur: L'ID de l'administrateur {username} existe déjà. Veuillez utiliser un ID unique.")
+                else:
+                    print("Erreur lors de l'insertion des administrateurs:", e)
+
+
+
 
 cursor = connection.cursor()
 
@@ -142,5 +185,5 @@ if __name__ == '__main__':
     insertArtistes(artistes)
     produits = createProduitsFromTxt("./produitId.txt")
     insertProduits(produits)
-    insertClient(uuid.uuid4(), "Jean-Christophe Parent",
-                 "jean-christophep@live.fr", "lapin123")
+    insertClient(uuid.uuid4(), "Jean-Christophe Parent","jean-christophep@live.fr", "lapin123")
+    insertAdminsFromTxt("./admin.txt")

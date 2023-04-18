@@ -154,6 +154,7 @@ SELECT * FROM clients;
 SELECT * FROM commandes;
 SELECT * FROM adresses;
 SELECT * FROM paniers;
+SELECT * FROM administrateurs;
 
 CREATE UNIQUE INDEX idx_artistes_id ON artistes(id);
 CREATE UNIQUE INDEX idx_produits_id ON produits(id) USING HASH;
