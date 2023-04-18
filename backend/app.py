@@ -25,14 +25,6 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 
-# @app.route('/art/<string:id>/')
-# def post(id):
-#     cur = mysql.connection.cursor()
-#     result = cur.execute("SELECT * FROM posts WHERE id = %s", [id])
-#     post = cur.fetchone()
-#     return render_template("single_art.html", post=post)
-
-
 @app.route('/arts', methods=['GET', 'DELETE'])
 def arts():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
