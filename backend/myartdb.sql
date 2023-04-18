@@ -99,12 +99,13 @@ CREATE TABLE IF NOT EXISTS lignePanier(
     FOREIGN KEY(id_panier) REFERENCES paniers(id) ON DELETE CASCADE,
     FOREIGN KEY(id_produit) REFERENCES produits(id) ON DELETE CASCADE
 );
+/*
 CREATE TABLE IF NOT EXISTS comptes(
     id INT PRIMARY KEY AUTO_INCREMENT,
     date_creation TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_client varchar(36) NOT NULL,
     FOREIGN KEY(id_client) REFERENCES clients(id) ON DELETE CASCADE
-);
+);*/
 
 DELIMITER //
 CREATE TRIGGER check_unique_id_artistes
@@ -145,7 +146,6 @@ SELECT * FROM clients;
 SELECT * FROM artistes;
 SELECT * FROM produits;
 SELECT * FROM categories;
-SELECT * FROM comptes;
 SELECT * FROM clients;
 SELECT * FROM commandes;
 SELECT * FROM adresses;
