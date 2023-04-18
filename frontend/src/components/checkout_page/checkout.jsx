@@ -13,7 +13,7 @@ export const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
   const [adresseForm, setAdresseForm] = useState({
     pays: "",
-    code_postale: "",
+    code_postal: "",
     ville: "",
     rue: "",
     numero_porte: "",
@@ -146,14 +146,20 @@ export const Checkout = () => {
   };
   const searchAdresse = async (adresse) => {
   try {
-    const response = await fetch("http://localhost:5000/adresses/search", {
+    // Convertir l'objet adresse en une chaîne de requête
+    const queryString = Object.keys(adresse)
+      .map((key) => `${key}=${encodeURIComponent(adresse[key])}`)
+      .join('&');
+
+    const response = await fetch(`http://localhost:5000/adresses/search?${queryString}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(adresse),
     });
 
+    console.log("Response status:", response.status);
+    console.log("Response object:", response);
     if (response.ok) {
       const result = await response.json();
       if (result.length > 0) {

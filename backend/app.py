@@ -264,21 +264,27 @@ def create_commande_db(client_id, adresse_id, statut):
             print("Erreur lors de l'insertion de la commande:", e)
             return None
 
-
-@app.route('/adresses/search', methods=['GET'])
+@app.route('/adresses/search', methods=['POST'])
 def search_adresses():
-    query = request.args.get('query', None)
+    pays = request.args.get('pays', None)
+    code_postal = request.args.get('code_postal', None)
+    ville = request.args.get('ville', None)
+    rue = request.args.get('rue', None)
+    numero_porte = request.args.get('numero_porte', None)
 
-    if not query:
-        return jsonify({"error": "Aucune requête de recherche fournie"}), 400
+    if not any([pays, code_postal, ville, rue, numero_porte]):
+        return jsonify({"error": "Aucun critère de recherche fourni"}), 400
 
     cursor = connection.cursor(pymysql.cursors.DictCursor)
     try:
         cursor.execute("""
             SELECT *
             FROM adresses
-            WHERE pays LIKE %s OR code_postale LIKE %s OR ville LIKE %s OR rue LIKE %s
-            """, (f'%{query}%', f'%{query}%', f'%{query}%', f'%{query}%'))
+            WHERE (pays LIKE %s OR %s IS NULL)
+                AND (code_postale LIKE %s OR %s IS NULL)
+                AND (ville LIKE %s OR %s IS NULL)
+                AND (rue LIKE %s OR %s IS NULL)
+            """, (f'%{pays}%', pays, f'%{code_postal}%', code_postal, f'%{ville}%', ville, f'%{rue}%', rue))
         adresses = cursor.fetchall()
     except Exception as e:
         cursor.close()
@@ -288,6 +294,7 @@ def search_adresses():
         return jsonify({"error": "Aucune adresse trouvée pour cette recherche"}), 404
 
     return jsonify(adresses)
+
 
 
 if __name__ == '__main__':
