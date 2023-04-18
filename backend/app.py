@@ -85,13 +85,13 @@ def get_product(product_id):
     if include_category:
         query = """
         SELECT produits.*, categories.nom as categorie_nom, categories.description as categorie_description, a.nom
-        FROM produits USE INDEX (idx_produits_artistes_id)
+        FROM produits
         JOIN artistes a ON produits.artiste_id = a.id
         LEFT JOIN categories ON produits.categorie_id = categories.id
         WHERE produits.id = %s
         """
     else:
-        query = 'SELECT * FROM produits USE INDEX(idx_produits_id) WHERE id = %s'
+        query = 'SELECT * FROM produits WHERE id = %s'
 
     cursor.execute(query, (product_id,))
     art = cursor.fetchone()
@@ -150,9 +150,8 @@ def get_artist(artist_id):
 
     cursor.execute("""
         SELECT a.*, p.nom, p.image_url, p.id
-        FROM artistes a USE INDEX (idx_artistes_id)
-        JOIN produits p
-        ON a.id = p.artiste_id
+        FROM artistes a
+        LEFT JOIN produits p ON a.id = p.artiste_id
         WHERE a.id = %s;
         """, (artist_id,))
     artist = cursor.fetchall()
@@ -171,7 +170,7 @@ def get_artists():
 
     cursor.execute("""
         SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
-        FROM artistes USE INDEX (idx_artistes_id)
+        FROM artistes USE INDEX (idx_artiste_id)
         LEFT JOIN produits
         ON artistes.id = produits.artiste_id
         GROUP BY artistes.id;""")
@@ -195,8 +194,8 @@ def login():
         mot_de_passe.encode('utf-8')).hexdigest()
 
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM clients WHERE email = %s AND mot_de_passe = %s"
-        cursor.execute(sql, (email, mot_de_passe_crypte))
+        cursor.execute(
+            "SELECT * FROM clients USE INDEX (idx_clients_mdp) WHERE email = %s AND mot_de_passe = %s", (email, mot_de_passe_crypte))
     client = cursor.fetchone()
 
     if client is None:
@@ -258,7 +257,8 @@ def create_commande():
     if commande_id is not None:
         return jsonify({"id": commande_id, "client_id": client_id, "adresse_id": adresse_id, "statut": statut}), 201
     else:
-        abort(400, "Impossible de créer la commande. Vérifiez les données et réessayez.")
+        abort(
+            400, "Impossible de créer la commande. Vérifiez les données et réessayez.")
 
 
 def create_commande_db(client_id, adresse_id, statut):
@@ -272,6 +272,8 @@ def create_commande_db(client_id, adresse_id, statut):
         except Exception as e:
             print("Erreur lors de l'insertion de la commande:", e)
             return None
+
+
 @app.route('/adresses/search', methods=['GET'])
 def search_adresses():
     query = request.args.get('query', None)
