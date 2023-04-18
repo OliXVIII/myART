@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const SignUp = () => {
   const [formData, setFormData] = useState({
     nom: "",
@@ -27,6 +26,7 @@ const SignUp = () => {
       if (response.ok) {
         console.log("Client registered successfully");
         localStorage.setItem("userData", formData.nom);
+        localStorage.setItem("userid", response.id);
         window.location.href = "/";
       } else {
         if (response == "Email already exists") {

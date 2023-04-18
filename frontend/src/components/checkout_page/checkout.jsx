@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
+import { handleDelete } from "../../utils/delete-product";
 import "./checkout.scss";
 
 function removeItemFromLocalStorage(itemId) {
@@ -10,7 +11,6 @@ function removeItemFromLocalStorage(itemId) {
 
 export const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
-  const [productIds, setProductIds] = useState([]);
   const [adresseForm, setAdresseForm] = useState({
     pays: "",
     code_postale: "",
@@ -33,7 +33,6 @@ export const Checkout = () => {
   const loadCartItems = () => {
     const items = JSON.parse(localStorage.getItem("myArt_items")) || [];
     setCartItems(items);
-    if (items) setProductIds(items.map((art) => art.id));
   };
 
   const handleRemoveFromCart = (item) => {
@@ -41,17 +40,6 @@ export const Checkout = () => {
     loadCartItems();
   };
 
-  const handleCheckout = async () => {
-    if (modePaiement === "magasin") {
-      handleCreateCommande(null);
-      localStorage.removeItem("myArt_items");
-      setCartItems([]);
-    } else if (modePaiement === "livraison") {
-      handleCreateAdresse();
-    } else {
-      console.log("Veuillez choisir un mode de paiement");
-    }
-  };
   const handleAdresseChange = (event) => {
     const { name, value } = event.target;
     const pattern = /^(\d+)\s+(.*)/;
@@ -112,12 +100,6 @@ export const Checkout = () => {
         return;
       }
 
-      console.log("Données envoyées :", {
-        client_id: clientId,
-        adresse_id: adresseId,
-        statut: "En attente",
-      });
-
       const response = await fetch(`http://localhost:5000/commandes`, {
         method: "POST",
         headers: {
@@ -143,13 +125,15 @@ export const Checkout = () => {
 
   const handlePayInStore = () => {
     handleCreateCommande(null);
-    removeItemFromLocalStorage(null);
+    handleDelete(cartItems);
+    localStorage.setItem("myArt_items", JSON.stringify([]));
     setCartItems([]);
-    //window.location.href = '/';
+    window.location.href = "/";
   };
   const handleConfirmOrder = () => {
     if (adresseId) {
       handleCreateCommande(adresseId);
+      handleDelete(cartItems);
       localStorage.removeItem("myArt_items");
       setCartItems([]);
     } else {
