@@ -187,12 +187,19 @@ def login():
     with connection.cursor() as cursor:
         cursor.execute(
             "SELECT * FROM clients WHERE email = %s AND mot_de_passe = %s", (email, mot_de_passe_crypte))
-    client = cursor.fetchone()
+        client = cursor.fetchone()
 
-    if client is None:
+        # Vérification supplémentaire pour les administrateurs
+        cursor.execute(
+            "SELECT * FROM administrateurs WHERE email = %s AND mot_de_passe = %s", (email, mot_de_passe_crypte))
+        administrateur = cursor.fetchone()
+
+    if client is None and administrateur is None:
         abort(400, "Email ou mot de passe incorrect.")
 
-    return jsonify(client)
+    # Retourne les données de l'utilisateur, soit client ou administrateur
+    return jsonify(client or administrateur)
+
 
 
 @app.route('/adresses', methods=['POST'])
