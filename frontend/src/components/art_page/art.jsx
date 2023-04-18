@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./art.scss";
+import { handleDelete } from "../../utils/delete-product";
 
 const getArt = async () => {
   const artId = window.location.pathname.split("/")[2];
@@ -9,7 +10,6 @@ const getArt = async () => {
   );
   if (art.ok) {
     const data = await art.json();
-    console.log(data);
     return data;
   } else {
     throw new Error(`Error retrieving data: ${art.status} ${art.statusText}`);
@@ -63,13 +63,26 @@ export const Art = () => {
             {art["a.nom"]}
           </a>
         </p>
-        <a
-          onClick={handleAddToCart}
-          className="art-acheter button"
-          href="/checkout"
-        >
-          Acheter
-        </a>
+        {art.quantite > 0 ? (
+          <a
+            onClick={handleAddToCart}
+            className="art-acheter button"
+            href="/checkout"
+          >
+            Acheter
+          </a>
+        ) : (
+          <a
+            style={{ backgroundColor: "lightpink" }}
+            className="art-acheter button"
+            href="/"
+          >
+            Vendu
+          </a>
+        )}
+        {localStorage.getItem("userid") == "admin" && (
+          <button onClick={handleDelete([art])}>Delete art (admin)</button>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
-import { handleSell } from "../../utils/se-product";
+import { handleSell } from "../../utils/sell-product";
 import "./checkout.scss";
 
 function removeItemFromLocalStorage(itemId) {
@@ -136,6 +136,7 @@ export const Checkout = () => {
       await handleSell(cartItems);
       localStorage.removeItem("myArt_items");
       setCartItems([]);
+      window.location.href = "/";
     } else {
       console.log("Veuillez ajouter une adresse");
     }
@@ -149,22 +150,23 @@ export const Checkout = () => {
       // Convertir l'objet adresse en une chaîne de requête
       const queryString = Object.keys(adresse)
         .map((key) => `${key}=${encodeURIComponent(adresse[key])}`)
-        .join('&');
-  
-      const response = await fetch(`http://localhost:5000/adresses/search?${queryString}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-  
-      console.log("Response status:", response.status);
-      console.log("Response object:", response);
+        .join("&");
+
+      const response = await fetch(
+        `http://localhost:5000/adresses/search?${queryString}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.ok) {
         const result = await response.json();
         if (result.length > 0) {
-          return result[0].id; // Retourne l'ID de la première adresse trouvée
+          return result[0].id;
         }
+      }
     } catch (error) {
       console.error("Erreur lors de la recherche de l'adresse:", error);
     }

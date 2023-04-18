@@ -1,13 +1,12 @@
-import React, {useContext, useState } from 'react';
-import {UserContext} from "../../UserContext";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../UserContext";
 
-const Login = () =>{
-
+const Login = () => {
   const { setClientID } = useContext(UserContext);
 
   const [formData, setFormData] = useState({
-    email: '',
-    mot_de_passe: '',
+    email: "",
+    mot_de_passe: "",
   });
   const [error, setError] = useState(null);
 
@@ -21,7 +20,7 @@ const Login = () =>{
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleSubmit(e);
     }
   };
@@ -29,27 +28,36 @@ const Login = () =>{
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/login', {
-        method: 'POST',
+      if (formData.email === "admin") {
+        const response = await fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+      }
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Connexion réussie');
-        console.log('Data:', data)
-        localStorage.setItem('userData', data[1]);
-        localStorage.setItem('userid',data[0])
+        console.log("Connexion réussie");
+        console.log("Data:", data);
+        localStorage.setItem("userData", data[1]);
+        localStorage.setItem("userid", data[0]);
         setClientID(data[0]);
-        window.location.href = '/';
+        window.location.href = "/";
       } else {
-        setError('Email ou mot de passe incorrect');
+        setError("Email ou mot de passe incorrect");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -87,4 +95,3 @@ const Login = () =>{
 };
 
 export { Login };
-
