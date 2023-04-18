@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../UserContext";
-import { handleDelete } from "../../utils/delete-product";
+import { handleSell } from "../../utils/se-product";
 import "./checkout.scss";
 
 function removeItemFromLocalStorage(itemId) {
@@ -125,7 +125,7 @@ export const Checkout = () => {
 
   const handlePayInStore = async () => {
     handleCreateCommande(null);
-    await handleDelete(cartItems);
+    await handleSell(cartItems);
     localStorage.setItem("myArt_items", JSON.stringify([]));
     setCartItems([]);
     window.location.href = "/";
@@ -133,7 +133,7 @@ export const Checkout = () => {
   const handleConfirmOrder = async () => {
     if (adresseId) {
       handleCreateCommande(adresseId);
-      await handleDelete(cartItems);
+      await handleSell(cartItems);
       localStorage.removeItem("myArt_items");
       setCartItems([]);
     } else {
@@ -146,20 +146,25 @@ export const Checkout = () => {
   };
   const searchAdresse = async (adresse) => {
     try {
-      const response = await fetch("http://localhost:5000/adresses/search", {
+      // Convertir l'objet adresse en une chaîne de requête
+      const queryString = Object.keys(adresse)
+        .map((key) => `${key}=${encodeURIComponent(adresse[key])}`)
+        .join('&');
+  
+      const response = await fetch(`http://localhost:5000/adresses/search?${queryString}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(adresse),
       });
-
+  
+      console.log("Response status:", response.status);
+      console.log("Response object:", response);
       if (response.ok) {
         const result = await response.json();
         if (result.length > 0) {
           return result[0].id; // Retourne l'ID de la première adresse trouvée
         }
-      }
     } catch (error) {
       console.error("Erreur lors de la recherche de l'adresse:", error);
     }
