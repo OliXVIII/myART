@@ -155,11 +155,6 @@ SELECT * FROM commandes;
 SELECT * FROM adresses;
 SELECT * FROM paniers;
 
-/*Index sur les objets dart fait par les artistes*/
-CREATE FULLTEXT INDEX idx_artistes ON artistes(id);
-CREATE UNIQUE INDEX idx_produits_id ON produits(id) USING HASH;
-CREATE UNIQUE INDEX idx_produits_artistes_id ON produits(artiste_id) USING HASH;
-CREATE UNIQUE INDEX idx_clients_mdp ON clients(email, mot_de_passe) USING BTREE;
 
 
 
