@@ -39,23 +39,26 @@ export const Homepage = () => {
   return (
     <div className="homepage">
       <Filter categories={categories} setCategorie={setCategorie} />
-      {arts.map((art, i) => (
-        <div className={i % 2 ? "art" : "art art-impair"} key={art.id}>
-          <img className="art-image" src={art.image_url} alt={art.nom} />
-          <div className="art-info">
-            <h2>{art.nom}</h2>
-            <p>{art.description}</p>
-            <p>Mouvements artistiques: {art["c.nom"]}</p>
-            <Link
-              className="learn-more button"
-              to={{ pathname: `/art/${art.id}` }}
-              state={{ art: art }}
-            >
-              Découvrez cet article
-            </Link>
-          </div>
-        </div>
-      ))}
+      {arts.map(
+        (art, i) =>
+          art.quantite > 0 && (
+            <div className={i % 2 ? "art" : "art art-impair"} key={art.id}>
+              <img className="art-image" src={art.image_url} alt={art.nom} />
+              <div className="art-info">
+                <h2>{art.nom}</h2>
+                <p>{art.description}</p>
+                <p>Mouvements artistiques: {art["c.nom"]}</p>
+                <Link
+                  className="learn-more button"
+                  to={{ pathname: `/art/${art.id}` }}
+                  state={{ art: art }}
+                >
+                  Découvrez cet article
+                </Link>
+              </div>
+            </div>
+          )
+      )}
       {arts.length === 0 && (
         <Fragment>
           <h2>Aucun article trouvé</h2>

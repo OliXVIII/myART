@@ -25,7 +25,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
 
 
-@app.route('/arts', methods=['GET', 'DELETE'])
+@app.route('/arts', methods=['GET', 'POST', 'DELETE'])
 def arts():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
@@ -52,6 +52,20 @@ def arts():
             abort(404)
 
         return jsonify({"arts": arts, "categories": categories})
+
+    elif request.method == 'POST':
+        productIds = request.get_json()
+        print(productIds)
+
+        if not productIds:
+            return jsonify({"error": "No product IDs provided"}), 400
+
+        query = f'UPDATE produits SET quantite = quantite - 1 WHERE id IN ({", ".join(["%s"] * len(productIds))})'
+        affected_rows = cursor.execute(query, productIds)
+        connection.commit()
+        cursor.close()
+
+        return jsonify({"affectedRows": affected_rows}), 200
 
     elif request.method == 'DELETE':
         productIds = request.get_json()
@@ -156,20 +170,36 @@ def get_artist(artist_id):
     return jsonify(artist)
 
 
-@app.route('/artists', methods=['GET'])
-def get_artists():
+@app.route('/artists', methods=['GET', 'DELETE'])
+def artists():
     cursor = connection.cursor(pymysql.cursors.DictCursor)
 
-    cursor.execute("""
-        SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
-        FROM artistes
-        LEFT JOIN produits ON artistes.id = produits.artiste_id
-        GROUP BY artistes.id""")
+    if request.method == 'GET':
 
-    artists = cursor.fetchall()
-    cursor.close()
+        cursor.execute("""
+            SELECT artistes.id, artistes.nom, COUNT(produits.id) AS nb_produits
+            FROM artistes
+            LEFT JOIN produits ON artistes.id = produits.artiste_id
+            GROUP BY artistes.id""")
 
-    return jsonify(artists)
+        artists = cursor.fetchall()
+        cursor.close()
+
+        return jsonify(artists)
+
+    if request.method == 'DELETE':
+        artistId = request.get_json()
+        print('artistIds', artistId)
+
+        if not artistId:
+            return jsonify({"error": "No artist IDs provided"}), 400
+
+        query = "DELETE FROM artistes WHERE artistes.nom = '%s'" % artistId
+        affected_rows = cursor.execute(query)
+        connection.commit()
+        cursor.close()
+
+        return jsonify({"affectedRows": affected_rows}), 204
 
 
 @app.route('/login', methods=['POST'])
@@ -199,7 +229,6 @@ def login():
 
     # Retourne les données de l'utilisateur, soit client ou administrateur
     return jsonify(client or administrateur)
-
 
 
 @app.route('/adresses', methods=['POST'])
@@ -271,6 +300,7 @@ def create_commande_db(client_id, adresse_id, statut):
             print("Erreur lors de l'insertion de la commande:", e)
             return None
 
+
 @app.route('/adresses/search', methods=['POST'])
 def search_adresses():
     pays = request.args.get('pays', None)
@@ -301,7 +331,6 @@ def search_adresses():
         return jsonify({"error": "Aucune adresse trouvée pour cette recherche"}), 404
 
     return jsonify(adresses)
-
 
 
 if __name__ == '__main__':

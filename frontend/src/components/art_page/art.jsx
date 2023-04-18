@@ -45,6 +45,11 @@ export const Art = () => {
     addItemToLocalStorage(art);
   };
 
+  const handleAdmin = async (art) => {
+    await handleDelete([art]);
+    window.location.href = "/";
+  };
+
   return (
     <div className="art-page">
       <h1 className="art-title">{art.nom}</h1>
@@ -63,6 +68,9 @@ export const Art = () => {
             {art["a.nom"]}
           </a>
         </p>
+        {localStorage.getItem("userData") == "admin" && (
+          <button onClick={() => handleAdmin(art)}>Delete art (admin)</button>
+        )}
         {art.quantite > 0 ? (
           <a
             onClick={handleAddToCart}
@@ -79,9 +87,6 @@ export const Art = () => {
           >
             Vendu
           </a>
-        )}
-        {localStorage.getItem("userid") == "admin" && (
-          <button onClick={handleDelete([art])}>Delete art (admin)</button>
         )}
       </div>
     </div>

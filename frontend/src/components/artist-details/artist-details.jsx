@@ -27,6 +27,20 @@ const ArtistDetails = () => {
     return <div>Loading...</div>;
   }
 
+  const handleAdmin = (artist) => {
+    fetch(`http://localhost:5000/artists`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(artist.nom),
+    }).then((response) => {
+      if (response.ok) {
+        window.location.href = "/";
+      }
+    });
+  };
+
   return (
     <div className="artist-details">
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -39,6 +53,11 @@ const ArtistDetails = () => {
           <p>Année de naissance : {artist.anneeDeNaissance}</p>
           <p>Bibliographie :</p>
           <p>{artist.bibliographie}</p>
+          {localStorage.getItem("userData") == "admin" && (
+            <button onClick={() => handleAdmin(artist)}>
+              Delete art (admin)
+            </button>
+          )}
         </div>
       </div>
       <h2>Oeuvre d'art fait par {artist.nom}</h2>
